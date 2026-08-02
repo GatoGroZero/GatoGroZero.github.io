@@ -4,13 +4,34 @@ Sitio estático, bilingüe (ES/EN), sin dependencias ni build. Se publica tal cu
 
 ```
 index.html      → todo el contenido (ES y EN conviven; el CSS oculta el idioma inactivo)
-styles.css      → estilos del sitio
+styles.css      → paleta, layout y motion del sitio
 demos.css       → estilos de las demos interactivas
-main.js         → cambio de idioma, header al hacer scroll, animaciones de entrada
+mockups.css     → maquetas de producto (cada app con SU paleta, no la del sitio)
+main.js         → idioma, scroll-reveal, contadores, progreso, botón magnético
 demos.js        → las 4 demos interactivas
+mockups.js      → las 3 maquetas de producto
 assets/         → CV en PDF
 .nojekyll       → evita que GitHub Pages procese el sitio con Jekyll
 ```
+
+## Paleta
+
+El sitio es **violeta sobre negro cálido** (`#0a0a0d` — nunca `#000` puro, que
+produce smear en pantallas OLED). Los tonos viven en `:root` de `styles.css`:
+
+| Variable | Uso | Contraste |
+|---|---|---|
+| `--accent` `#a78bfa` | texto y detalles | 7.3:1 |
+| `--accent-mid` `#8b5cf6` | rellenos, iconos | — |
+| `--accent-deep` `#7c3aed` | CTA con texto blanco | 5.7:1 |
+| `--fg-dim` `#8a889d` | texto secundario | 4.6:1 (mínimo AA) |
+
+Las maquetas **no** usan esta paleta: cada una conserva la de su producto real,
+definida en los temas `.t-paystream`, `.t-paymet` y `.t-rms` de `mockups.css`.
+
+> Cuidado al tocar `styles.css`: la regla global `b, strong { color: var(--fg) }`
+> se cuela dentro de las maquetas. `mockups.css` la neutraliza con
+> `.mk b { color: inherit }`. Sin eso, el tema claro queda ilegible.
 
 ## Las demos
 
