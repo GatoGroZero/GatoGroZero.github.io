@@ -1,69 +1,193 @@
-/* ── Language toggle (persists across visits) ── */
+/* ═══════════════════════════════════════════════════════════════
+   Interacción y movimiento — sin dependencias.
+   IntersectionObserver + rAF + Web Animations. Cero librerías.
+   ═══════════════════════════════════════════════════════════════ */
+(function () {
+"use strict";
+
+var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ─────────── Idioma ─────────── */
 (function () {
   var html = document.documentElement;
   var saved = null;
   try { saved = localStorage.getItem("lang"); } catch (e) {}
-
   if (!saved) {
     saved = (navigator.language || "es").toLowerCase().indexOf("en") === 0 ? "en" : "es";
   }
-  setLang(saved);
+  set(saved);
 
-  function setLang(lang) {
+  function set(lang) {
     html.setAttribute("data-lang", lang);
     html.setAttribute("lang", lang);
     try { localStorage.setItem("lang", lang); } catch (e) {}
-    // Demos render their own text from JS, so they need to be told.
     document.dispatchEvent(new CustomEvent("langchange", { detail: lang }));
   }
 
   var btn = document.getElementById("langToggle");
-  if (btn) {
-    btn.addEventListener("click", function () {
-      setLang(html.getAttribute("data-lang") === "es" ? "en" : "es");
-    });
-  }
+  if (btn) btn.addEventListener("click", function () {
+    set(html.getAttribute("data-lang") === "es" ? "en" : "es");
+  });
 })();
 
-/* ── Sticky header border on scroll ── */
+/* ─────────── Entrada del hero ─────────── */
+window.addEventListener("load", function () {
+  document.body.classList.add("loaded");
+});
+// Si load tarda (fuentes lentas), no dejamos el hero invisible.
+setTimeout(function () { document.body.classList.add("loaded"); }, 1200);
+
+/* ─────────── Header + barra de progreso ─────────── */
 (function () {
   var bar = document.querySelector(".topbar");
-  if (!bar) return;
+  var prog = document.querySelector(".progress");
   var ticking = false;
-  function update() {
-    bar.classList.toggle("scrolled", window.scrollY > 20);
+
+  function frame() {
+    var y = window.scrollY;
+    if (bar) bar.classList.toggle("scrolled", y > 20);
+    if (prog && !reduced) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+    }
     ticking = false;
   }
   window.addEventListener("scroll", function () {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    if (!ticking) { ticking = true; requestAnimationFrame(frame); }
   }, { passive: true });
-  update();
+  frame();
 })();
 
-/* ── Scroll reveal ── */
+/* ─────────── Revelado al hacer scroll, escalonado ─────────── */
 (function () {
-  var targets = document.querySelectorAll(
-    ".case, .sp-card, .stack-col, .about-text, .about-side, .note, .sec-head, .contact-links"
-  );
+  var SEL = ".case, .sp-card, .stack-col, .about-text, .about-side, .note," +
+            " .sec-head, .contact-links, .mk-stage, .side-projects, .sec-lede";
 
-  if (!("IntersectionObserver" in window)) return;
+  if (reduced) { window.__observeReveals = function () {}; return; }
 
-  targets.forEach(function (el) { el.classList.add("reveal"); });
+  /* Se comprueba la posición en cada frame de scroll en lugar de usar
+     IntersectionObserver: si el usuario salta con un ancla o Ctrl+End, el
+     elemento pasa de "debajo" a "encima" sin cruzar nunca el viewport, IO no
+     dispara y la sección se queda invisible para siempre. */
+  var pending = [];
+  var ticking = false;
+
+  function collect() {
+    document.querySelectorAll(SEL).forEach(function (el) {
+      if (el.dataset.rv) return;
+      el.dataset.rv = "1";
+      el.classList.add("reveal");
+      pending.push(el);
+    });
+    check();
+  }
+
+  function check() {
+    if (!pending.length) return;
+    var limit = window.innerHeight * 0.94;
+    var shown = 0;
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top < limit) {
+        el.style.setProperty("--i", Math.min(shown++, 6));
+        el.classList.add("in");
+        return false;
+      }
+      return true;
+    });
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(function () { check(); ticking = false; });
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  window.__observeReveals = collect;
+  collect();
+})();
+
+/* ─────────── Contadores de las estadísticas ─────────── */
+(function () {
+  var nodes = document.querySelectorAll("[data-count]");
+  if (!nodes.length) return;
+
+  if (reduced || !("IntersectionObserver" in window)) {
+    nodes.forEach(function (n) { n.textContent = n.dataset.count; });
+    return;
+  }
 
   var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in");
-        io.unobserve(entry.target);
-      }
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      run(e.target);
     });
-  }, { threshold: 0.08, rootMargin: "0px 0px -60px 0px" });
+  }, { threshold: 0.6 });
 
-  targets.forEach(function (el) { io.observe(el); });
+  nodes.forEach(function (n) { n.textContent = "0"; io.observe(n); });
+
+  function run(el) {
+    var target = parseFloat(el.dataset.count);
+    var suffix = el.dataset.suffix || "";
+    var dur = 1400, t0 = null;
+    function step(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      // expo.out
+      var e = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+      el.textContent = Math.round(target * e) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
 })();
 
-/* ── Current year ── */
+/* ─────────── Botón magnético (sólo el CTA principal) ─────────── */
+(function () {
+  if (reduced || window.matchMedia("(hover: none)").matches) return;
+  var el = document.querySelector(".hero-cta .btn-primary");
+  if (!el) return;
+
+  var raf, tx = 0, ty = 0, cx = 0, cy = 0;
+
+  function loop() {
+    cx += (tx - cx) * 0.16;
+    cy += (ty - cy) * 0.16;
+    el.style.transform = "translate(" + cx.toFixed(2) + "px," + cy.toFixed(2) + "px)";
+    if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) raf = requestAnimationFrame(loop);
+    else raf = null;
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+
+  el.addEventListener("mousemove", function (ev) {
+    var r = el.getBoundingClientRect();
+    // Se limita a 0.28 para que el botón nunca salga de su zona de clic
+    tx = (ev.clientX - r.left - r.width / 2) * 0.28;
+    ty = (ev.clientY - r.top - r.height / 2) * 0.28;
+    kick();
+  });
+  el.addEventListener("mouseleave", function () { tx = 0; ty = 0; kick(); });
+})();
+
+/* ─────────── Resplandor que sigue al cursor en las tarjetas ─────────── */
+(function () {
+  if (reduced || window.matchMedia("(hover: none)").matches) return;
+  document.querySelectorAll(".sp-card").forEach(function (card) {
+    card.addEventListener("mousemove", function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
+})();
+
+/* ─────────── Año ─────────── */
 (function () {
   var yr = document.getElementById("yr");
   if (yr) yr.textContent = new Date().getFullYear();
+})();
+
 })();

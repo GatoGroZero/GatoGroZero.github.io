@@ -13,10 +13,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="demos.css">
+<link rel="stylesheet" href="mockups.css">
+<meta name="theme-color" content="#0a0a0d">
 </head>
 <body>
 
 <div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
 
 <header class="topbar">
   <a href="#top" class="mark">LC<span class="dot">.</span></a>
@@ -36,22 +39,23 @@
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">
+    <p class="eyebrow" data-enter style="--d:0">
       <span class="pulse"></span>
       <span data-es>Jiutepec, Morelos · México — disponible para reubicación</span>
       <span data-en>Jiutepec, Morelos · Mexico — open to relocation</span>
     </p>
 
     <h1 class="display">
-      Luis Ángel<br>Castelar Hernández
+      <span class="ln"><span style="--d:1">Luis Ángel</span></span>
+      <span class="ln"><span class="grad" style="--d:2">Castelar Hernández</span></span>
     </h1>
 
-    <p class="lede">
+    <p class="lede" data-enter style="--d:4">
       <span data-es>Desarrollador <em>Full Stack</em>. Construyo sistemas completos — desde el modelo de datos hasta la interfaz que la gente usa todos los días. Java y Spring Boot del lado del servidor, React y Next.js del lado del cliente, Flutter cuando hace falta móvil.</span>
       <span data-en><em>Full Stack</em> developer. I build complete systems — from the data model to the interface people use every day. Java and Spring Boot on the server, React and Next.js on the client, Flutter when mobile is needed.</span>
     </p>
 
-    <div class="hero-cta">
+    <div class="hero-cta" data-enter style="--d:5">
       <a class="btn btn-primary" href="#work">
         <span data-es>Ver casos de estudio</span><span data-en>View case studies</span>
       </a>
@@ -61,23 +65,27 @@
       </a>
     </div>
 
-    <div class="hero-stats">
+    <div class="hero-stats" data-enter style="--d:6">
       <div class="stat">
-        <span class="stat-n">60k<span class="stat-u">+</span></span>
+        <span class="stat-n"><span data-count="60" data-suffix="k">60k</span><span class="stat-u">+</span></span>
         <span class="stat-l"><span data-es>líneas en producción</span><span data-en>lines in production</span></span>
       </div>
       <div class="stat">
-        <span class="stat-n">4</span>
+        <span class="stat-n" data-count="4">4</span>
         <span class="stat-l"><span data-es>sistemas de extremo a extremo</span><span data-en>end-to-end systems</span></span>
       </div>
       <div class="stat">
-        <span class="stat-n">4<span class="stat-u">↓</span></span>
+        <span class="stat-n"><span data-count="4">4</span><span class="stat-u">↓</span></span>
         <span class="stat-l"><span data-es>demos que puedes usar aquí mismo</span><span data-en>demos you can use right here</span></span>
       </div>
     </div>
   </div>
 
-  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
 </section>
 
 <!-- ══════════ NOTE ══════════ -->
@@ -86,8 +94,8 @@
     <div class="note">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
       <p>
-        <span data-es>Varios de estos sistemas son propiedad de las instituciones para las que fueron desarrollados, así que no puedo mostrar su código. Lo que sí puedo hacer es <strong>reconstruir sus mecanismos</strong>: las cuatro demos de esta página funcionan de verdad, con datos ficticios y código escrito desde cero para ellas. Las reglas de negocio, las máquinas de estado y los esquemas son los mismos que diseñé.</span>
-        <span data-en>Several of these systems belong to the institutions they were built for, so I can't show their code. What I can do is <strong>rebuild their mechanisms</strong>: the four demos on this page genuinely work, with fictional data and code written from scratch for them. The business rules, state machines and schemas are the ones I designed.</span>
+        <span data-es>Varios de estos sistemas son propiedad de las instituciones para las que fueron desarrollados, así que no puedo mostrar su código ni sus pantallas reales. Lo que sí puedo hacer es <strong>reconstruirlos</strong>: las cuatro demos de esta página funcionan de verdad y las maquetas están dibujadas desde cero, con datos inventados y la paleta de cada producto. Las reglas de negocio, las máquinas de estado y los esquemas sí son los que diseñé.</span>
+        <span data-en>Several of these systems belong to the institutions they were built for, so I can't show their code or real screens. What I can do is <strong>rebuild them</strong>: the four demos on this page genuinely work and the mockups are drawn from scratch, with invented data and each product's own palette. The business rules, state machines and schemas are the ones I designed.</span>
       </p>
     </div>
   </div>
@@ -197,6 +205,9 @@
           <span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind 4</span><span>Node.js</span><span>Rust</span><span>Soroban / Stellar</span><span>Expo</span><span>Flutter</span><span>PostgreSQL</span><span>Keycloak</span><span>Docker</span>
         </div>
 
+        <h4><span data-es>Cómo se ve el producto</span><span data-en>What the product looks like</span></h4>
+        <div data-mockup="paystream"></div>
+
         <h4><span data-es>Pruébalo — mueve los controles y observa las reglas</span><span data-en>Try it — move the controls and watch the rules</span></h4>
         <div data-demo="engine"></div>
       </div>
@@ -232,6 +243,9 @@
         <div class="chips">
           <span>Kotlin</span><span>Gradle</span><span>Flutter</span><span>Dart</span><span>REST API</span><span>SQL</span>
         </div>
+
+        <h4><span data-es>Cómo se ve el producto</span><span data-en>What the product looks like</span></h4>
+        <div data-mockup="paymet"></div>
       </div>
     </article>
 
@@ -265,6 +279,9 @@
         <div class="chips">
           <span>React</span><span>Spring Boot</span><span>Kotlin / Android</span><span>MySQL</span><span>Git</span>
         </div>
+
+        <h4><span data-es>Cómo se ve el producto</span><span data-en>What the product looks like</span></h4>
+        <div data-mockup="rms"></div>
       </div>
     </article>
 
@@ -481,5 +498,6 @@
 
 <script src="main.js"></script>
 <script src="demos.js"></script>
+<script src="mockups.js"></script>
 </body>
 </html>
