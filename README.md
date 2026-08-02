@@ -4,11 +4,30 @@ Sitio estático, bilingüe (ES/EN), sin dependencias ni build. Se publica tal cu
 
 ```
 index.html      → todo el contenido (ES y EN conviven; el CSS oculta el idioma inactivo)
-styles.css      → estilos
+styles.css      → estilos del sitio
+demos.css       → estilos de las demos interactivas
 main.js         → cambio de idioma, header al hacer scroll, animaciones de entrada
+demos.js        → las 4 demos interactivas
 assets/         → CV en PDF
 .nojekyll       → evita que GitHub Pages procese el sitio con Jekyll
 ```
+
+## Las demos
+
+Cuatro demos funcionan de verdad dentro de la página, sin servidor:
+
+| Demo | Dónde | Qué demuestra |
+|---|---|---|
+| Flujo de solicitudes | Caso UAEM | Máquina de estados, permisos por rol, auditoría, generación de documento |
+| Modelo entidad-relación | Caso UAEM | Diseño de esquema e índices justificados por consulta |
+| Control de acceso | Caso UAEM | Autorización del lado del servidor, 200 vs 403 |
+| Salario devengado | Caso Devengo | Reglas de negocio financieras en tiempo real |
+
+Son **reconstrucciones con datos ficticios**. El código es original de estas demos —
+no contienen nada de los sistemas de los clientes. Cada demo lo dice en su pie.
+
+Para agregar o cambiar una: todo vive en `demos.js`, un módulo por demo, y se monta
+en el `<div data-demo="...">` correspondiente de `index.html`.
 
 ## Ver en local
 

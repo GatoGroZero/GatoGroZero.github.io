@@ -13,6 +13,8 @@
     html.setAttribute("data-lang", lang);
     html.setAttribute("lang", lang);
     try { localStorage.setItem("lang", lang); } catch (e) {}
+    // Demos render their own text from JS, so they need to be told.
+    document.dispatchEvent(new CustomEvent("langchange", { detail: lang }));
   }
 
   var btn = document.getElementById("langToggle");

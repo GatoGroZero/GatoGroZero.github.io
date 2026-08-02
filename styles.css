@@ -315,6 +315,9 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--accent); }
 }
 .case:first-of-type { margin-top: 34px; }
 
+/* min-width:0 — sin esto, un hijo ancho (el diagrama ER) impide que la
+   columna se encoja y desborda toda la página en móvil. */
+.case-side, .case-main { min-width: 0; }
 .case-side { position: sticky; top: 100px; align-self: start; }
 
 .case-tag {
