@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Maquetas de producto — recreadas desde cero, datos ficticios.
+   Maquetas de producto, recreadas desde cero, datos ficticios.
    Cada una usa la paleta real de su aplicación, no la del sitio.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
@@ -30,7 +30,7 @@ function bars(vals, hiFrom) {
   }).join("") + "</div>";
 }
 
-/* ═══════════ 1. PayStream — portal de empresa + app del trabajador ═══════════ */
+/* ═══════════ 1. Devengo · portal de empresa + app del trabajador ═══════════ */
 function payStream() {
   var rows = [
     ["MS", "Mariana Solís",   "Operaciones",  "$2,520", "ok",   L("Aprobada", "Approved")],
@@ -42,12 +42,12 @@ function payStream() {
   return (
     '<div class="mk-stage s-paystream t-paystream reveal">' +
 
-      '<div class="mk">' + chrome("paystream.app / portal-empresa") +
+      '<div class="mk">' + chrome("devengo.app / portal-empresa") +
         '<div class="mk-screen">' +
 
           '<div class="mk-top"><div class="mk-brand">' +
-            '<span class="mk-logo">PS</span>' +
-            "<div><div class=\"mk-bname\">PayStream</div>" +
+            '<span class="mk-logo">DV</span>' +
+            "<div><div class=\"mk-bname\">Devengo</div>" +
             '<div class="mk-bsub">' + L("Portal empresa", "Company portal") + "</div></div>" +
           "</div>" +
           '<div class="mk-tabs">' +
@@ -109,8 +109,8 @@ function payStream() {
       "</div></div>" +
 
     "</div>" +
-    cap("Recreación del portal de empresa y la app del trabajador, con la paleta real del producto (pizarra y esmeralda). Nombres y montos inventados.",
-        "Recreation of the company portal and the worker app, using the product's real palette (slate and emerald). Names and amounts are invented.")
+    cap("Recreación del portal de empresa y la app del trabajador, con la paleta real del producto: pizarra y esmeralda. Nombres y montos inventados.",
+        "Recreation of the company portal and the worker app, using the product's real palette: slate and emerald. Names and amounts are invented.")
   );
 }
 
@@ -192,7 +192,7 @@ function paymet() {
   );
 }
 
-/* ═══════════ 3. Resource Management (UTEZ) — claro institucional ═══════════ */
+/* ═══════════ 3. Resource Management (UTEZ) · claro institucional ═══════════ */
 function rms() {
   var rows = [
     ["Proyector Epson X41",  "PRY-018", "Aula B-204",   L("Prestado", "On loan"),    "wait"],
@@ -246,8 +246,8 @@ function rms() {
 
         "</div>" +
       "</div>" +
-      cap("Interfaz clara sobre azul institucional — la paleta que usa el sistema real. El catálogo y las claves son ficticios.",
-          "Light interface on institutional blue — the palette the real system uses. Catalog and codes are fictional.") +
+      cap("Interfaz clara sobre azul institucional, la paleta que usa el sistema real. El catálogo y las claves son ficticios.",
+          "Light interface on institutional blue, the palette the real system uses. Catalog and codes are fictional.") +
     "</div>"
   );
 }

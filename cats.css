@@ -1,0 +1,138 @@
+/* ═══════════════════════════════════════════════
+   Gatos pixel · posición y movimiento
+   ═══════════════════════════════════════════════ */
+
+.cat-svg { display: block; image-rendering: pixelated; }
+
+/* ── Gato del hero ── */
+[data-cat="hero"] {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+.cat-hero-wrap { position: relative; display: inline-block; }
+.cat-body { position: relative; z-index: 2; transform-origin: 50% 100%; }
+.cat-body.hop { animation: hop .5s var(--ease); }
+@keyframes hop {
+  0%   { transform: translateY(0) scaleY(1); }
+  25%  { transform: translateY(0) scaleY(.86); }
+  55%  { transform: translateY(-22px) scaleY(1.06); }
+  80%  { transform: translateY(0) scaleY(.94); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+.cat-shadow {
+  position: absolute; left: 14%; right: 14%; bottom: -7px; height: 7px;
+  background: rgba(46,38,32,.2);
+  z-index: 1;
+}
+
+.cat-bubble {
+  position: absolute; top: -14px; right: -58px; z-index: 3;
+  font-family: var(--px); font-size: 1rem;
+  background: var(--cream); color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.cat-bubble::after {
+  content: ""; position: absolute; left: -9px; bottom: 7px;
+  width: 6px; height: 6px;
+  background: var(--cream);
+  border-left: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+.cat-bubble.pop { animation: pop .34s var(--ease); }
+@keyframes pop {
+  0%   { transform: scale(.4) translateY(6px); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ── Repisa con gato caminante ── */
+.cat-shelf {
+  position: relative;
+  height: 58px;
+  border-top: 3px solid var(--ink);
+  background: repeating-linear-gradient(90deg,
+    var(--paper-2) 0 16px, var(--paper-3) 16px 32px);
+  overflow: hidden;
+}
+[data-cat="walker"] { position: absolute; inset: 0; }
+.cat-walker {
+  position: absolute; bottom: 0; left: 0;
+  will-change: transform;
+}
+
+/* ── Gato que sigue el cursor ── */
+[data-cat="cursor"] {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 90;
+}
+.cat-follow {
+  position: absolute; top: 0; left: 0;
+  will-change: transform;
+  filter: drop-shadow(2px 2px 0 rgba(46,38,32,.25));
+}
+
+/* ── Gato dormido del pie ── */
+.cat-sleep { position: relative; display: inline-block; }
+.zzz {
+  position: absolute;
+  font-family: var(--px);
+  color: var(--ink-dim);
+  animation: zzz 3.4s ease-in-out infinite;
+  opacity: 0;
+}
+.z1 { top: -6px;  right: -4px;  font-size: .85rem; animation-delay: 0s; }
+.z2 { top: -16px; right: -14px; font-size: 1.05rem; animation-delay: .5s; }
+.z3 { top: -28px; right: -26px; font-size: 1.3rem; animation-delay: 1s; }
+@keyframes zzz {
+  0%   { opacity: 0; transform: translate(0,6px) rotate(-8deg); }
+  25%  { opacity: 1; }
+  70%  { opacity: 0; transform: translate(10px,-16px) rotate(12deg); }
+  100% { opacity: 0; }
+}
+
+/* ── Gatitos decorativos ── */
+[data-cat="tiny"] { display: inline-block; vertical-align: middle; }
+
+/* ── Marcador de sección con gato ── */
+.cat-mark { display: inline-flex; align-items: center; gap: 10px; }
+
+/* ── Colocación del gato del hero ── */
+.hero-cat {
+  position: absolute;
+  right: max(6vw, 40px);
+  bottom: 96px;
+  z-index: 3;
+}
+/* En pantallas angostas se encimaba con las estadísticas: pasa al flujo */
+@media (max-width: 900px) {
+  .hero { flex-wrap: wrap; }
+  .hero-cat {
+    position: static;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 34px;
+  }
+  .cat-hero-wrap { transform: scale(.8); }
+}
+
+/* ── Gato dormido en el pie ── */
+.cat-sleep-host { display: inline-block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cat-body.hop, .cat-bubble.pop, .zzz { animation: none !important; }
+  .zzz { opacity: .5; }
+  [data-cat="cursor"] { display: none; }
+}
+
+@media (max-width: 720px) {
+  [data-cat="cursor"] { display: none; }
+  .cat-shelf { height: 44px; }
+  .cat-bubble { right: -46px; font-size: .85rem; }
+}

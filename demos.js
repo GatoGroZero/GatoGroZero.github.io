@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Demos interactivas — Luis Ángel Castelar
+   Demos interactivas · Luis Ángel Castelar
    Reconstrucciones limpias, con datos ficticios. Sin código de cliente.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
@@ -40,7 +40,7 @@ function caption(es, en) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   DEMO 1 — Flujo de solicitudes con control por rol
+   DEMO 1 · Flujo de solicitudes con control por rol
    ═══════════════════════════════════════════════════════════════ */
 var Flow = (function () {
   var ROLES = [
@@ -60,7 +60,7 @@ var Flow = (function () {
     RECHAZADA:       { c: "b-rechazada",  es: "Rechazada",           en: "Rejected" }
   };
 
-  /* The transition table — this IS the business rule */
+  /* The transition table IS the business rule */
   var ACTIONS = [
     { id:"tomar",     role:"asesor",     from:["ENVIADA"],         to:"REVISION_ASESOR", es:"Tomar en revisión",         en:"Take for review" },
     { id:"validar",   role:"asesor",     from:["REVISION_ASESOR"], to:"VALIDADA_ASESOR", es:"Validar y enviar a dirección", en:"Validate & send to director" },
@@ -125,7 +125,7 @@ var Flow = (function () {
       return a.role === st.role && a.from.indexOf(req.estado) !== -1;
     });
   }
-  /* Actions some OTHER role could take right now — powers the "denied" message */
+  /* Actions some OTHER role could take right now, powers the "denied" message */
   function pending(req) {
     if (!req) return [];
     return ACTIONS.filter(function (a) { return a.from.indexOf(req.estado) !== -1; });
@@ -204,8 +204,8 @@ var Flow = (function () {
           (whoNext
             ? L("El rol <b>" + role.n_es + "</b> no puede actuar sobre esta solicitud en el estado <b>" + s.es + "</b>. El siguiente paso le corresponde a <b>" + whoNext + "</b>.",
                 "Role <b>" + role.n_en + "</b> cannot act on this request in state <b>" + s.en + "</b>. The next step belongs to <b>" + whoNext + "</b>.")
-            : L("Esta solicitud llegó al final de su flujo. Ningún rol puede modificarla — solo consultarla.",
-                "This request reached the end of its workflow. No role can modify it — only read it.")) +
+            : L("Esta solicitud llegó al final de su flujo. Ningún rol puede modificarla, solo consultarla.",
+                "This request reached the end of its workflow. No role can modify it, only read it.")) +
           "<br><code>403 Forbidden</code> " +
           L("es lo que devolvería la API si se intentara de todos modos.", "is what the API would return if attempted anyway.") +
           "</span></div>";
@@ -220,7 +220,7 @@ var Flow = (function () {
           '<div class="doc-row"><span>' + L("Folio", "Ref.") + "</span><span>" + r.folio + "</span></div>" +
           '<div class="doc-row"><span>' + L("Servicio", "Service") + "</span><span>" + esc(svcName(r.svc)) + "</span></div>" +
           '<div class="doc-row"><span>' + L("Solicitante", "Requested by") + "</span><span>" + esc(r.by) + "</span></div>" +
-          '<div class="doc-row"><span>' + L("Autorizó", "Authorized by") + "</span><span>" + (firma ? esc(firma.who) : "—") + "</span></div>" +
+          '<div class="doc-row"><span>' + L("Autorizó", "Authorized by") + "</span><span>" + (firma ? esc(firma.who) : L("Pendiente","Pending")) + "</span></div>" +
           '<div class="doc-sign"><hr><small>' + (firma ? esc(firma.who) : "") + " · " +
           L("Dirección de Servicios", "Services Direction") + "</small><br>" +
           '<span class="doc-seal">' + L("FIRMA REGISTRADA", "SIGNATURE ON RECORD") + "</span></div>" +
@@ -267,8 +267,8 @@ var Flow = (function () {
       var svc = root.querySelector("#f-svc").value;
       var d = root.querySelector("#f-desc").value.trim();
       if (d.length < 15) {
-        st.err = L("La descripción debe tener al menos 15 caracteres — validación del lado del servidor.",
-                   "Description must be at least 15 characters — server-side validation.");
+        st.err = L("La descripción debe tener al menos 15 caracteres, validación del lado del servidor.",
+                   "Description must be at least 15 characters, server-side validation.");
         return render(root);
       }
       seq++;
@@ -304,7 +304,7 @@ var Flow = (function () {
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-   DEMO 2 — Motor de salario devengado
+   DEMO 2 · Motor de salario devengado
    ═══════════════════════════════════════════════════════════════ */
 var Engine = (function () {
   var st = { salario: 12000, dia: 9, antig: 14, retirado: 0, msg: "" };
@@ -454,7 +454,7 @@ var Engine = (function () {
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-   DEMO 3 — Control de acceso por roles
+   DEMO 3 · Control de acceso por roles
    ═══════════════════════════════════════════════════════════════ */
 var Rbac = (function () {
   var ROLES = ["ESTUDIANTE", "ASESOR", "ADMIN", "SERVICIOS"];
@@ -566,7 +566,7 @@ var Rbac = (function () {
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-   DEMO 4 — Modelador entidad-relación
+   DEMO 4 · Modelador entidad-relación
    ═══════════════════════════════════════════════════════════════ */
 var ER = (function () {
   var T = {
@@ -593,15 +593,15 @@ var ER = (function () {
       ["id","BIGINT",1],["folio","VARCHAR(20)"],["usuario_id","BIGINT"],["servicio_id","BIGINT"],
       ["descripcion","TEXT"],["estado","VARCHAR(24)"],["creada_en","DATETIME"],["actualizada_en","DATETIME"]],
       idx:"PRIMARY KEY (id)\nUNIQUE KEY uk_solicitud_folio (folio)\nKEY idx_sol_usuario_estado (usuario_id, estado)\nKEY idx_sol_estado_fecha (estado, creada_en DESC)",
-      note_es:"La tabla que más crece y más se consulta. El índice compuesto (estado, creada_en) sirve a la pantalla más visitada: «solicitudes pendientes, más recientes primero». El orden de las columnas en el índice importa — al revés no se usaría.",
-      note_en:"The table that grows and is queried most. The composite index (estado, creada_en) serves the most visited screen: \"pending requests, newest first\". Column order in the index matters — reversed, it would go unused." },
+      note_es:"La tabla que más crece y más se consulta. El índice compuesto (estado, creada_en) sirve a la pantalla más visitada: «solicitudes pendientes, más recientes primero». El orden de las columnas en el índice importa, al revés no se usaría.",
+      note_en:"The table that grows and is queried most. The composite index (estado, creada_en) serves the most visited screen: \"pending requests, newest first\". Column order in the index matters: reversed, it would go unused." },
 
     historial_estado: { x:560, y:20, cols:[
       ["id","BIGINT",1],["solicitud_id","BIGINT"],["estado","VARCHAR(24)"],
       ["actor_id","BIGINT"],["nota","VARCHAR(255)"],["ocurrio_en","DATETIME"]],
       idx:"PRIMARY KEY (id)\nKEY idx_hist_solicitud (solicitud_id, ocurrio_en DESC)",
-      note_es:"Append-only: nunca se actualiza ni se borra una fila. Es lo que hace auditable el sistema — se puede reconstruir quién hizo qué y cuándo.",
-      note_en:"Append-only: rows are never updated or deleted. This is what makes the system auditable — you can reconstruct who did what, and when." },
+      note_es:"Append-only: nunca se actualiza ni se borra una fila. Es lo que hace auditable el sistema, porque se puede reconstruir quién hizo qué y cuándo.",
+      note_en:"Append-only: rows are never updated or deleted. This is what makes the system auditable, because you can reconstruct who did what, and when." },
 
     firma_solicitud: { x:560, y:175, cols:[
       ["id","BIGINT",1],["solicitud_id","BIGINT"],["firmante_id","BIGINT"],

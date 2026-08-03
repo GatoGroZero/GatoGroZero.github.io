@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Interacción y movimiento — sin dependencias.
+   Interacción y movimiento, sin dependencias.
    IntersectionObserver + rAF + Web Animations. Cero librerías.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
@@ -145,44 +145,9 @@ setTimeout(function () { document.body.classList.add("loaded"); }, 1200);
   }
 })();
 
-/* ─────────── Botón magnético (sólo el CTA principal) ─────────── */
-(function () {
-  if (reduced || window.matchMedia("(hover: none)").matches) return;
-  var el = document.querySelector(".hero-cta .btn-primary");
-  if (!el) return;
-
-  var raf, tx = 0, ty = 0, cx = 0, cy = 0;
-
-  function loop() {
-    cx += (tx - cx) * 0.16;
-    cy += (ty - cy) * 0.16;
-    el.style.transform = "translate(" + cx.toFixed(2) + "px," + cy.toFixed(2) + "px)";
-    if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) raf = requestAnimationFrame(loop);
-    else raf = null;
-  }
-  function kick() { if (!raf) raf = requestAnimationFrame(loop); }
-
-  el.addEventListener("mousemove", function (ev) {
-    var r = el.getBoundingClientRect();
-    // Se limita a 0.28 para que el botón nunca salga de su zona de clic
-    tx = (ev.clientX - r.left - r.width / 2) * 0.28;
-    ty = (ev.clientY - r.top - r.height / 2) * 0.28;
-    kick();
-  });
-  el.addEventListener("mouseleave", function () { tx = 0; ty = 0; kick(); });
-})();
-
-/* ─────────── Resplandor que sigue al cursor en las tarjetas ─────────── */
-(function () {
-  if (reduced || window.matchMedia("(hover: none)").matches) return;
-  document.querySelectorAll(".sp-card").forEach(function (card) {
-    card.addEventListener("mousemove", function (e) {
-      var r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
-      card.style.setProperty("--my", (e.clientY - r.top) + "px");
-    });
-  });
-})();
+/* Nota: el botón magnético se quitó al pasar al estilo pixel. Escribía
+   transform en línea y anulaba el efecto de "botón que se hunde" del CSS,
+   que encaja mejor con la estética de sombra dura. */
 
 /* ─────────── Año ─────────── */
 (function () {

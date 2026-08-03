@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luis Ángel Castelar — Full Stack Developer</title>
+<title>Luis Ángel Castelar · Full Stack Developer</title>
 <meta name="description" content="Desarrollador Full Stack. Java · Spring Boot · React · Next.js · Flutter. Sistemas institucionales y fintech de extremo a extremo.">
-<meta property="og:title" content="Luis Ángel Castelar — Full Stack Developer">
+<meta property="og:title" content="Luis Ángel Castelar · Full Stack Developer">
 <meta property="og:description" content="Java · Spring Boot · React · Next.js · Flutter. Sistemas de extremo a extremo.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="cats.css">
 <link rel="stylesheet" href="demos.css">
 <link rel="stylesheet" href="mockups.css">
-<meta name="theme-color" content="#0a0a0d">
+<meta name="theme-color" content="#f2e5ce">
 </head>
 <body>
 
@@ -41,8 +42,8 @@
   <div class="hero-inner">
     <p class="eyebrow" data-enter style="--d:0">
       <span class="pulse"></span>
-      <span data-es>Jiutepec, Morelos · México — disponible para reubicación</span>
-      <span data-en>Jiutepec, Morelos · Mexico — open to relocation</span>
+      <span data-es>Jiutepec, Morelos, México · Disponible para reubicación</span>
+      <span data-en>Jiutepec, Morelos, Mexico · Open to relocation</span>
     </p>
 
     <h1 class="display">
@@ -51,8 +52,8 @@
     </h1>
 
     <p class="lede" data-enter style="--d:4">
-      <span data-es>Desarrollador <em>Full Stack</em>. Construyo sistemas completos — desde el modelo de datos hasta la interfaz que la gente usa todos los días. Java y Spring Boot del lado del servidor, React y Next.js del lado del cliente, Flutter cuando hace falta móvil.</span>
-      <span data-en><em>Full Stack</em> developer. I build complete systems — from the data model to the interface people use every day. Java and Spring Boot on the server, React and Next.js on the client, Flutter when mobile is needed.</span>
+      <span data-es>Desarrollador <em>Full Stack</em>. Construyo sistemas completos, desde el modelo de datos hasta la interfaz que la gente usa todos los días. Java y Spring Boot del lado del servidor, React y Next.js del lado del cliente, Flutter cuando hace falta móvil.</span>
+      <span data-en><em>Full Stack</em> developer. I build complete systems, from the data model to the interface people use every day. Java and Spring Boot on the server, React and Next.js on the client, Flutter when mobile is needed.</span>
     </p>
 
     <div class="hero-cta" data-enter style="--d:5">
@@ -86,7 +87,12 @@
     <span class="blob blob-2"></span>
     <span class="blob blob-3"></span>
   </div>
+
+  <div class="hero-cat" data-cat="hero"></div>
 </section>
+
+<!-- Repisa: el gato camina según lo que desplaza el usuario -->
+<div class="cat-shelf"><div data-cat="walker"></div></div>
 
 <!-- ══════════ NOTE ══════════ -->
 <section class="note-band">
@@ -114,9 +120,9 @@
       <div class="case-side">
         <span class="case-tag case-tag-live"><span data-es>En producción</span><span data-en>In production</span></span>
         <p class="case-org">Universidad Autónoma del Estado de Morelos</p>
-        <p class="case-when">2026 — <span data-es>actualidad</span><span data-en>present</span></p>
+        <p class="case-when"><span data-es>2026 a la fecha</span><span data-en>2026 to present</span></p>
         <ul class="case-meta">
-          <li><span data-es>Rol</span><span data-en>Role</span><b><span data-es>Full Stack — arquitectura, DB, UI</span><span data-en>Full Stack — architecture, DB, UI</span></b></li>
+          <li><span data-es>Rol</span><span data-en>Role</span><b><span data-es>Full Stack: arquitectura, DB, UI</span><span data-en>Full Stack: architecture, DB, UI</span></b></li>
           <li><span data-es>Escala</span><span data-en>Scale</span><b>~60,000 <span data-es>líneas</span><span data-en>lines</span></b></li>
           <li><span data-es>Roles del sistema</span><span data-en>System roles</span><b>4</b></li>
         </ul>
@@ -132,11 +138,11 @@
 
         <h4><span data-es>Lo que construí</span><span data-en>What I built</span></h4>
         <ul class="bullets">
-          <li><span data-es><b>Flujo con cuatro roles</b> — estudiante, asesor, administrador y servicios generales. Cada solicitud recorre estados verificables y guarda su historial completo: quién la tocó, cuándo y por qué.</span><span data-en><b>Four-role workflow</b> — student, advisor, administrator and general services. Each request moves through verifiable states and keeps a full history: who touched it, when and why.</span></li>
-          <li><span data-es><b>Firmas y documentos oficiales</b> — el sistema genera el PDF con el formato oficial de la universidad y registra la firma de cada aprobación, eliminando el trámite físico.</span><span data-en><b>Signatures and official documents</b> — the system generates the PDF in the university's official format and records each approval signature, eliminating the paper trip.</span></li>
-          <li><span data-es><b>Reporte mensual automático</b> — lo que antes tomaba días de transcripción ahora se exporta a Excel con Apache POI en un clic, con su historial de versiones consultable.</span><span data-en><b>Automatic monthly report</b> — what used to take days of transcription now exports to Excel via Apache POI in one click, with a queryable version history.</span></li>
-          <li><span data-es><b>Asistente conversacional</b> — un chatbot con contenido categorizado por temas que responde las dudas frecuentes del proceso, reduciendo la carga sobre el personal administrativo.</span><span data-en><b>Conversational assistant</b> — a chatbot with topic-categorized content answering frequent process questions, reducing load on administrative staff.</span></li>
-          <li><span data-es><b>Notificaciones por correo</b> — cada cambio de estado avisa a quien corresponde, sin que nadie tenga que preguntar.</span><span data-en><b>Email notifications</b> — every state change notifies the right person, so nobody has to chase updates.</span></li>
+          <li><span data-es><b>Flujo con cuatro roles.</b> Estudiante, asesor, administrador y servicios generales. Cada solicitud recorre estados verificables y guarda su historial completo: quién la tocó, cuándo y por qué.</span><span data-en><b>Four-role workflow.</b> Student, advisor, administrator and general services. Each request moves through verifiable states and keeps a full history: who touched it, when and why.</span></li>
+          <li><span data-es><b>Firmas y documentos oficiales.</b> El sistema genera el PDF con el formato oficial de la universidad y registra la firma de cada aprobación, eliminando el trámite físico.</span><span data-en><b>Signatures and official documents.</b> The system generates the PDF in the university's official format and records each approval signature, eliminating the paper trip.</span></li>
+          <li><span data-es><b>Reporte mensual automático.</b> Lo que antes tomaba días de transcripción ahora se exporta a Excel con Apache POI en un clic, con su historial de versiones consultable.</span><span data-en><b>Automatic monthly report.</b> What used to take days of transcription now exports to Excel via Apache POI in one click, with a queryable version history.</span></li>
+          <li><span data-es><b>Asistente conversacional.</b> Un chatbot con contenido categorizado por temas que responde las dudas frecuentes del proceso, reduciendo la carga sobre el personal administrativo.</span><span data-en><b>Conversational assistant.</b> A chatbot with topic-categorized content answering frequent process questions, reducing load on administrative staff.</span></li>
+          <li><span data-es><b>Notificaciones por correo.</b> Cada cambio de estado avisa a quien corresponde, sin que nadie tenga que preguntar.</span><span data-en><b>Email notifications.</b> Every state change notifies the right person, so nobody has to chase updates.</span></li>
         </ul>
 
         <h4><span data-es>Decisiones técnicas que valen la pena mencionar</span><span data-en>Technical decisions worth mentioning</span></h4>
@@ -144,16 +150,16 @@
           <li><span data-es><b>Autorización por rol en el servidor, no en la interfaz.</b> Spring Security valida cada endpoint; el frontend solo decide qué mostrar. Ocultar un botón no es seguridad.</span><span data-en><b>Role authorization on the server, not in the UI.</b> Spring Security validates every endpoint; the frontend only decides what to display. Hiding a button is not security.</span></li>
           <li><span data-es><b>Credenciales cifradas en configuración</b> con Jasypt, para que ninguna contraseña viva en texto plano en el repositorio o en el servidor.</span><span data-en><b>Encrypted credentials in config</b> via Jasypt, so no password lives in plain text in the repo or on the server.</span></li>
           <li><span data-es><b>Rate limiting con Bucket4j</b> en los endpoints de autenticación, para frenar intentos de fuerza bruta antes de que lleguen a la base de datos.</span><span data-en><b>Rate limiting with Bucket4j</b> on authentication endpoints, stopping brute-force attempts before they reach the database.</span></li>
-          <li><span data-es><b>Migraciones idempotentes.</b> Los scripts de base de datos se pueden correr dos veces sin romper nada — aprendí esto arreglando una instalación limpia que fallaba.</span><span data-en><b>Idempotent migrations.</b> Database scripts can run twice without breaking anything — I learned this fixing a clean install that failed.</span></li>
-          <li><span data-es><b>Índices pensados, no adivinados.</b> Modelé el entidad-relación y agregué índices sobre las columnas que realmente filtran las consultas del listado, que es la pantalla más visitada.</span><span data-en><b>Deliberate indexing.</b> I modeled the entity-relationship diagram and indexed the columns that actually filter the listing queries — the most visited screen.</span></li>
-          <li><span data-es><b>Instalador para Windows y documentación.</b> El sistema se entrega con manual técnico, manual de usuario y guía de instalación, porque un sistema que solo yo puedo desplegar no está terminado.</span><span data-en><b>Windows installer and documentation.</b> The system ships with a technical manual, user manual and install guide — a system only I can deploy isn't finished.</span></li>
+          <li><span data-es><b>Migraciones idempotentes.</b> Los scripts de base de datos se pueden correr dos veces sin romper nada. Lo aprendí arreglando una instalación limpia que fallaba.</span><span data-en><b>Idempotent migrations.</b> Database scripts can run twice without breaking anything. I learned that fixing a clean install that failed.</span></li>
+          <li><span data-es><b>Índices pensados, no adivinados.</b> Modelé el entidad-relación y agregué índices sobre las columnas que realmente filtran las consultas del listado, que es la pantalla más visitada.</span><span data-en><b>Deliberate indexing.</b> I modeled the entity-relationship diagram and indexed the columns that actually filter the listing queries, which drive the most visited screen.</span></li>
+          <li><span data-es><b>Instalador para Windows y documentación.</b> El sistema se entrega con manual técnico, manual de usuario y guía de instalación, porque un sistema que solo yo puedo desplegar no está terminado.</span><span data-en><b>Windows installer and documentation.</b> The system ships with a technical manual, user manual and install guide, because a system only I can deploy is not finished.</span></li>
         </ul>
 
         <div class="chips">
           <span>Java 21</span><span>Spring Boot 3.5</span><span>Spring Security</span><span>JPA / Hibernate</span><span>MySQL</span><span>React</span><span>Vite</span><span>Apache POI</span><span>Thymeleaf</span><span>Jasypt</span><span>Bucket4j</span>
         </div>
 
-        <h4><span data-es>Pruébalo — cambia de rol y mueve una solicitud</span><span data-en>Try it — switch roles and move a request</span></h4>
+        <h4><span data-es>Pruébalo: cambia de rol y mueve una solicitud</span><span data-en>Try it: switch roles and move a request</span></h4>
         <div data-demo="flow"></div>
 
         <h4><span data-es>El esquema que lo sostiene</span><span data-en>The schema underneath</span></h4>
@@ -168,7 +174,7 @@
     <article class="case">
       <div class="case-side">
         <span class="case-tag case-tag-open"><span data-es>Hackathon</span><span data-en>Hackathon</span></span>
-        <p class="case-org">Track Genesis — Hack + Alebrije</p>
+        <p class="case-org">Track Genesis · Hack + Alebrije</p>
         <p class="case-when">2026 · Ciudad de México</p>
         <ul class="case-meta">
           <li><span data-es>Rol</span><span data-en>Role</span><b><span data-es>Full Stack + móvil</span><span data-en>Full Stack + mobile</span></b></li>
@@ -178,27 +184,27 @@
       </div>
 
       <div class="case-main">
-        <h3>Devengo — <span data-es>adelanto de salario devengado</span><span data-en>earned wage access</span></h3>
+        <h3>Devengo: <span data-es>adelanto de salario devengado</span><span data-en>earned wage access</span></h3>
 
         <p class="case-lede">
-          <span data-es>Un trabajador que ya generó su salario no debería esperar a la quincena para acceder a él, ni recurrir a préstamos con intereses abusivos. El reto era construir la plataforma que permite ese adelanto — con las reglas de negocio, los controles de riesgo y la liquidación — en el tiempo de un hackathon.</span>
-          <span data-en>A worker who has already earned their wages shouldn't wait for payday to access them, nor turn to predatory loans. The challenge: build the platform enabling that advance — business rules, risk controls and settlement — within a hackathon's timeframe.</span>
+          <span data-es>Un trabajador que ya generó su salario no debería esperar a la quincena para acceder a él, ni recurrir a préstamos con intereses abusivos. El reto era construir la plataforma que permite ese adelanto, con sus reglas de negocio, controles de riesgo y liquidación, en el tiempo de un hackathon.</span>
+          <span data-en>A worker who has already earned their wages shouldn't wait for payday to access them, nor turn to predatory loans. The challenge: build the platform enabling that advance, with its business rules, risk controls and settlement, within a hackathon's timeframe.</span>
         </p>
 
         <h4><span data-es>Lo que construí</span><span data-en>What I built</span></h4>
         <ul class="bullets">
-          <li><span data-es><b>Motor de salario devengado</b> — calcula en tiempo real cuánto ha ganado un empleado según el ciclo de nómina vigente, y cuánto de eso puede retirar según su antigüedad y las políticas de la empresa.</span><span data-en><b>Earned wage engine</b> — computes in real time how much an employee has earned in the current payroll cycle, and how much of it they may withdraw based on tenure and company policy.</span></li>
+          <li><span data-es><b>Motor de salario devengado.</b> Calcula en tiempo real cuánto ha ganado un empleado según el ciclo de nómina vigente, y cuánto de eso puede retirar según su antigüedad y las políticas de la empresa.</span><span data-en><b>Earned wage engine.</b> Computes in real time how much an employee has earned in the current payroll cycle, and how much of it they may withdraw based on tenure and company policy.</span></li>
           <li><span data-es><b>Panel administrativo</b> para dirección y recursos humanos: tableros de control, gestión de plantilla, configuración de políticas de retiro y aprobación de solicitudes.</span><span data-en><b>Admin panel</b> for leadership and HR: dashboards, headcount management, withdrawal policy configuration and request approval.</span></li>
           <li><span data-es><b>Aplicación móvil</b> para el trabajador, con solicitud, seguimiento y autenticación biométrica.</span><span data-en><b>Mobile app</b> for the worker, with request, tracking and biometric authentication.</span></li>
-          <li><span data-es><b>Contratos inteligentes en Rust</b> sobre Soroban (Stellar) — un <em>registry</em> de empresas y empleados y un <em>vault</em> para los fondos empresariales, sentando la base para pagos internacionales sin intermediarios bancarios.</span><span data-en><b>Rust smart contracts</b> on Soroban (Stellar) — a company/employee <em>registry</em> and a <em>vault</em> for corporate funds, laying the groundwork for cross-border payments without banking intermediaries.</span></li>
+          <li><span data-es><b>Contratos inteligentes en Rust</b> sobre Soroban (Stellar): un <em>registry</em> de empresas y empleados y un <em>vault</em> para los fondos empresariales, sentando la base para pagos internacionales sin intermediarios bancarios.</span><span data-en><b>Rust smart contracts</b> on Soroban (Stellar): a company/employee <em>registry</em> and a <em>vault</em> for corporate funds, laying the groundwork for cross-border payments without banking intermediaries.</span></li>
         </ul>
 
         <h4><span data-es>Decisiones técnicas que valen la pena mencionar</span><span data-en>Technical decisions worth mentioning</span></h4>
         <ul class="bullets bullets-tech">
           <li><span data-es><b>La lógica de dinero vive en un solo lugar.</b> El cálculo de devengado y los límites de retiro están aislados en su propio módulo, consumido igual por la web y por el móvil. Una sola fuente de verdad para las reglas que mueven dinero.</span><span data-en><b>Money logic lives in one place.</b> Accrual calculation and withdrawal limits are isolated in their own module, consumed identically by web and mobile. One source of truth for the rules that move money.</span></li>
-          <li><span data-es><b>Control de acceso con Keycloak</b> — cuatro roles (administrador, RH, encargado, trabajador) gestionados por un proveedor de identidad dedicado en lugar de reinventar autenticación bajo presión de tiempo.</span><span data-en><b>Access control with Keycloak</b> — four roles (admin, HR, manager, worker) handled by a dedicated identity provider instead of reinventing auth under time pressure.</span></li>
+          <li><span data-es><b>Control de acceso con Keycloak.</b> Cuatro roles (administrador, RH, encargado, trabajador) gestionados por un proveedor de identidad dedicado en lugar de reinventar autenticación bajo presión de tiempo.</span><span data-en><b>Access control with Keycloak.</b> Four roles (admin, HR, manager, worker) handled by a dedicated identity provider instead of reinventing auth under time pressure.</span></li>
           <li><span data-es><b>Docker para todo el equipo.</b> Contenericé el entorno para que los cuatro integrantes corrieran exactamente el mismo stack; en un hackathon, «en mi máquina sí funciona» cuesta horas que no tienes.</span><span data-en><b>Docker for the whole team.</b> I containerized the environment so all four members ran the exact same stack; in a hackathon, "works on my machine" costs hours you don't have.</span></li>
-          <li><span data-es><b>Stack moderno sin miedo</b> — Next.js 16 y React 19 con el React Compiler activo, TypeScript estricto y Tailwind 4.</span><span data-en><b>Modern stack, no hesitation</b> — Next.js 16 and React 19 with the React Compiler enabled, strict TypeScript and Tailwind 4.</span></li>
+          <li><span data-es><b>Stack moderno sin miedo.</b> Next.js 16 y React 19 con el React Compiler activo, TypeScript estricto y Tailwind 4.</span><span data-en><b>Modern stack, no hesitation.</b> Next.js 16 and React 19 with the React Compiler enabled, strict TypeScript and Tailwind 4.</span></li>
         </ul>
 
         <div class="chips">
@@ -208,7 +214,7 @@
         <h4><span data-es>Cómo se ve el producto</span><span data-en>What the product looks like</span></h4>
         <div data-mockup="paystream"></div>
 
-        <h4><span data-es>Pruébalo — mueve los controles y observa las reglas</span><span data-en>Try it — move the controls and watch the rules</span></h4>
+        <h4><span data-es>Pruébalo: mueve los controles y observa las reglas</span><span data-en>Try it: move the controls and watch the rules</span></h4>
         <div data-demo="engine"></div>
       </div>
     </article>
@@ -229,8 +235,8 @@
         <h3><span data-es>Plataforma de bienestar financiero</span><span data-en>Financial wellness platform</span></h3>
 
         <p class="case-lede">
-          <span data-es>Un producto con tres superficies distintas — API, aplicación móvil y panel administrativo — que tenían que compartir el mismo modelo de dominio sin duplicar reglas de negocio en cada una.</span>
-          <span data-en>A product with three distinct surfaces — API, mobile app and admin panel — that had to share the same domain model without duplicating business rules in each one.</span>
+          <span data-es>Mucha gente llega a fin de quincena sin haber apartado un peso, no por falta de voluntad sino porque ahorrar exige una decisión activa cada vez. Paymet le da la vuelta: la empresa ofrece el ahorro como prestación, el trabajador fija una meta y la aportación sale sola de su nómina. El reto técnico venía después, porque el producto tiene tres caras (API, app móvil y panel de recursos humanos) y las reglas del dinero no podían escribirse tres veces.</span>
+          <span data-en>Plenty of people reach payday without having set aside a peso, not for lack of will but because saving demands an active decision every time. Paymet flips that: the company offers savings as a benefit, the worker sets a goal, and the contribution comes out of payroll automatically. The technical challenge came next, because the product has three faces (API, mobile app and HR dashboard) and the money rules could not be written three times.</span>
         </p>
 
         <ul class="bullets">
@@ -265,14 +271,14 @@
         <h3><span data-es>Sistema de gestión de recursos</span><span data-en>Resource Management System</span></h3>
 
         <p class="case-lede">
-          <span data-es>Mi primer proyecto formal en equipo. Entré a una base de código con estilos duplicados y componentes que hacían casi lo mismo, y salí con un sistema de componentes reutilizables.</span>
-          <span data-en>My first formal team project. I walked into a codebase with duplicated styles and near-identical components, and left with a reusable component system.</span>
+          <span data-es>El centro de desarrollo presta equipo caro a estudiantes y docentes: proyectores, kits de robótica, laptops, cámaras. El control vivía en libretas y hojas de cálculo, así que nadie sabía con certeza quién tenía qué ni desde cuándo, y cada semestre se perdía material. El sistema pone ese inventario en un solo lugar, con préstamos fechados y alertas de vencimiento. Fue además mi primer proyecto formal en equipo.</span>
+          <span data-en>The development center lends expensive gear to students and faculty: projectors, robotics kits, laptops, cameras. Tracking lived in notebooks and spreadsheets, so nobody knew for sure who had what or since when, and equipment went missing every semester. The system puts that inventory in one place, with dated loans and overdue alerts. It was also my first formal team project.</span>
         </p>
 
         <ul class="bullets">
           <li><span data-es><b>Refactorización a componentes reutilizables</b> con estilos estandarizados, reduciendo el código duplicado y facilitando el mantenimiento para quien viniera después.</span><span data-en><b>Refactor into reusable components</b> with standardized styles, cutting duplicated code and easing maintenance for whoever came next.</span></li>
           <li><span data-es><b>Consumo de APIs REST</b> con estados de carga, manejo de errores y actualización dinámica de la interfaz sin recargar la página.</span><span data-en><b>REST API consumption</b> with loading states, error handling and dynamic UI updates without page reloads.</span></li>
-          <li><span data-es><b>De prototipo a interfaz</b> — construí las pantallas a partir de prototipos UX/UI validados, cuidando la fidelidad en distintos tamaños de pantalla.</span><span data-en><b>From prototype to interface</b> — I built the screens from validated UX/UI prototypes, preserving fidelity across screen sizes.</span></li>
+          <li><span data-es><b>De prototipo a interfaz.</b> Construí las pantallas a partir de prototipos UX/UI validados, cuidando la fidelidad en distintos tamaños de pantalla.</span><span data-en><b>From prototype to interface.</b> I built the screens from validated UX/UI prototypes, preserving fidelity across screen sizes.</span></li>
           <li><span data-es><b>Git con ramas por funcionalidad</b> y revisiones de código en equipo.</span><span data-en><b>Git with feature branches</b> and team code reviews.</span></li>
         </ul>
 
@@ -302,7 +308,7 @@
         </div>
         <div class="sp-card">
           <h4>VTuber Tracker</h4>
-          <p><span data-es>Servidor Node con HTTPS local y certificados propios para hacer seguimiento facial en el navegador — los sensores de la cámara exigen contexto seguro, así que aprendí a montar TLS en desarrollo.</span><span data-en>A Node server with local HTTPS and self-signed certificates for in-browser face tracking — camera sensors require a secure context, so I learned to set up TLS in development.</span></p>
+          <p><span data-es>Servidor Node con HTTPS local y certificados propios para hacer seguimiento facial en el navegador. Los sensores de la cámara exigen contexto seguro, así que aprendí a montar TLS en desarrollo.</span><span data-en>A Node server with local HTTPS and self-signed certificates for in-browser face tracking. Camera sensors require a secure context, so I learned to set up TLS in development.</span></p>
           <div class="chips chips-sm"><span>Node.js</span><span>WebRTC</span><span>TLS</span></div>
         </div>
         <div class="sp-card">
@@ -400,8 +406,8 @@
           <span data-en>I work best at the seams between layers: where the data model meets business logic, and where business logic meets the screen. I design the ER diagram, write the endpoint, prototype the interface in Figma and build it. That means I understand the real cost of a schema decision three layers up.</span>
         </p>
         <p>
-          <span data-es>Me tomo en serio dos cosas que suelen quedarse fuera: la <b>seguridad</b> — validación del lado del servidor, credenciales cifradas, control de acceso real — y la <b>documentación</b>, porque un sistema que solo su autor puede desplegar y mantener no está terminado.</span>
-          <span data-en>I take two often-neglected things seriously: <b>security</b> — server-side validation, encrypted credentials, real access control — and <b>documentation</b>, because a system only its author can deploy and maintain isn't finished.</span>
+          <span data-es>Me tomo en serio dos cosas que suelen quedarse fuera: la <b>seguridad</b> (validación del lado del servidor, credenciales cifradas, control de acceso real) y la <b>documentación</b>, porque un sistema que solo su autor puede desplegar y mantener no está terminado.</span>
+          <span data-en>I take two often-neglected things seriously: <b>security</b> (server-side validation, encrypted credentials, real access control) and <b>documentation</b>, because a system only its author can deploy and maintain isn't finished.</span>
         </p>
         <p>
           <span data-es>Soy autodidacta por costumbre. Uso herramientas de inteligencia artificial como parte del flujo de trabajo, no como sustituto del criterio.</span>
@@ -413,13 +419,13 @@
         <h4><span data-es>Trayectoria</span><span data-en>Timeline</span></h4>
         <ol class="timeline">
           <li>
-            <span class="tl-when">2026 — <span data-es>hoy</span><span data-en>now</span></span>
+            <span class="tl-when"><span data-es>2026 a hoy</span><span data-en>2026 to now</span></span>
             <span class="tl-what"><span data-es>Full Stack</span><span data-en>Full Stack</span></span>
             <span class="tl-where">Universidad Autónoma del Estado de Morelos</span>
           </li>
           <li>
             <span class="tl-when">2026</span>
-            <span class="tl-what"><span data-es>Full Stack — Hackathon</span><span data-en>Full Stack — Hackathon</span></span>
+            <span class="tl-what"><span data-es>Full Stack · Hackathon</span><span data-en>Full Stack · Hackathon</span></span>
             <span class="tl-where">Track Genesis · Hack + Alebrije, CDMX</span>
           </li>
           <li>
@@ -433,14 +439,14 @@
             <span class="tl-where"><span data-es>Servicio Médico UTEZ</span><span data-en>UTEZ Medical Service</span></span>
           </li>
           <li>
-            <span class="tl-when">2024 — <span data-es>hoy</span><span data-en>now</span></span>
+            <span class="tl-when"><span data-es>2024 a hoy</span><span data-en>2024 to now</span></span>
             <span class="tl-what">TSU <span data-es>en Desarrollo de Software Multiplataforma</span><span data-en>in Multiplatform Software Development</span></span>
             <span class="tl-where">Universidad Tecnológica de Emiliano Zapata</span>
           </li>
         </ol>
 
         <h4 class="mt"><span data-es>Certificación</span><span data-en>Certification</span></h4>
-        <p class="cert">Oracle — <span data-es>Fundamentos de Bases de Datos</span><span data-en>Database Foundations</span></p>
+        <p class="cert">Oracle · <span data-es>Fundamentos de Bases de Datos</span><span data-en>Database Foundations</span></p>
 
         <h4 class="mt"><span data-es>Idiomas</span><span data-en>Languages</span></h4>
         <p class="cert"><span data-es>Español nativo · Inglés técnico</span><span data-en>Native Spanish · Technical English</span></p>
@@ -492,11 +498,15 @@
 <footer class="foot">
   <div class="wrap foot-in">
     <span>© <span id="yr">2026</span> Luis Ángel Castelar Hernández</span>
+    <span class="cat-sleep-host" data-cat="sleeper" aria-hidden="true"></span>
     <span class="foot-loc">Jiutepec, Morelos · México</span>
   </div>
 </footer>
 
+<div data-cat="cursor" aria-hidden="true"></div>
+
 <script src="main.js"></script>
+<script src="cats.js"></script>
 <script src="demos.js"></script>
 <script src="mockups.js"></script>
 </body>

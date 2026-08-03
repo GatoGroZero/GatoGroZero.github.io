@@ -1,4 +1,4 @@
-# Portafolio — Luis Ángel Castelar Hernández
+# Portafolio · Luis Ángel Castelar Hernández
 
 Sitio estático, bilingüe (ES/EN), sin dependencias ni build. Se publica tal cual en GitHub Pages.
 
@@ -8,26 +8,59 @@ styles.css      → paleta, layout y motion del sitio
 demos.css       → estilos de las demos interactivas
 mockups.css     → maquetas de producto (cada app con SU paleta, no la del sitio)
 main.js         → idioma, scroll-reveal, contadores, progreso, botón magnético
+cats.css        → posición y movimiento de los gatos
 demos.js        → las 4 demos interactivas
 mockups.js      → las 3 maquetas de producto
+cats.js         → sprites pixel de los gatos y su comportamiento
 assets/         → CV en PDF
 .nojekyll       → evita que GitHub Pages procese el sitio con Jekyll
 ```
 
 ## Paleta
 
-El sitio es **violeta sobre negro cálido** (`#0a0a0d` — nunca `#000` puro, que
-produce smear en pantallas OLED). Los tonos viven en `:root` de `styles.css`:
+El estilo es **pixel art sobre papel vintage**. Nada de negro neón. Los tonos
+viven en `:root` de `styles.css`:
 
-| Variable | Uso | Contraste |
+| Variable | Color | Uso |
 |---|---|---|
-| `--accent` `#a78bfa` | texto y detalles | 7.3:1 |
-| `--accent-mid` `#8b5cf6` | rellenos, iconos | — |
-| `--accent-deep` `#7c3aed` | CTA con texto blanco | 5.7:1 |
-| `--fg-dim` `#8a889d` | texto secundario | 4.6:1 (mínimo AA) |
+| `--paper` | `#f2e5ce` | fondo, papel crema con trama de puntos |
+| `--ink` | `#2e2620` | texto y los bordes gruesos de 3px |
+| `--terra` | `#b8502a` | acento principal, botones, viñetas |
+| `--sage` | `#4d7a5e` | etiquetas y sección de contacto |
+| `--mustard` | `#d19a1c` | franja de aviso y estados hover |
 
-Las maquetas **no** usan esta paleta: cada una conserva la de su producto real,
-definida en los temas `.t-paystream`, `.t-paymet` y `.t-rms` de `mockups.css`.
+El lenguaje visual es consistente: borde `3px solid var(--ink)`, sombra dura
+`4px 4px 0`, cero `border-radius`, y desplazamiento al pasar el cursor. Las
+tipografías son **Pixelify Sans** para títulos y **Nunito** para leer.
+
+Las maquetas de producto **no** usan esta paleta: cada una conserva la de su
+app real, en los temas `.t-paystream`, `.t-paymet` y `.t-rms` de `mockups.css`.
+
+## Los gatos
+
+Son SVG generados en `cats.js`, no imágenes. Cada sprite es un arreglo de cadenas
+donde una letra es un pixel:
+
+```
+.  transparente   o  contorno   b  cuerpo
+w  claro          p  rosa       e  ojo     g  brillo del ojo
+```
+
+`sprite(mapa, pelaje, tamaño)` lo convierte a `<rect>`, uniendo pixeles contiguos
+del mismo color para no generar cientos de nodos. Cambiar un gato es editar el
+dibujo ASCII, nada más. Hay cuatro:
+
+| Gato | Dónde | Qué hace |
+|---|---|---|
+| Naranja | hero | Parpadea solo. Al hacer clic salta y maúlla. También con teclado. |
+| Gris | repisa bajo el hero | Camina en proporción a lo que desplazas, y voltea si subes. |
+| Crema | sigue al cursor | Va detrás del puntero con retraso. Oculto en táctil y con `reduced-motion`. |
+| Negro | pie de página | Duerme con sus zetas. |
+
+## Sin rayas largas
+
+El texto evita el guion largo a propósito. Si editas contenido, usa coma, dos
+puntos, paréntesis o punto y seguido en su lugar.
 
 > Cuidado al tocar `styles.css`: la regla global `b, strong { color: var(--fg) }`
 > se cuela dentro de las maquetas. `mockups.css` la neutraliza con
@@ -44,7 +77,7 @@ Cuatro demos funcionan de verdad dentro de la página, sin servidor:
 | Control de acceso | Caso UAEM | Autorización del lado del servidor, 200 vs 403 |
 | Salario devengado | Caso Devengo | Reglas de negocio financieras en tiempo real |
 
-Son **reconstrucciones con datos ficticios**. El código es original de estas demos —
+Son **reconstrucciones con datos ficticios**. El código es original de estas demos,
 no contienen nada de los sistemas de los clientes. Cada demo lo dice en su pie.
 
 Para agregar o cambiar una: todo vive en `demos.js`, un módulo por demo, y se monta
@@ -71,7 +104,7 @@ python3 -m http.server 4321
 4. En 1–2 minutos el sitio queda en **https://gatogrozero.github.io**
 
 > Si prefieres un repo con otro nombre (ej. `portafolio`), la URL será
-> `https://gatogrozero.github.io/portafolio` y todo funciona igual — las rutas son relativas.
+> `https://gatogrozero.github.io/portafolio` y todo funciona igual, porque las rutas son relativas.
 
 ## Actualizar el sitio
 
@@ -94,7 +127,7 @@ Cada texto existe dos veces dentro de `index.html`:
 El CSS oculta el que no corresponde al idioma activo. Si agregas contenido nuevo,
 agrega **siempre las dos versiones** o se verá vacío en un idioma.
 
-## Antes de publicar — revisar
+## Antes de publicar, revisar
 
 - [ ] El correo, teléfono, LinkedIn y GitHub en la sección de contacto son correctos
 - [ ] `assets/CV_Luis_Castelar.pdf` es la versión más reciente del CV

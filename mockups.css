@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
    Maquetas de producto
-   Cada app conserva SU identidad — no la del portafolio.
+   Cada app conserva SU identidad, no la del portafolio.
    Recreadas desde cero con datos ficticios.
    ═══════════════════════════════════════════════ */
 
@@ -13,9 +13,9 @@
   gap: 26px;
   align-items: end;
   padding: 34px 30px;
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid var(--line-soft);
+  border: 3px solid var(--ink); box-shadow: var(--shadow-lg);
 }
 .mk-stage::before {
   content: ""; position: absolute; inset: 0;
@@ -27,7 +27,7 @@
 
 /* ── Ventana de navegador ── */
 .mk {
-  border-radius: 11px;
+  border-radius: 4px;
   overflow: hidden;
   background: var(--mk-bg);
   border: 1px solid var(--mk-line);
@@ -222,7 +222,7 @@
 }
 .mk-ring svg { color: var(--mk-accent); }
 
-/* ═══════ TEMA: PayStream (Devengo) — slate + emerald ═══════ */
+/* ═══════ TEMA: Devengo · pizarra y esmeralda ═══════ */
 .t-paystream {
   --mk-bg:#0b1220; --mk-card:#111c2f; --mk-chrome:#0e1626; --mk-head:#16233a;
   --mk-line:#1f2f4a; --mk-fg:#e6edf7; --mk-dim:#7e90ac; --mk-dot:#28374f;
@@ -234,19 +234,21 @@
 }
 .s-paystream { --mk-stage-bg: radial-gradient(120% 100% at 50% 0%, #10243a 0%, #070c15 72%); }
 
-/* ═══════ TEMA: Paymet Bienestar — azul profundo editorial ═══════ */
+/* ═══════ TEMA: Paymet Bienestar · azul profundo y ámbar ═══════ */
+/* El ámbar viene de su propio documento de identidad visual. Lo uso como
+   acento en lugar del verde para que no se confunda con Devengo. */
 .t-paymet {
   --mk-bg:#0D1B2A; --mk-card:#1B263B; --mk-chrome:#132032; --mk-head:#1f2c44;
   --mk-line:#25334c; --mk-fg:#E0E1DD; --mk-dim:#8494ab; --mk-dot:#2a3a55;
-  --mk-urlbg:#0a1624; --mk-accent:#10b981; --mk-on-accent:#04231a;
-  --mk-avbg:rgba(114,228,137,.15); --mk-warn:#f59e0b;
+  --mk-urlbg:#0a1624; --mk-accent:#f5a524; --mk-on-accent:#2a1a02;
+  --mk-avbg:rgba(245,165,36,.16); --mk-warn:#fb7185;
   --mk-ok:#72e489; --mk-ok-bg:rgba(114,228,137,.14);
-  --mk-wait:#f59e0b; --mk-wait-bg:rgba(245,158,11,.14);
-  --mk-no:#f87171; --mk-no-bg:rgba(248,113,113,.14);
+  --mk-wait:#f5a524; --mk-wait-bg:rgba(245,165,36,.14);
+  --mk-no:#fb7185; --mk-no-bg:rgba(251,113,133,.14);
 }
 .s-paymet { --mk-stage-bg: radial-gradient(120% 100% at 50% 0%, #14293f 0%, #070f1a 72%); }
 
-/* ═══════ TEMA: Resource Management (UTEZ) — claro institucional ═══════ */
+/* ═══════ TEMA: Gestión de Recursos UTEZ · claro institucional ═══════ */
 .t-rms {
   --mk-bg:#F8F9FA; --mk-card:#FFFFFF; --mk-chrome:#EDF1F6; --mk-head:#F1F4F9;
   --mk-line:#D8DEE8; --mk-fg:#0d1b2a; --mk-dim:#5a6a80; --mk-dot:#C3CCDA;
@@ -262,7 +264,7 @@
 /* ── Pie de la maqueta ── */
 .mk-cap {
   display: flex; gap: 9px; align-items: flex-start;
-  font-size: .76rem; color: var(--fg-dim); line-height: 1.6;
+  font-size: .76rem; color: var(--ink-dim); line-height: 1.6;
   margin-top: 14px;
 }
 .mk-cap svg { flex: none; margin-top: 3px; opacity: .6; }
