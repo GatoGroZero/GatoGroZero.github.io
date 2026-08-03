@@ -190,27 +190,22 @@
 .audit-main { font-size: 0.83rem; color: var(--fg); line-height: 1.45; }
 .audit-meta { font-family: var(--label); font-size: 0.63rem; color: var(--fg-dim); letter-spacing: .03em; }
 
-/* ── Official doc preview ── */
-.doc {
+/* ── Acuse genérico (sin membrete institucional) ── */
+.acuse {
   margin-top: 20px;
-  background: #f4f2ed; color: #1a1a1a;
-  border-radius: 8px; padding: 24px 26px;
-  font-family: Georgia, serif; font-size: 0.8rem; line-height: 1.6;
+  background: var(--sumi-3);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  padding: 16px 18px;
+  font-size: .82rem; line-height: 1.7;
 }
-.doc-h { text-align: center; border-bottom: 1.5px solid #1a1a1a; padding-bottom: 10px; margin-bottom: 14px; }
-.doc-h b { display: block; font-size: 0.9rem; letter-spacing: .04em; }
-.doc-h i { font-style: normal; font-size: 0.68rem; color: #555; }
+.acuse-h {
+  font-family: var(--px); font-size: .92rem;
+  color: var(--gold-lt); margin-bottom: 10px;
+}
+.acuse-n { margin-top: 10px; font-size: .74rem; color: var(--fg-dim); }
 .doc-row { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 5px; }
-.doc-row span:first-child { color: #666; }
-.doc-sign { margin-top: 26px; text-align: center; }
-.doc-sign hr { border: none; border-top: 1px solid #1a1a1a; width: 200px; margin: 0 auto 5px; }
-.doc-sign small { font-size: 0.68rem; color: #555; }
-.doc-seal {
-  display: inline-block; margin-top: 14px;
-  font-family: var(--label); font-size: 0.6rem; letter-spacing: .1em;
-  color: #2d7a4d; border: 1px solid #2d7a4d; border-radius: 4px;
-  padding: 3px 9px; transform: rotate(-2deg);
-}
+.doc-row span:first-child { color: var(--fg-dim); }
 
 /* ── New request form ── */
 .nform { display: flex; flex-direction: column; gap: 12px; }

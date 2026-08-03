@@ -139,6 +139,65 @@
 }
 .mk-btn.ghost { background: transparent; border: 1px solid var(--mk-line); color: var(--mk-dim); }
 
+/* ── Estructura con barra lateral (sólo Paymet) ── */
+.mk-shell { display: grid; grid-template-columns: 96px 1fr; min-height: 260px; }
+.mk-side {
+  background: var(--mk-chrome);
+  border-right: 1px solid var(--mk-line);
+  padding: 12px 8px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.mk-side .mk-brand { margin-bottom: 12px; }
+.mk-nav {
+  font-size: .58rem; padding: 5px 8px;
+  color: var(--mk-dim); border-radius: 5px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mk-nav.on { background: var(--mk-avbg); color: var(--mk-accent); font-weight: 700; }
+
+.mk-head2 {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 10px; margin-bottom: 14px;
+}
+.mk-head2 b { font-size: .78rem; font-weight: 700; }
+.mk-head2 span { font-size: .53rem; color: var(--mk-dim); }
+
+.mk-split2 { display: grid; grid-template-columns: auto 1fr; gap: 14px; margin-bottom: 14px; align-items: center; }
+.mk-ringbox {
+  position: relative; flex: none;
+  display: grid; place-items: center;
+}
+.mk-ringbox svg { display: block; }
+.mk-ringtxt {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  line-height: 1;
+}
+.mk-ringtxt b { font-size: .8rem; font-weight: 700; }
+.mk-ringtxt span { font-size: .38rem; color: var(--mk-dim); }
+
+.mk-ministack { display: grid; gap: 6px; }
+.mk-mini {
+  background: var(--mk-card); border: 1px solid var(--mk-line);
+  border-radius: 7px; padding: 7px 10px;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+}
+.mk-mini span { font-size: .54rem; color: var(--mk-dim); }
+.mk-mini b { font-size: .78rem; font-weight: 700; }
+.mk-mini b.pos { color: var(--mk-accent); }
+.mk-mini b.warn { color: var(--mk-warn); }
+
+.mk-goals { display: flex; flex-direction: column; gap: 6px; }
+.mk-goal {
+  display: grid; grid-template-columns: 20px 1fr auto;
+  gap: 9px; align-items: center;
+  background: var(--mk-card); border: 1px solid var(--mk-line);
+  border-radius: 7px; padding: 7px 10px;
+}
+.mk-goaltxt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.mk-goaltxt b { font-size: .6rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mk-goal .mk-num { font-size: .62rem; }
+
 /* ── Barra de progreso ── */
 .mk-bar { height: 5px; border-radius: 100px; background: var(--mk-head); overflow: hidden; display: flex; }
 .mk-bar i { display: block; height: 100%; background: var(--mk-accent); }
@@ -287,6 +346,11 @@
 @media (max-width: 620px) {
   .mk-stage { padding: 16px 12px; border-radius: 14px; }
   .mk-screen { padding: 12px; }
+  /* La barra lateral de Paymet deja de robar ancho al contenido */
+  .mk-shell { grid-template-columns: 46px 1fr; }
+  .mk-nav { font-size: 0; padding: 9px 6px; }
+  .mk-nav.on { background: var(--mk-accent); }
+  .mk-split2 { grid-template-columns: 1fr; justify-items: center; }
   /* La barra de la app se apila: el nombre deja de partirse en tres líneas
      y las pestañas dejan de salirse por el borde derecho. */
   .mk-top { flex-direction: column; align-items: flex-start; gap: 9px; }

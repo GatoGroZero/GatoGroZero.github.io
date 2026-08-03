@@ -10,12 +10,12 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="cats.css">
-<link rel="stylesheet" href="demos.css">
-<link rel="stylesheet" href="mockups.css">
-<meta name="theme-color" content="#f2e5ce">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Maru+Gothic:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=1785733841">
+<link rel="stylesheet" href="cats.css?v=1785733841">
+<link rel="stylesheet" href="demos.css?v=1785733841">
+<link rel="stylesheet" href="mockups.css?v=1785733841">
+<meta name="theme-color" content="#121312">
 </head>
 <body>
 
@@ -91,17 +91,14 @@
   <div class="hero-cat" data-cat="hero"></div>
 </section>
 
-<!-- Repisa: el gato camina según lo que desplaza el usuario -->
-<div class="cat-shelf"><div data-cat="walker"></div></div>
-
 <!-- ══════════ NOTE ══════════ -->
 <section class="note-band">
   <div class="wrap">
     <div class="note">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
       <p>
-        <span data-es>Varios de estos sistemas son propiedad de las instituciones para las que fueron desarrollados, así que no puedo mostrar su código ni sus pantallas reales. Lo que sí puedo hacer es <strong>reconstruirlos</strong>: las cuatro demos de esta página funcionan de verdad y las maquetas están dibujadas desde cero, con datos inventados y la paleta de cada producto. Las reglas de negocio, las máquinas de estado y los esquemas sí son los que diseñé.</span>
-        <span data-en>Several of these systems belong to the institutions they were built for, so I can't show their code or real screens. What I can do is <strong>rebuild them</strong>: the four demos on this page genuinely work and the mockups are drawn from scratch, with invented data and each product's own palette. The business rules, state machines and schemas are the ones I designed.</span>
+        <span data-es><strong>Nada de lo que ves aquí es una pantalla real.</strong> Estos sistemas pertenecen a las instituciones y empresas para las que los hice, así que su código, sus pantallas y sus datos no son míos para mostrarlos. Lo que hay en esta página son <strong>prototipos</strong>: los dibujé desde cero para explicar el tipo de problema que resuelvo, con nombres y cifras inventados. Sirven para darte una idea, no para retratar el producto final.</span>
+        <span data-en><strong>Nothing here is a real screen.</strong> These systems belong to the institutions and companies I built them for, so their code, screens and data are not mine to show. What you see on this page are <strong>prototypes</strong>: I drew them from scratch to explain the kind of problem I solve, with invented names and figures. They give you an idea, not a portrait of the finished product.</span>
       </p>
     </div>
   </div>
@@ -111,7 +108,7 @@
 <section id="work" class="section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">01</span>
+      <span data-cat="guard"></span><span class="sec-num">01</span>
       <h2><span data-es>Casos de estudio</span><span data-en>Case studies</span></h2>
     </div>
 
@@ -136,36 +133,35 @@
           <span data-en>A university was handling student service requests on paper and scattered spreadsheets. There was no traceability: nobody knew a request's status, who approved it, or how to produce the monthly report without transcribing by hand.</span>
         </p>
 
-        <h4><span data-es>Lo que construí</span><span data-en>What I built</span></h4>
+        <h4><span data-es>Lo que hace</span><span data-en>What it does</span></h4>
         <ul class="bullets">
-          <li><span data-es><b>Flujo con cuatro roles.</b> Estudiante, asesor, administrador y servicios generales. Cada solicitud recorre estados verificables y guarda su historial completo: quién la tocó, cuándo y por qué.</span><span data-en><b>Four-role workflow.</b> Student, advisor, administrator and general services. Each request moves through verifiable states and keeps a full history: who touched it, when and why.</span></li>
-          <li><span data-es><b>Firmas y documentos oficiales.</b> El sistema genera el PDF con el formato oficial de la universidad y registra la firma de cada aprobación, eliminando el trámite físico.</span><span data-en><b>Signatures and official documents.</b> The system generates the PDF in the university's official format and records each approval signature, eliminating the paper trip.</span></li>
-          <li><span data-es><b>Reporte mensual automático.</b> Lo que antes tomaba días de transcripción ahora se exporta a Excel con Apache POI en un clic, con su historial de versiones consultable.</span><span data-en><b>Automatic monthly report.</b> What used to take days of transcription now exports to Excel via Apache POI in one click, with a queryable version history.</span></li>
-          <li><span data-es><b>Asistente conversacional.</b> Un chatbot con contenido categorizado por temas que responde las dudas frecuentes del proceso, reduciendo la carga sobre el personal administrativo.</span><span data-en><b>Conversational assistant.</b> A chatbot with topic-categorized content answering frequent process questions, reducing load on administrative staff.</span></li>
-          <li><span data-es><b>Notificaciones por correo.</b> Cada cambio de estado avisa a quien corresponde, sin que nadie tenga que preguntar.</span><span data-en><b>Email notifications.</b> Every state change notifies the right person, so nobody has to chase updates.</span></li>
+          <li><span data-es><b>Ordena el trámite.</b> Cuatro perfiles participan en el proceso y cada solicitud avanza por pasos claros. En todo momento se sabe dónde está y quién sigue.</span><span data-en><b>It organizes the process.</b> Four profiles take part, and every request moves through clear steps. At any moment you know where it is and whose turn it is.</span></li>
+          <li><span data-es><b>Deja rastro.</b> Cada aprobación queda registrada con su responsable y su fecha. Ya nadie tiene que reconstruir a mano lo que pasó.</span><span data-en><b>It leaves a trail.</b> Every approval is recorded with who did it and when. Nobody has to piece together what happened.</span></li>
+          <li><span data-es><b>Genera el reporte solo.</b> Lo que antes eran días transcribiendo a una hoja de cálculo ahora es un clic.</span><span data-en><b>It builds the report itself.</b> What used to be days of transcribing into a spreadsheet is now one click.</span></li>
+          <li><span data-es><b>Responde las dudas repetidas.</b> Un asistente resuelve las preguntas frecuentes del proceso y le quita carga al personal.</span><span data-en><b>It answers the repeat questions.</b> An assistant handles frequent questions about the process and takes load off the staff.</span></li>
+          <li><span data-es><b>Avisa a quien toca.</b> Cada cambio dispara un correo, así nadie tiene que estar preguntando.</span><span data-en><b>It notifies the right person.</b> Each change triggers an email, so nobody has to chase updates.</span></li>
         </ul>
 
-        <h4><span data-es>Decisiones técnicas que valen la pena mencionar</span><span data-en>Technical decisions worth mentioning</span></h4>
+        <h4><span data-es>Cómo lo pensé</span><span data-en>How I approached it</span></h4>
         <ul class="bullets bullets-tech">
-          <li><span data-es><b>Autorización por rol en el servidor, no en la interfaz.</b> Spring Security valida cada endpoint; el frontend solo decide qué mostrar. Ocultar un botón no es seguridad.</span><span data-en><b>Role authorization on the server, not in the UI.</b> Spring Security validates every endpoint; the frontend only decides what to display. Hiding a button is not security.</span></li>
-          <li><span data-es><b>Credenciales cifradas en configuración</b> con Jasypt, para que ninguna contraseña viva en texto plano en el repositorio o en el servidor.</span><span data-en><b>Encrypted credentials in config</b> via Jasypt, so no password lives in plain text in the repo or on the server.</span></li>
-          <li><span data-es><b>Rate limiting con Bucket4j</b> en los endpoints de autenticación, para frenar intentos de fuerza bruta antes de que lleguen a la base de datos.</span><span data-en><b>Rate limiting with Bucket4j</b> on authentication endpoints, stopping brute-force attempts before they reach the database.</span></li>
-          <li><span data-es><b>Migraciones idempotentes.</b> Los scripts de base de datos se pueden correr dos veces sin romper nada. Lo aprendí arreglando una instalación limpia que fallaba.</span><span data-en><b>Idempotent migrations.</b> Database scripts can run twice without breaking anything. I learned that fixing a clean install that failed.</span></li>
-          <li><span data-es><b>Índices pensados, no adivinados.</b> Modelé el entidad-relación y agregué índices sobre las columnas que realmente filtran las consultas del listado, que es la pantalla más visitada.</span><span data-en><b>Deliberate indexing.</b> I modeled the entity-relationship diagram and indexed the columns that actually filter the listing queries, which drive the most visited screen.</span></li>
-          <li><span data-es><b>Instalador para Windows y documentación.</b> El sistema se entrega con manual técnico, manual de usuario y guía de instalación, porque un sistema que solo yo puedo desplegar no está terminado.</span><span data-en><b>Windows installer and documentation.</b> The system ships with a technical manual, user manual and install guide, because a system only I can deploy is not finished.</span></li>
+          <li><span data-es><b>La seguridad vive en el servidor.</b> Cada operación se valida ahí, no en la pantalla. Ocultar un botón no es seguridad.</span><span data-en><b>Security lives on the server.</b> Every operation is validated there, not on screen. Hiding a button is not security.</span></li>
+          <li><span data-es><b>Ninguna contraseña en texto plano</b>, ni en el repositorio ni en el servidor, y límite de intentos en el inicio de sesión.</span><span data-en><b>No password in plain text</b>, not in the repo nor on the server, plus attempt limits on sign-in.</span></li>
+          <li><span data-es><b>Los scripts de base de datos se pueden correr dos veces</b> sin romper nada. Lo aprendí arreglando una instalación limpia que fallaba.</span><span data-en><b>Database scripts can run twice</b> without breaking anything. I learned that fixing a clean install that failed.</span></li>
+          <li><span data-es><b>Los índices están pensados, no adivinados.</b> Modelé la base y ordené los índices según lo que de verdad consulta la pantalla más usada.</span><span data-en><b>Indexes are deliberate, not guessed.</b> I modeled the database and shaped the indexes around what the most-used screen actually queries.</span></li>
+          <li><span data-es><b>Se entrega documentado.</b> Manual técnico, manual de usuario y guía de instalación, porque un sistema que solo yo puedo levantar no está terminado.</span><span data-en><b>It ships documented.</b> Technical manual, user manual and install guide, because a system only I can deploy is not finished.</span></li>
         </ul>
 
         <div class="chips">
-          <span>Java 21</span><span>Spring Boot 3.5</span><span>Spring Security</span><span>JPA / Hibernate</span><span>MySQL</span><span>React</span><span>Vite</span><span>Apache POI</span><span>Thymeleaf</span><span>Jasypt</span><span>Bucket4j</span>
+          <span>Java</span><span>Spring Boot</span><span>Spring Security</span><span>JPA / Hibernate</span><span>MySQL</span><span>React</span>
         </div>
 
         <h4><span data-es>Pruébalo: cambia de rol y mueve una solicitud</span><span data-en>Try it: switch roles and move a request</span></h4>
         <div data-demo="flow"></div>
 
-        <h4><span data-es>El esquema que lo sostiene</span><span data-en>The schema underneath</span></h4>
+        <h4><span data-es>Un modelo de datos de ejemplo</span><span data-en>An example data model</span></h4>
         <div data-demo="er"></div>
 
-        <h4><span data-es>Y la capa que decide quién puede qué</span><span data-en>And the layer deciding who can do what</span></h4>
+        <h4><span data-es>Cómo se decide quién puede qué</span><span data-en>How access is decided</span></h4>
         <div data-demo="rbac"></div>
       </div>
     </article>
@@ -211,7 +207,7 @@
           <span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind 4</span><span>Node.js</span><span>Rust</span><span>Soroban / Stellar</span><span>Expo</span><span>Flutter</span><span>PostgreSQL</span><span>Keycloak</span><span>Docker</span>
         </div>
 
-        <h4><span data-es>Cómo se ve el producto</span><span data-en>What the product looks like</span></h4>
+        <h4><span data-es>Prototipo de interfaz</span><span data-en>Interface prototype</span></h4>
         <div data-mockup="paystream"></div>
 
         <h4><span data-es>Pruébalo: mueve los controles y observa las reglas</span><span data-en>Try it: move the controls and watch the rules</span></h4>
@@ -250,7 +246,7 @@
           <span>Kotlin</span><span>Gradle</span><span>Flutter</span><span>Dart</span><span>REST API</span><span>SQL</span>
         </div>
 
-        <h4><span data-es>Cómo se ve el producto</span><span data-en>What the product looks like</span></h4>
+        <h4><span data-es>Prototipo de interfaz</span><span data-en>Interface prototype</span></h4>
         <div data-mockup="paymet"></div>
       </div>
     </article>
@@ -286,7 +282,7 @@
           <span>React</span><span>Spring Boot</span><span>Kotlin / Android</span><span>MySQL</span><span>Git</span>
         </div>
 
-        <h4><span data-es>Cómo se ve el producto</span><span data-en>What the product looks like</span></h4>
+        <h4><span data-es>Prototipo de interfaz</span><span data-en>Interface prototype</span></h4>
         <div data-mockup="rms"></div>
       </div>
     </article>
@@ -326,7 +322,7 @@
 <section id="stack" class="section section-alt">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">02</span>
+      <span data-cat="guard"></span><span class="sec-num">02</span>
       <h2>Stack</h2>
     </div>
 
@@ -391,7 +387,7 @@
 <section id="about" class="section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">03</span>
+      <span data-cat="guard"></span><span class="sec-num">03</span>
       <h2><span data-es>Perfil</span><span data-en>About</span></h2>
     </div>
 
@@ -402,16 +398,16 @@
           <span data-en>I'm studying Multiplatform Software Development at UTEZ, but most of what I know I learned building things somebody else was going to use.</span>
         </p>
         <p>
-          <span data-es>Trabajo mejor en la costura entre capas: donde el modelo de datos se encuentra con la lógica de negocio, y donde la lógica de negocio se encuentra con la pantalla. Diseño el entidad-relación, escribo el endpoint, prototipo la interfaz en Figma y la construyo. Eso significa que entiendo el costo real de una decisión de esquema tres capas más arriba.</span>
-          <span data-en>I work best at the seams between layers: where the data model meets business logic, and where business logic meets the screen. I design the ER diagram, write the endpoint, prototype the interface in Figma and build it. That means I understand the real cost of a schema decision three layers up.</span>
+          <span data-es>Lo que más me gusta es el punto donde se juntan las capas: la base de datos con las reglas del negocio, y esas reglas con la pantalla. Diseño la base, escribo el servicio, dibujo la interfaz y la construyo. Por eso entiendo lo que cuesta una mala decisión de datos cuando aparece tres capas más arriba.</span>
+          <span data-en>What I enjoy most is where the layers meet: the database with the business rules, and those rules with the screen. I design the database, write the service, sketch the interface and build it. That is why I understand what a bad data decision costs when it surfaces three layers up.</span>
         </p>
         <p>
-          <span data-es>Me tomo en serio dos cosas que suelen quedarse fuera: la <b>seguridad</b> (validación del lado del servidor, credenciales cifradas, control de acceso real) y la <b>documentación</b>, porque un sistema que solo su autor puede desplegar y mantener no está terminado.</span>
-          <span data-en>I take two often-neglected things seriously: <b>security</b> (server-side validation, encrypted credentials, real access control) and <b>documentation</b>, because a system only its author can deploy and maintain isn't finished.</span>
+          <span data-es>Me tomo en serio dos cosas que suelen dejarse para el final: la <b>seguridad</b>, porque validar solo en la pantalla no protege nada, y la <b>documentación</b>, porque un sistema que únicamente su autor sabe levantar todavía no está terminado.</span>
+          <span data-en>I take two things seriously that usually get left for last: <b>security</b>, because validating only on screen protects nothing, and <b>documentation</b>, because a system only its author knows how to run is not finished yet.</span>
         </p>
         <p>
-          <span data-es>Soy autodidacta por costumbre. Uso herramientas de inteligencia artificial como parte del flujo de trabajo, no como sustituto del criterio.</span>
-          <span data-en>I'm self-taught by habit. I use AI tooling as part of my workflow, not as a substitute for judgment.</span>
+          <span data-es>Soy autodidacta por costumbre y me llevo bien con el trabajo en equipo: he entregado en hackathon con cuatro personas y en proyectos institucionales donde había que sentarse a entender lo que de verdad necesitaba el usuario. Escucho, pregunto y luego construyo.</span>
+          <span data-en>I am self-taught by habit and I work well with others: I have delivered in a four-person hackathon and in institutional projects where the job started by sitting down to understand what the user actually needed. I listen, I ask, then I build.</span>
         </p>
       </div>
 
@@ -458,7 +454,7 @@
 <!-- ══════════ CONTACT ══════════ -->
 <section id="contact" class="section section-contact">
   <div class="wrap">
-    <span class="sec-num">04</span>
+    <span data-cat="guard"></span><span class="sec-num">04</span>
     <h2 class="contact-h">
       <span data-es>¿Construimos algo?</span><span data-en>Let's build something</span>
     </h2>
@@ -505,9 +501,9 @@
 
 <div data-cat="cursor" aria-hidden="true"></div>
 
-<script src="main.js"></script>
-<script src="cats.js"></script>
-<script src="demos.js"></script>
-<script src="mockups.js"></script>
+<script src="main.js?v=1785733841"></script>
+<script src="cats.js?v=1785733841"></script>
+<script src="demos.js?v=1785733841"></script>
+<script src="mockups.js?v=1785733841"></script>
 </body>
 </html>

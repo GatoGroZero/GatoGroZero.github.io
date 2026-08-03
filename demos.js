@@ -211,19 +211,18 @@ var Flow = (function () {
           "</span></div>";
       }
 
-      /* official document once approved */
+      /* Acuse genérico. A propósito NO imita membrete, firma ni sello de
+         ninguna institución: solo confirma que la aprobación quedó registrada. */
       if (["APROBADA", "EN_PROCESO", "COMPLETADA"].indexOf(r.estado) !== -1) {
         var firma = r.hist.filter(function (h) { return h.e === "APROBADA"; })[0];
-        html += '<div class="doc">' +
-          '<div class="doc-h"><b>' + L("SOLICITUD DE SERVICIOS GENERALES", "GENERAL SERVICES REQUEST") + "</b>" +
-          "<i>" + L("Documento generado automáticamente por el sistema", "Document generated automatically by the system") + "</i></div>" +
+        html += '<div class="acuse">' +
+          '<div class="acuse-h">' + L("Acuse de aprobación", "Approval receipt") + "</div>" +
           '<div class="doc-row"><span>' + L("Folio", "Ref.") + "</span><span>" + r.folio + "</span></div>" +
           '<div class="doc-row"><span>' + L("Servicio", "Service") + "</span><span>" + esc(svcName(r.svc)) + "</span></div>" +
-          '<div class="doc-row"><span>' + L("Solicitante", "Requested by") + "</span><span>" + esc(r.by) + "</span></div>" +
-          '<div class="doc-row"><span>' + L("Autorizó", "Authorized by") + "</span><span>" + (firma ? esc(firma.who) : L("Pendiente","Pending")) + "</span></div>" +
-          '<div class="doc-sign"><hr><small>' + (firma ? esc(firma.who) : "") + " · " +
-          L("Dirección de Servicios", "Services Direction") + "</small><br>" +
-          '<span class="doc-seal">' + L("FIRMA REGISTRADA", "SIGNATURE ON RECORD") + "</span></div>" +
+          '<div class="doc-row"><span>' + L("Autorizó", "Approved by") + "</span><span>" +
+            (firma ? esc(firma.who) + " · " + firma.t : L("Pendiente", "Pending")) + "</span></div>" +
+          '<p class="acuse-n">' + L("Ejemplo ilustrativo. El documento real lo define cada institución.",
+                                     "Illustrative example. The real document is defined by each institution.") + "</p>" +
           "</div>";
       }
 
@@ -242,8 +241,8 @@ var Flow = (function () {
     html += "</div></div>";
 
     html += caption(
-      "Reconstrucción con datos ficticios. La tabla de transiciones y la matriz de permisos son las mismas que gobiernan el sistema real; el código es original de esta demo.",
-      "Reconstruction with fictional data. The transition table and permission matrix mirror the real system; the code here is original to this demo."
+      "Prototipo con nombres y datos inventados. No reproduce el flujo de ningún sistema real, sino la forma en que diseño un proceso por pasos con permisos.",
+      "Prototype with invented names and data. It does not reproduce any real system's flow, just how I design a step-based process with permissions."
     );
 
     root.innerHTML = html;
@@ -578,10 +577,10 @@ var ER = (function () {
 
     usuario: { x:20, y:150, cols:[
       ["id","BIGINT",1],["matricula","VARCHAR(15)"],["nombre","VARCHAR(120)"],
-      ["correo","VARCHAR(120)"],["password_hash","VARCHAR(60)"],["rol_id","BIGINT"],["activo","BOOLEAN"]],
+      ["correo","VARCHAR(120)"],["rol_id","BIGINT"],["activo","BOOLEAN"]],
       idx:"PRIMARY KEY (id)\nUNIQUE KEY uk_usuario_correo (correo)\nUNIQUE KEY uk_usuario_matricula (matricula)\nKEY idx_usuario_rol (rol_id)",
-      note_es:"El correo es único porque es la credencial de acceso: el índice lo garantiza en la base, no solo en el formulario.",
-      note_en:"Email is unique because it is the login credential: the index enforces it in the database, not just in the form." },
+      note_es:"El correo es único, y el índice lo garantiza en la base, no solo en el formulario.",
+      note_en:"Email is unique, and the index enforces it in the database, not just in the form." },
 
     servicio: { x:290, y:20, cols:[
       ["id","BIGINT",1],["nombre","VARCHAR(80)"],["area","VARCHAR(60)"],["activo","BOOLEAN"]],
@@ -605,10 +604,10 @@ var ER = (function () {
 
     firma_solicitud: { x:560, y:175, cols:[
       ["id","BIGINT",1],["solicitud_id","BIGINT"],["firmante_id","BIGINT"],
-      ["hash_documento","CHAR(64)"],["firmada_en","DATETIME"]],
+      ["firmada_en","DATETIME"]],
       idx:"PRIMARY KEY (id)\nUNIQUE KEY uk_firma_solicitud (solicitud_id)",
-      note_es:"Guarda el hash del documento firmado, no el documento. Si el PDF se regenera y el hash no coincide, la firma deja de ser válida.",
-      note_en:"Stores the hash of the signed document, not the document. If the PDF is regenerated and the hash no longer matches, the signature is void." },
+      note_es:"Cada aprobación queda ligada a una sola solicitud. La llave única impide que se registre dos veces.",
+      note_en:"Each approval is tied to a single request. The unique key prevents recording it twice." },
 
     notificacion: { x:560, y:300, cols:[
       ["id","BIGINT",1],["usuario_id","BIGINT"],["solicitud_id","BIGINT"],
@@ -715,8 +714,8 @@ var ER = (function () {
     html += "</div></div>";
 
     html += caption(
-      "Esquema equivalente al que modelé, con nombres genéricos. Los índices no son decorativos: cada uno responde a una consulta concreta de una pantalla concreta.",
-      "Schema equivalent to the one I modeled, with generic names. The indexes are not decorative: each answers a concrete query from a concrete screen."
+      "Modelo de ejemplo, no el esquema de ningún sistema real. Está aquí para mostrar cómo pienso una base de datos: cada índice responde a una consulta concreta.",
+      "Example model, not any real system's schema. It is here to show how I think about a database: each index answers a concrete query."
     );
     html += "</div>";
 

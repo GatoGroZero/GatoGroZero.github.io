@@ -1,33 +1,32 @@
 /* ═══════════════════════════════════════════════════════════════
-   Gatos pixel · sprites dibujados a mano, sin imágenes externas
-   Cada sprite es un arreglo de cadenas. Una letra = un pixel.
-     .  transparente     o  contorno      b  cuerpo
-     d  sombra           w  claro         p  rosa
-     e  ojo              g  brillo del ojo
+   Gatos samurái · sprites pixel dibujados a mano, sin imágenes
+   Cada sprite es un arreglo de cadenas. Una letra es un pixel.
+     .  vacío      o  contorno    b  pelaje    d  sombra
+     w  claro      p  hocico      e  ojo       g  brillo
+     r  cinta roja k  acero de la katana       h  empuñadura
    ═══════════════════════════════════════════════════════════════ */
 (function () {
 "use strict";
 
 var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var touch = window.matchMedia("(hover: none)").matches;
 
-/* ── Paletas vintage ── */
 var COATS = {
-  naranja: { b:"#d98b3f", d:"#b06a26", w:"#f6e3c4", o:"#2e2620", p:"#c96a72", e:"#2e2620", g:"#fff8ea" },
-  gris:    { b:"#8d8a93", d:"#6d6a74", w:"#e6e2e6", o:"#2e2620", p:"#c96a72", e:"#2e2620", g:"#fff8ea" },
-  crema:   { b:"#e6cfa8", d:"#c8ab7e", w:"#fff8ea", o:"#2e2620", p:"#c96a72", e:"#2e2620", g:"#fff8ea" },
-  negro:   { b:"#4a4048", d:"#332c33", w:"#8d8a93", o:"#2e2620", p:"#c96a72", e:"#d19a1c", g:"#fff8ea" },
-  sage:    { b:"#7d9c84", d:"#5d7a64", w:"#e2ecdf", o:"#2e2620", p:"#c96a72", e:"#2e2620", g:"#fff8ea" }
+  tinta:  { b:"#3a3b38", d:"#262724", w:"#ece5d8", o:"#0b0c0b", p:"#ad0013", e:"#c9a15c", g:"#fff", r:"#ad0013", k:"#d8d4c8", h:"#a67d43" },
+  oro:    { b:"#a67d43", d:"#7d5c2f", w:"#ece5d8", o:"#0b0c0b", p:"#ad0013", e:"#0b0c0b", g:"#fff", r:"#ad0013", k:"#d8d4c8", h:"#5c4526" },
+  hueso:  { b:"#ece5d8", d:"#bdb4a4", w:"#fff", o:"#0b0c0b", p:"#ad0013", e:"#0b0c0b", g:"#fff", r:"#ad0013", k:"#d8d4c8", h:"#a67d43" },
+  carmin: { b:"#8c1220", d:"#6b0a16", w:"#ece5d8", o:"#0b0c0b", p:"#ece5d8", e:"#c9a15c", g:"#fff", r:"#c9a15c", k:"#d8d4c8", h:"#a67d43" }
 };
 
-/* ── Gato sentado, de frente. 20 x 16, con cola a la derecha ── */
+/* ── Gato samurái sentado, de frente, con cinta en la frente ── */
 var SIT = [
   "....................",
   "..oo........oo......",
   "..obo......obo......",
-  "..obbo....obbo......",
-  "..obpboooobpbo......",
+  "..obpo....obpo......",
+  "..obbboooobbbo......",
   ".obbbbbbbbbbbbo.....",
-  ".obbbbbbbbbbbbo.....",
+  ".orrrrrrrrrrrro.....",
   ".obbgebbbbgebbo.....",
   ".obbeebbbbeebbo.....",
   ".obbbbbppbbbbbo..oo.",
@@ -38,230 +37,252 @@ var SIT = [
   "..obbbbbbbbbbbbbbo..",
   "..oooooooooooooooo.."
 ];
-
-/* Mismo gato con los ojos cerrados, para parpadear */
 var SIT_BLINK = SIT.slice();
 SIT_BLINK[7] = ".obbbbbbbbbbbbo.....";
 SIT_BLINK[8] = ".obbeebbbbeebbo.....";
 
-/* Gato de perfil caminando (mira a la izquierda), dos cuadros */
-var WALK_A = [
+/* ── Compañero de cursor: gato de perfil, katana envainada ── */
+var GUARD = [
   "..o..o..........",
-  ".obbbo......oo..",
-  ".obbbbo....obbo.",
-  "pobebbooooooobbo",
-  ".obbbbbbbbbbbbbo",
-  ".obbbbbbbbbbbbo.",
-  "..obbbbbbbbbbo..",
-  "..oobbbbbbbboo..",
-  "...o.o....o.o...",
-  "...o.o....o.o...",
-  "...ooo....ooo..."
+  ".obbbo..........",
+  ".obbbbo.........",
+  "pobebbooooooo...",
+  ".orrrrrrrrrro...",
+  ".obbbbbbbbbbbo..",
+  ".obbbbbbbbbbbo..",
+  "..obbbbbbbbbo.hh",
+  "..oobbbbbbboohh.",
+  "...o.o...o.o....",
+  "...ooo...ooo...."
 ];
-var WALK_B = WALK_A.slice(0, 8).concat([
-  "...oo.....oo....",
-  "..o..o...o..o...",
-  "..ooo....ooo...."
-]);
 
-/* Gato dormido */
+/* ── Mismo gato con la katana desenvainada ── */
+var GUARD_ATTACK = [
+  "..o..o.......k..",
+  ".obbbo......k...",
+  ".obbbbo....k....",
+  "pobebbooook.....",
+  ".orrrrrrhr......",
+  ".obbbbbbbbbbbo..",
+  ".obbbbbbbbbbbo..",
+  "..obbbbbbbbbo...",
+  "..oobbbbbbboo...",
+  "..o..o...o..o...",
+  "..ooo.....ooo..."
+];
+
+/* ── Gato dormido ── */
 var SLEEP = [
   "................",
   "...oo......oo...",
   "..obbo....obbo..",
   "..obbboooobbbo..",
   ".obbbbbbbbbbbbo.",
+  ".orrrrrrrrrrrro.",
   ".obbooobbooobbo.",
   ".obbbbbppbbbbbo.",
-  ".obbbbbbbbbbbbo.",
   "..obbbbbbbbbbo..",
   "..oooooooooooo..",
   "................"
 ];
 
-/* ── Convierte un sprite a SVG ── */
-function sprite(map, coat, px, extraClass) {
+/* ── Gatito guardián de sección, sentado de perfil ── */
+var GUARDIAN = [
+  "..o..o......",
+  ".obbbo......",
+  ".obebbo.....",
+  ".orrrrro....",
+  ".obbbbbbo...",
+  "..obbbbbo.oo",
+  "..obwwwbo.ob",
+  "..obwwwbooob",
+  "..obbbbbbbbo",
+  "..oooooooooo"
+];
+/* El guardián hace una reverencia: la cabeza baja una fila */
+var GUARDIAN_BOW = [
+  "............",
+  "..o..o......",
+  ".obbbo......",
+  ".obebbo.....",
+  ".orrrrro.oo.",
+  ".obbbbbbo.ob",
+  "..obwwwbo.ob",
+  "..obwwwboooo",
+  "..obbbbbbbbo",
+  "..oooooooooo"
+];
+
+/* ── Sprite a SVG. Une pixeles contiguos para no crear cientos de nodos ── */
+function sprite(map, coat, px, cls) {
   var w = 0, i, j;
   for (i = 0; i < map.length; i++) if (map[i].length > w) w = map[i].length;
-  var h = map.length;
-  var out = '<svg class="cat-svg ' + (extraClass || "") + '" viewBox="0 0 ' + w + " " + h +
-            '" width="' + (w * px) + '" height="' + (h * px) +
+  var out = '<svg class="cat-svg ' + (cls || "") + '" viewBox="0 0 ' + w + " " + map.length +
+            '" width="' + (w * px) + '" height="' + (map.length * px) +
             '" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">';
-  for (i = 0; i < h; i++) {
+  for (i = 0; i < map.length; i++) {
     var row = map[i];
     j = 0;
     while (j < row.length) {
       var c = row[j];
-      if (c === "." || c === undefined) { j++; continue; }
-      // Une pixeles del mismo color en un solo rect (menos nodos)
+      if (c === ".") { j++; continue; }
       var run = 1;
       while (j + run < row.length && row[j + run] === c) run++;
-      var fill = coat[c] || coat.b;
-      out += '<rect x="' + j + '" y="' + i + '" width="' + run + '" height="1" fill="' + fill + '"/>';
+      out += '<rect x="' + j + '" y="' + i + '" width="' + run + '" height="1" fill="' + (coat[c] || coat.b) + '"/>';
       j += run;
     }
   }
   return out + "</svg>";
 }
 
-/* ═══════════ 1. Gato del hero: parpadea y responde al clic ═══════════ */
+/* ═══════════ Gato del hero ═══════════ */
 function heroCat() {
   var host = document.querySelector("[data-cat=hero]");
   if (!host) return;
-  var coat = COATS.naranja;
-  var px = 7;
+  var coat = COATS.tinta, px = 7;
 
   host.innerHTML =
     '<div class="cat-hero-wrap">' +
-      '<div class="cat-bubble" hidden>¡miau!</div>' +
+      '<div class="cat-bubble" hidden>ニャー</div>' +
       '<div class="cat-body">' + sprite(SIT, coat, px) + "</div>" +
-      '<div class="cat-shadow"></div>' +
     "</div>";
 
   var body = host.querySelector(".cat-body");
   var bubble = host.querySelector(".cat-bubble");
-  var open = sprite(SIT, coat, px);
-  var shut = sprite(SIT_BLINK, coat, px);
+  var open = sprite(SIT, coat, px), shut = sprite(SIT_BLINK, coat, px);
 
-  if (!reduced) {
-    (function loop() {
-      var wait = 2200 + Math.random() * 3800;
-      setTimeout(function () {
-        body.innerHTML = shut;
-        setTimeout(function () {
-          body.innerHTML = open;
-          // De vez en cuando parpadea dos veces seguidas
-          if (Math.random() < 0.3) {
-            setTimeout(function () { body.innerHTML = shut; }, 130);
-            setTimeout(function () { body.innerHTML = open; }, 250);
-          }
-          loop();
-        }, 140);
-      }, wait);
-    })();
-  }
+  if (!reduced) (function loop() {
+    setTimeout(function () {
+      body.innerHTML = shut;
+      setTimeout(function () { body.innerHTML = open; loop(); }, 150);
+    }, 2400 + Math.random() * 4000);
+  })();
 
-  host.addEventListener("click", function () {
+  function react() {
     body.classList.remove("hop");
-    void body.offsetWidth;          // reinicia la animación
+    void body.offsetWidth;
     body.classList.add("hop");
     bubble.hidden = false;
     bubble.classList.remove("pop");
     void bubble.offsetWidth;
     bubble.classList.add("pop");
     clearTimeout(host._t);
-    host._t = setTimeout(function () { bubble.hidden = true; }, 1400);
-  });
+    host._t = setTimeout(function () { bubble.hidden = true; }, 1500);
+  }
+  host.addEventListener("click", react);
   host.setAttribute("role", "button");
   host.setAttribute("tabindex", "0");
-  host.setAttribute("aria-label", "Gato pixel. Actívalo para que maúlle.");
+  host.setAttribute("aria-label", "Gato samurái. Actívalo para que salude.");
   host.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); host.click(); }
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); react(); }
   });
 }
 
-/* ═══════════ 2. Gato que camina siguiendo el scroll ═══════════ */
-function walkerCat() {
-  var host = document.querySelector("[data-cat=walker]");
-  if (!host) return;
-  var coat = COATS.gris, px = 5;
-  host.innerHTML = '<div class="cat-walker">' + sprite(WALK_A, coat, px) + "</div>";
-  var el = host.querySelector(".cat-walker");
-  var a = sprite(WALK_A, coat, px), b = sprite(WALK_B, coat, px);
-
-  if (reduced) return;
-
-  var frame = 0, pos = 0, lastY = window.scrollY, dir = 1, moving = 0;
-
-  window.addEventListener("scroll", function () {
-    var y = window.scrollY;
-    var delta = y - lastY;
-    if (Math.abs(delta) > 1) {
-      dir = delta > 0 ? 1 : -1;
-      // El gato avanza en proporción a lo que el usuario desplaza
-      pos += delta * 0.32;
-      moving = 12;
-    }
-    lastY = y;
-  }, { passive: true });
-
-  setInterval(function () {
-    if (moving > 0) {
-      moving--;
-      frame = 1 - frame;
-      el.innerHTML = frame ? a : b;
-    }
-    var w = host.clientWidth || 1;
-    var span = w - 80;
-    if (span < 40) span = 40;
-    // Rebota en los extremos en lugar de salirse
-    var t = ((pos % (span * 2)) + span * 2) % (span * 2);
-    var x = t > span ? span * 2 - t : t;
-    el.style.transform = "translateX(" + x + "px) scaleX(" + (dir > 0 ? 1 : -1) + ")";
-  }, 90);
-}
-
-/* ═══════════ 3. Gatito que acompaña al cursor ═══════════ */
+/* ═══════════ Guardián que sigue al cursor y corta al hacer clic ═══════════ */
 function cursorCat() {
-  if (reduced || window.matchMedia("(hover: none)").matches) return;
+  if (reduced || touch) return;
   var host = document.querySelector("[data-cat=cursor]");
   if (!host) return;
 
-  var coat = COATS.crema, px = 4;
-  host.innerHTML = '<div class="cat-follow">' + sprite(SIT, coat, px) + "</div>";
+  var coat = COATS.hueso, px = 4;
+  host.innerHTML = '<div class="cat-follow">' + sprite(GUARD, coat, px) + "</div>";
   var el = host.querySelector(".cat-follow");
+  var idle = sprite(GUARD, coat, px), atk = sprite(GUARD_ATTACK, coat, px);
 
-  var tx = window.innerWidth - 120, ty = window.innerHeight - 140;
-  var cx = tx, cy = ty, face = 1, raf = null;
+  var tx = innerWidth - 140, ty = innerHeight - 150, cx = tx, cy = ty, face = 1, raf = null;
 
   document.addEventListener("mousemove", function (e) {
-    // Se queda cerca del cursor, no encima: 60px abajo a la derecha
-    tx = e.clientX + 34;
-    ty = e.clientY + 26;
+    tx = e.clientX + 30;
+    ty = e.clientY + 22;
     if (!raf) raf = requestAnimationFrame(step);
-  });
+  }, { passive: true });
 
   function step() {
-    var px0 = cx;
-    cx += (tx - cx) * 0.09;
-    cy += (ty - cy) * 0.09;
-    if (Math.abs(cx - px0) > 0.4) face = cx > px0 ? 1 : -1;
-    // No dejar que se salga de la ventana
-    cx = Math.max(6, Math.min(cx, window.innerWidth - 70));
-    cy = Math.max(70, Math.min(cy, window.innerHeight - 76));
+    var prev = cx;
+    cx += (tx - cx) * 0.1;
+    cy += (ty - cy) * 0.1;
+    if (Math.abs(cx - prev) > 0.5) face = cx > prev ? 1 : -1;
+    cx = Math.max(4, Math.min(cx, innerWidth - 70));
+    cy = Math.max(72, Math.min(cy, innerHeight - 60));
     el.style.transform = "translate(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px) scaleX(" + face + ")";
     if (Math.abs(tx - cx) > 0.6 || Math.abs(ty - cy) > 0.6) raf = requestAnimationFrame(step);
     else raf = null;
   }
   step();
+
+  /* Al hacer clic desenvaina y deja un corte en el aire */
+  var busy = false;
+  document.addEventListener("click", function (e) {
+    // No interrumpe si el clic fue sobre un control real
+    if (busy) return;
+    busy = true;
+    el.innerHTML = atk;
+    el.classList.add("swing");
+
+    var cut = document.createElement("span");
+    cut.className = "cat-cut";
+    cut.style.left = e.clientX + "px";
+    cut.style.top = e.clientY + "px";
+    document.body.appendChild(cut);
+    setTimeout(function () { cut.remove(); }, 460);
+
+    setTimeout(function () {
+      el.innerHTML = idle;
+      el.classList.remove("swing");
+      busy = false;
+    }, 380);
+  }, true);
 }
 
-/* ═══════════ 4. Gato dormido del pie ═══════════ */
+/* ═══════════ Guardianes de sección: se inclinan al aparecer ═══════════ */
+function guardians() {
+  var hosts = document.querySelectorAll("[data-cat=guard]");
+  if (!hosts.length) return;
+  var coats = [COATS.tinta, COATS.oro, COATS.carmin, COATS.hueso];
+
+  hosts.forEach(function (host, i) {
+    var coat = coats[i % coats.length], px = 4;
+    var up = sprite(GUARDIAN, coat, px), bow = sprite(GUARDIAN_BOW, coat, px);
+    host.innerHTML = up;
+    if (reduced) return;
+
+    var done = false;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting || done) return;
+        done = true;
+        io.disconnect();
+        // Reverencia: baja, sube, baja, sube
+        var seq = [bow, up, bow, up], k = 0;
+        (function next() {
+          if (k >= seq.length) return;
+          host.innerHTML = seq[k++];
+          setTimeout(next, 180);
+        })();
+      });
+    }, { threshold: 0.5 });
+    io.observe(host);
+
+    host.addEventListener("mouseenter", function () {
+      if (reduced) return;
+      host.innerHTML = bow;
+      setTimeout(function () { host.innerHTML = up; }, 260);
+    });
+  });
+}
+
+/* ═══════════ Gato dormido del pie ═══════════ */
 function sleeperCat() {
   var host = document.querySelector("[data-cat=sleeper]");
   if (!host) return;
   host.innerHTML =
-    '<div class="cat-sleep">' +
-      '<span class="zzz z1">z</span><span class="zzz z2">z</span><span class="zzz z3">z</span>' +
-      sprite(SLEEP, COATS.negro, 5) +
-    "</div>";
+    '<span class="cat-sleep">' +
+      '<i class="zzz z1">z</i><i class="zzz z2">z</i><i class="zzz z3">z</i>' +
+      sprite(SLEEP, COATS.tinta, 4) +
+    "</span>";
 }
 
-/* ═══════════ 5. Gatitos decorativos de sección ═══════════ */
-function tinyCats() {
-  document.querySelectorAll("[data-cat=tiny]").forEach(function (el, i) {
-    var coats = [COATS.naranja, COATS.sage, COATS.gris, COATS.negro];
-    el.innerHTML = sprite(SIT, coats[i % coats.length], 3);
-  });
-}
-
-function init() {
-  heroCat();
-  walkerCat();
-  cursorCat();
-  sleeperCat();
-  tinyCats();
-}
+function init() { heroCat(); cursorCat(); guardians(); sleeperCat(); }
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
 else init();

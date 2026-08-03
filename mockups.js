@@ -127,43 +127,45 @@ function paymet() {
     '<div class="mk-stage s-paymet t-paymet reveal">' +
 
       '<div class="mk">' + chrome("admin.paymet.mx / bienestar") +
-        '<div class="mk-screen">' +
-
-          '<div class="mk-top"><div class="mk-brand">' +
-            '<span class="mk-logo">PB</span>' +
-            '<div><div class="mk-bname">PAYMET</div>' +
-            '<div class="mk-bsub">' + L("Bienestar financiero", "Financial wellness") + "</div></div>" +
-          "</div>" +
-          '<div class="mk-tabs">' +
-            '<span class="mk-tab on">' + L("Resumen", "Summary") + "</span>" +
-            '<span class="mk-tab">' + L("Metas", "Goals") + "</span>" +
-            '<span class="mk-tab">' + L("Reportes", "Reports") + "</span>" +
-          "</div></div>" +
-
-          '<div class="mk-kpis">' +
-            kpi(L("Colaboradores", "Members"), "128", L("activos", "active")) +
-            kpi(L("Ahorro acumulado", "Total saved"), "$1.24M", L("del programa", "program-wide"), "pos") +
-            kpi(L("Meta promedio", "Avg. goal"), "62%", L("de avance", "progress")) +
-            kpi(L("Alertas", "Alerts"), "5", L("por revisar", "to review"), "warn") +
+        /* Estructura distinta a la de Devengo a propósito: navegación lateral,
+           anillo de avance y lista compacta en lugar de tabla ancha. */
+        '<div class="mk-shell">' +
+          '<div class="mk-side">' +
+            '<div class="mk-brand"><span class="mk-logo">PB</span></div>' +
+            '<span class="mk-nav on">' + L("Resumen", "Summary") + "</span>" +
+            '<span class="mk-nav">' + L("Metas", "Goals") + "</span>" +
+            '<span class="mk-nav">' + L("Aportaciones", "Contributions") + "</span>" +
+            '<span class="mk-nav">' + L("Reportes", "Reports") + "</span>" +
           "</div>" +
 
-          '<div class="mk-panel">' +
-            '<div class="mk-ph"><b>' + L("Avance hacia metas de ahorro", "Progress toward savings goals") + "</b>" +
+          '<div class="mk-screen">' +
+            '<div class="mk-head2"><b>' + L("Bienestar del equipo", "Team wellness") + "</b>" +
             "<span>" + L("trimestre actual", "current quarter") + "</span></div>" +
-            '<div class="mk-row mk-row-4 head"><span>' + L("Colaborador", "Member") + "</span>" +
-              "<span>" + L("Ahorrado", "Saved") + "</span><span>" + L("Avance", "Progress") + "</span><span></span></div>" +
-            rows.map(function (r) {
-              return '<div class="mk-row mk-row-4">' +
-                '<div class="mk-who"><span class="mk-av">' + r[0] + "</span><div><b>" + r[1] + "</b>" +
-                "<span>" + L("meta anual", "annual goal") + "</span></div></div>" +
-                '<span class="mk-num">' + r[2] + "</span>" +
-                '<span><span class="mk-bar"><i style="width:' + r[3] + '%"></i>' +
-                  '<i class="dim" style="width:' + (100 - r[3]) + '%"></i></span></span>' +
-                '<span class="mk-num" style="font-size:.58rem">' + r[3] + "%</span>" +
-              "</div>";
-            }).join("") +
-          "</div>" +
 
+            '<div class="mk-split2">' +
+              '<div class="mk-ringbox">' +
+                ring(62) +
+                '<div class="mk-ringtxt"><b>62%</b><span>' + L("meta promedio", "average goal") + "</span></div>" +
+              "</div>" +
+              '<div class="mk-ministack">' +
+                mini(L("Colaboradores", "Members"), "128") +
+                mini(L("Ahorro acumulado", "Total saved"), "$1.24M", "pos") +
+                mini(L("Alertas", "Alerts"), "5", "warn") +
+              "</div>" +
+            "</div>" +
+
+            '<div class="mk-goals">' +
+              rows.map(function (r) {
+                return '<div class="mk-goal">' +
+                  '<span class="mk-av">' + r[0] + "</span>" +
+                  '<div class="mk-goaltxt"><b>' + r[1] + "</b>" +
+                    '<span class="mk-bar"><i style="width:' + r[3] + '%"></i>' +
+                    '<i class="dim" style="width:' + (100 - r[3]) + '%"></i></span></div>' +
+                  '<span class="mk-num">' + r[2] + "</span>" +
+                "</div>";
+              }).join("") +
+            "</div>" +
+          "</div>" +
         "</div>" +
       "</div>" +
 
@@ -250,6 +252,21 @@ function rms() {
           "Light interface on institutional blue, the palette the real system uses. Catalog and codes are fictional.") +
     "</div>"
   );
+}
+
+/* Anillo de avance en SVG, para la maqueta de Paymet */
+function ring(pct) {
+  var r = 26, c = 2 * Math.PI * r;
+  return '<svg viewBox="0 0 64 64" width="64" height="64" style="image-rendering:auto">' +
+    '<circle cx="32" cy="32" r="' + r + '" fill="none" stroke="var(--mk-avbg)" stroke-width="7"/>' +
+    '<circle cx="32" cy="32" r="' + r + '" fill="none" stroke="var(--mk-accent)" stroke-width="7"' +
+    ' stroke-dasharray="' + c + '" stroke-dashoffset="' + (c * (1 - pct / 100)).toFixed(1) + '"' +
+    ' transform="rotate(-90 32 32)" stroke-linecap="butt"/></svg>';
+}
+
+function mini(label, value, cls) {
+  return '<div class="mk-mini"><span>' + label + "</span>" +
+         "<b" + (cls ? ' class="' + cls + '"' : "") + ">" + value + "</b></div>";
 }
 
 function kpi(label, value, sub, cls) {
