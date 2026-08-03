@@ -18,20 +18,22 @@ assets/         → CV en PDF
 
 ## Paleta
 
-El estilo es **pixel art sobre papel vintage**. Nada de negro neón. Los tonos
-viven en `:root` de `styles.css`:
+El estilo es **pixel japonés**: laca negra, carmesí y oro. Los tonos viven en
+`:root` de `styles.css`:
 
 | Variable | Color | Uso |
 |---|---|---|
-| `--paper` | `#f2e5ce` | fondo, papel crema con trama de puntos |
-| `--ink` | `#2e2620` | texto y los bordes gruesos de 3px |
-| `--terra` | `#b8502a` | acento principal, botones, viñetas |
-| `--sage` | `#4d7a5e` | etiquetas y sección de contacto |
-| `--mustard` | `#d19a1c` | franja de aviso y estados hover |
+| `--sumi` | `#121312` | fondo, laca negra |
+| `--crimson` | `#ad0013` | sol naciente, botones, títulos grandes |
+| `--gold` / `--gold-lt` | `#a67d43` / `#c9a15c` | acentos y texto destacado |
+| `--washi` | `#ece5d8` | texto principal |
 
-El lenguaje visual es consistente: borde `3px solid var(--ink)`, sombra dura
-`4px 4px 0`, cero `border-radius`, y desplazamiento al pasar el cursor. Las
-tipografías son **Pixelify Sans** para títulos y **Nunito** para leer.
+> El carmesí sobre negro da **3.3:1**. Alcanza para titulares grandes, pero no
+> para texto pequeño. En etiquetas y textos chicos se usa `--gold-lt` (7.8:1).
+
+Tipografías: **DotGothic16** para títulos (pixel japonés y legible) y
+**Zen Maru Gothic** para leer. Antes se usaba Pixelify Sans y confundía la C
+con la O.
 
 Las maquetas de producto **no** usan esta paleta: cada una conserva la de su
 app real, en los temas `.t-paystream`, `.t-paymet` y `.t-rms` de `mockups.css`.
