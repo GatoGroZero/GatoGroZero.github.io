@@ -511,3 +511,6 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
   .case-lede { padding-left: 15px; }
   .foot-in { justify-content: center; text-align: center; }
 }
+
+/* Contenedor de los botones de la barra superior */
+.topbar-right { display: flex; align-items: center; gap: 10px; }

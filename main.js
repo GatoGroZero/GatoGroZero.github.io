@@ -30,6 +30,30 @@ var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   });
 })();
 
+/* ─────────── Interruptor de gatos y movimiento ─────────── */
+(function () {
+  var html = document.documentElement;
+  var btn = document.getElementById("motionToggle");
+  var on = true;
+  try { on = localStorage.getItem("cats") !== "off"; } catch (e) {}
+  apply();
+
+  function apply() {
+    html.classList.toggle("no-cats", !on);
+    if (btn) {
+      btn.setAttribute("aria-pressed", String(!on));
+      btn.title = on ? "Desactivar gatos y animaciones" : "Activar gatos y animaciones";
+    }
+  }
+  if (btn) btn.addEventListener("click", function () {
+    on = !on;
+    try { localStorage.setItem("cats", on ? "on" : "off"); } catch (e) {}
+    apply();
+    // Al reactivar, las secciones ocultas deben aparecer sin recargar
+    if (on && window.__observeReveals) window.__observeReveals();
+  });
+})();
+
 /* ─────────── Entrada del hero ─────────── */
 window.addEventListener("load", function () {
   document.body.classList.add("loaded");

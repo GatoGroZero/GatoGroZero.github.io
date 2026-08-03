@@ -11,10 +11,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Maru+Gothic:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1785735266">
-<link rel="stylesheet" href="cats.css?v=1785735266">
-<link rel="stylesheet" href="demos.css?v=1785735266">
-<link rel="stylesheet" href="mockups.css?v=1785735266">
+<link rel="stylesheet" href="styles.css?v=1785736882">
+<link rel="stylesheet" href="cats.css?v=1785736882">
+<link rel="stylesheet" href="demos.css?v=1785736882">
+<link rel="stylesheet" href="mockups.css?v=1785736882">
 <meta name="theme-color" content="#121312">
 </head>
 <body>
@@ -30,9 +30,15 @@
     <a href="#about"><span data-es>Perfil</span><span data-en>About</span></a>
     <a href="#contact"><span data-es>Contacto</span><span data-en>Contact</span></a>
   </nav>
-  <button id="langToggle" class="lang" aria-label="Change language">
-    <span class="lang-opt" data-val="es">ES</span><span class="lang-sep">/</span><span class="lang-opt" data-val="en">EN</span>
-  </button>
+  <div class="topbar-right">
+    <button id="motionToggle" class="motion-btn" aria-pressed="false">
+      <i aria-hidden="true"></i>
+      <span data-es>Gatos</span><span data-en>Cats</span>
+    </button>
+    <button id="langToggle" class="lang" aria-label="Change language">
+      <span class="lang-opt" data-val="es">ES</span><span class="lang-sep">/</span><span class="lang-opt" data-val="en">EN</span>
+    </button>
+  </div>
 </header>
 
 <main id="top">
@@ -113,6 +119,7 @@
     </div>
 
     <!-- ─── CASE 1 ─── -->
+    <div class="cat-strip"><div data-cat="scene" data-act="chase"></div><span class="cat-strip-hint"><span data-es>Persíguelo con el cursor</span><span data-en>Chase it with your cursor</span></span></div>
     <article class="case">
       <div class="case-side">
         <span class="case-tag case-tag-live"><span data-es>En producción</span><span data-en>In production</span></span>
@@ -167,6 +174,7 @@
     </article>
 
     <!-- ─── CASE 2 ─── -->
+    <div class="cat-strip"><div data-cat="scene" data-act="walk"></div><span class="cat-strip-hint"><span data-es>Va y viene</span><span data-en>Back and forth</span></span></div>
     <article class="case">
       <div class="case-side">
         <span class="case-tag case-tag-open"><span data-es>Hackathon</span><span data-en>Hackathon</span></span>
@@ -216,6 +224,7 @@
     </article>
 
     <!-- ─── CASE 3 ─── -->
+    <div class="cat-strip"><div data-cat="scene" data-act="sleep"></div><span class="cat-strip-hint"><span data-es>Shhh, duerme</span><span data-en>Shhh, sleeping</span></span></div>
     <article class="case">
       <div class="case-side">
         <span class="case-tag"><span data-es>Multiplataforma</span><span data-en>Multiplatform</span></span>
@@ -252,6 +261,7 @@
     </article>
 
     <!-- ─── CASE 4 ─── -->
+    <div class="cat-strip"><div data-cat="scene" data-act="sit"></div><span class="cat-strip-hint"><span data-es>Vigila el proyecto</span><span data-en>Guarding the project</span></span></div>
     <article class="case">
       <div class="case-side">
         <span class="case-tag"><span data-es>Front End</span><span data-en>Front End</span></span>
@@ -501,9 +511,9 @@
 
 <div data-cat="cursor" aria-hidden="true"></div>
 
-<script src="main.js?v=1785735266"></script>
-<script src="cats.js?v=1785735266"></script>
-<script src="demos.js?v=1785735266"></script>
-<script src="mockups.js?v=1785735266"></script>
+<script src="main.js?v=1785736882"></script>
+<script src="cats.js?v=1785736882"></script>
+<script src="demos.js?v=1785736882"></script>
+<script src="mockups.js?v=1785736882"></script>
 </body>
 </html>

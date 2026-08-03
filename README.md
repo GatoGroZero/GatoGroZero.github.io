@@ -52,10 +52,21 @@ dibujo ASCII, nada más. Hay cuatro:
 
 | Gato | Dónde | Qué hace |
 |---|---|---|
-| Naranja | hero | Parpadea solo. Al hacer clic salta y maúlla. También con teclado. |
-| Gris | repisa bajo el hero | Camina en proporción a lo que desplazas, y voltea si subes. |
-| Crema | sigue al cursor | Va detrás del puntero con retraso. Oculto en táctil y con `reduced-motion`. |
-| Negro | pie de página | Duerme con sus zetas. |
+| Naranja | hero | Parpadea solo y estira la pata cuando el cursor se acerca. Al hacer clic salta y maúlla. También responde con teclado. |
+| Hueso | sigue al cursor | Va detrás del puntero con su katana. Al hacer clic desenvaina y deja un corte. Se agazapa cuando te detienes. |
+| Uno por proyecto | franja sobre cada caso | Cada uno tiene su acción: perseguir el cursor, ir y venir, dormir o vigilar. |
+| Tinta | pie de página | Duerme con sus zetas. |
+
+La katana también es un sprite (`KATANA`): mango trenzado, tsuba dorada y hoja
+con filo claro.
+
+## Interruptor de gatos
+
+El botón **Gatos** de la barra superior apaga todos los gatos y las animaciones,
+y recuerda la decisión en `localStorage`. Importante: al apagar, el contenido
+sigue visible. La clase `.no-cats` fuerza `opacity: 1` sobre los elementos que
+normalmente aparecen al hacer scroll, para que nadie se quede con una página en
+blanco.
 
 ## Sin rayas largas
 
