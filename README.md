@@ -8,19 +8,20 @@ styles.css      → paleta, layout y motion del sitio
 demos.css       → estilos de las demos interactivas
 mockups.css     → maquetas de producto (cada app con SU paleta, no la del sitio)
 main.js         → idioma, scroll-reveal, contadores, progreso, botón magnético
-cats.css        → posición y movimiento de los gatos
+katana.css      → cursor de katana y botón de efectos
 demos.js        → las 4 demos interactivas
 mockups.js      → las 3 maquetas de producto
-cats.js         → sprites pixel de los gatos y su comportamiento
+katana.js       → cursor de katana y su corte
 scenes.css      → escenarios de fondo
-scenes.js       → sakura, torii, pagoda, monte, bambú y olas
+scenes.js       → sakura, nubes, koi, grullas, crisantemos y asanoha
 assets/         → CV en PDF
 .nojekyll       → evita que GitHub Pages procese el sitio con Jekyll
 ```
 
 ## Paleta
 
-El estilo es **pixel japonés**: laca negra, carmesí y oro. Los tonos viven en
+El estilo es **japonés sobre laca negra**: sumi, carmesí y oro. La tipografía
+es pixel; los escenarios son ilustración de tinta. Los tonos viven en
 `:root` de `styles.css`:
 
 | Variable | Color | Uso |
