@@ -1,77 +1,104 @@
 /* ═══════════════════════════════════════════════
-   Escenarios de fondo, uno por sección
+   Escenarios de tinta, uno por proyecto
    ═══════════════════════════════════════════════ */
 
 .scene {
   position: absolute;
-  inset: auto 0 0 0;
-  height: clamp(180px, 30vh, 320px);
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
-  /* Se desvanecen hacia arriba para que nunca peleen con el texto */
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%, #000 100%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 55%, #000 100%);
+  overflow: visible;
 }
 .scene-svg {
-  position: absolute;
+  width: 100%; height: 100%;
+  display: block;
+  overflow: visible;
+  image-rendering: auto;   /* estas escenas ya no son pixel */
+}
+.scene [class^="capa-"] { will-change: transform; }
+
+/* ── El nombre: la rama entra por arriba a la derecha ── */
+.hero .scene {
+  inset: -40px -6% auto auto;
+  width: min(58%, 720px);
+  height: clamp(300px, 52vh, 560px);
+  -webkit-mask-image: radial-gradient(120% 100% at 78% 24%, #000 42%, transparent 78%);
+  mask-image: radial-gradient(120% 100% at 78% 24%, #000 42%, transparent 78%);
+}
+.sc-sakura { opacity: .9; }
+
+/* ── Escenas de proyecto: esquina superior derecha del caso ── */
+.case { position: relative; }
+.case > .scene {
+  inset: -54px -46px auto auto;
+  width: min(46%, 440px);
+  height: clamp(180px, 24vh, 280px);
+  -webkit-mask-image: radial-gradient(120% 110% at 88% 8%, #000 18%, rgba(0,0,0,.5) 55%, transparent 84%);
+  mask-image: radial-gradient(120% 110% at 88% 8%, #000 18%, rgba(0,0,0,.5) 55%, transparent 84%);
+}
+
+/* Cada tema con su intensidad. Se busca ambiente, no protagonismo. */
+.sc-nubes      { opacity: .72; }
+.sc-koi        { opacity: .62; }
+.sc-grullas    { opacity: .78; }
+.sc-crisantemo { opacity: .58; }
+
+/* ── Stack: trama asanoha a lo ancho ── */
+#stack > .scene {
   inset: 0;
   width: 100%; height: 100%;
-  image-rendering: pixelated;
+  -webkit-mask-image: radial-gradient(90% 70% at 50% 40%, #000 10%, transparent 72%);
+  mask-image: radial-gradient(90% 70% at 50% 40%, #000 10%, transparent 72%);
 }
+.sc-asanoha { opacity: .28; }
 
-/* Cada escena con su intensidad. Van bajas a propósito. */
-.sc-sakura { opacity: .55; }
-.sc-torii  { opacity: .26; }
-.sc-pagoda { opacity: .24; }
-.sc-monte  { opacity: .30; }
-.sc-bambu  { opacity: .22; }
-.sc-olas   { opacity: .26; }
+/* El contenido siempre por encima */
+.hero-inner, .case-side, .case-main, .section > .wrap { position: relative; z-index: 1; }
 
-/* El contenido siempre por encima del escenario */
-.case, .hero-inner, .section > .wrap { position: relative; z-index: 1; }
-.case { --z: 1; }
-
-/* La escena del caso va arriba a la derecha, a la altura del título,
-   que es donde de verdad se ve. Abajo quedaba fuera de pantalla. */
-.case > .scene {
-  inset: 0 0 auto auto;
-  width: min(42%, 380px);
-  height: clamp(130px, 20vh, 210px);
-  -webkit-mask-image: linear-gradient(240deg, #000 20%, transparent 88%);
-  mask-image: linear-gradient(240deg, #000 20%, transparent 88%);
-}
-
-/* ── Pétalos de sakura cayendo ── */
+/* ── Pétalos cayendo sobre el nombre ── */
 .petalos { position: absolute; inset: 0; overflow: hidden; }
 .petalos i {
   position: absolute;
-  top: -14px;
-  width: 5px; height: 5px;
-  background: #d4707c;
+  top: -18px;
+  width: 9px; height: 9px;
+  background: var(--crimson-lt);
+  border-radius: 62% 8% 62% 8%;
   opacity: 0;
   animation-name: caer;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-.petalos i:nth-child(3n)   { background: #ad0013; width: 4px; height: 4px; }
-.petalos i:nth-child(4n)   { background: #c9a15c; }
+.petalos i:nth-child(3n) { background: #e0697c; width: 7px; height: 7px; }
+.petalos i:nth-child(4n) { background: var(--gold-lt); }
 @keyframes caer {
-  0%   { transform: translate(0, 0) rotate(0deg);        opacity: 0; }
-  8%   { opacity: .75; }
-  50%  { transform: translate(28px, 46vh) rotate(180deg); opacity: .6; }
-  92%  { opacity: .2; }
-  100% { transform: translate(-14px, 92vh) rotate(360deg); opacity: 0; }
+  0%   { transform: translate(0,0) rotate(0deg);          opacity: 0; }
+  10%  { opacity: .8; }
+  50%  { transform: translate(34px, 44vh) rotate(200deg); opacity: .6; }
+  90%  { opacity: .18; }
+  100% { transform: translate(-18px, 86vh) rotate(400deg); opacity: 0; }
 }
-
-html.no-cats .petalos { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .petalos { display: none; }
+  .scene [class^="capa-"] { transform: none !important; }
 }
 
+@media (max-width: 1100px) {
+  .case > .scene { width: 46%; height: 200px; inset: -18px -14px auto auto; }
+}
 @media (max-width: 900px) {
-  .scene { height: clamp(140px, 22vh, 220px); }
-  .case > .scene { width: 62%; height: 130px; }
-  .sc-sakura { opacity: .40; }
+  .hero .scene {
+    inset: -20px -14% auto auto;
+    width: 76%;
+    height: clamp(230px, 34vh, 340px);
+  }
+  .sc-sakura { opacity: .55; }
+  /* En pantallas chicas la escena estorba la lectura del caso */
+  .case > .scene {
+    width: 62%; height: 150px;
+    inset: -10px -18px auto auto;
+    opacity: .5;
+  }
+}
+@media (max-width: 620px) {
+  .case > .scene { display: none; }
 }

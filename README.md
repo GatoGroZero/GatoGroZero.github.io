@@ -40,58 +40,39 @@ con la O.
 Las maquetas de producto **no** usan esta paleta: cada una conserva la de su
 app real, en los temas `.t-paystream`, `.t-paymet` y `.t-rms` de `mockups.css`.
 
-## Los gatos
+## Escenarios de tinta
 
-Son SVG generados en `cats.js`, no imágenes. Cada sprite es un arreglo de cadenas
-donde una letra es un pixel:
+Cada proyecto tiene su propio ambiente, dibujado en SVG dentro de `scenes.js`.
+No son imágenes: son paths, así que pesan poco y se ven limpios a cualquier
+tamaño.
 
-```
-.  transparente   o  contorno   b  cuerpo
-w  claro          p  rosa       e  ojo     g  brillo del ojo
-```
-
-`sprite(mapa, pelaje, tamaño)` lo convierte a `<rect>`, uniendo pixeles contiguos
-del mismo color para no generar cientos de nodos. Cambiar un gato es editar el
-dibujo ASCII, nada más. Hay cuatro:
-
-| Gato | Dónde | Qué hace |
+| Escena | Dónde | Motivo |
 |---|---|---|
-| Maneki neko | hero | Levanta y baja la pata sin parar, como el gato de la fortuna. Sostiene un koban. Al hacer clic saluda. |
-| Samurái con katana | Gestión de Solicitudes | Patrulla su franja. Si metes el cursor, va tras él. |
-| Mercader con koban | Devengo | Ronda de un lado a otro. |
-| Gato con farol | Paymet | Alumbra mientras camina. |
-| Lector con pergamino | Gestión de Recursos | Sentado, leyendo el inventario. No se mueve. |
-| Guardián | sigue al cursor | Lleva su katana. Al hacer clic desenvaina y deja un corte. |
+| `sakura` | el nombre | Rama con flores de cinco pétalos y pétalos cayendo |
+| `nubes` | Gestión de Solicitudes | Nubes japonesas en bandas, con volutas en las puntas |
+| `koi` | Devengo | Tres carpas nadando entre corrientes y remolinos |
+| `grullas` | Paymet | Luna, niebla en trazos y grullas en vuelo |
+| `crisantemo` | Gestión de Recursos | Crisantemos de tres capas de pétalos sobre sus tallos |
+| `asanoha` | Stack | Trama geométrica de hoja de cáñamo |
 
-Los sprites son de **32 píxeles**. La regla que los ordena viene del pixel art
-clásico: cada gato debe reconocerse **solo por su silueta**. Por eso el maneki
-tiene la pata en alto, el samurái los cuernos del kabuto y el lector un
-pergamino ancho.
+Cada escena se divide en tres capas (`capa-lenta`, `capa-media`, `capa-rapida`)
+que se desplazan a distinta velocidad **con el scroll**. El movimiento nunca es
+en bucle: la guía de UX que se consultó es explícita en que las animaciones
+infinitas decorativas distraen. Si el usuario no se mueve, la escena tampoco.
 
-## Escenarios
+Todas van detrás del contenido (`z-index: 0` contra `1`) y con una máscara que
+las desvanece antes de llegar al texto.
 
-Cada sección tiene su ambiente, dibujado con rectángulos igual que los gatos:
+## La katana
 
-| Sección | Escena |
-|---|---|
-| Nombre | Rama de sakura con pétalos cayendo |
-| Gestión de Solicitudes | Torii |
-| Devengo | Pagoda |
-| Paymet | Monte y luna |
-| Gestión de Recursos | Bambú |
-| Stack | Olas seigaiha |
+El cursor es una katana (`katana.js`). Sigue al puntero con un retraso suave,
+gira al hacer clic y deja una estela en diagonal con unos pétalos saltando.
+Se oculta sola en pantallas táctiles, en móvil y con `prefers-reduced-motion`.
 
-Van a opacidad baja y con una máscara que los desvanece, para ambientar sin
-estorbar la lectura. Si tocas `scenes.js`, ojo con `preserveAspectRatio`: con
-`slice` el dibujo se recorta y solo se ve una franja.
-
-## Interruptor de gatos
-
-El botón **Gatos** de la barra superior apaga todos los gatos y las animaciones,
-y recuerda la decisión en `localStorage`. Importante: al apagar, el contenido
-sigue visible. La clase `.no-cats` fuerza `opacity: 1` sobre los elementos que
-normalmente aparecen al hacer scroll, para que nadie se quede con una página en
-blanco.
+El botón **Efectos** de la barra superior apaga la katana y los pétalos, y lo
+recuerda en `localStorage`. Importante: al apagar, el contenido sigue visible.
+La clase `.no-cats` fuerza `opacity: 1` sobre lo que normalmente aparece al
+hacer scroll, para que nadie se quede con una página en blanco.
 
 ## Sin rayas largas
 
