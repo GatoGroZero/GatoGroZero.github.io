@@ -17,11 +17,11 @@ function off() {
 }
 
 var COATS = {
-  naranja: { b:"#d98b3f", d:"#b06a26", w:"#f6e3c4", o:"#141412", i:"#e08f96", p:"#c96a72", k:"#e0868e", e:"#141412", g:"#ffffff", r:"#ad0013" },
-  tinta:   { b:"#4a4a46", d:"#333330", w:"#d8d2c6", o:"#0e0e0d", i:"#c97f86", p:"#c96a72", k:"#a86a70", e:"#c9a15c", g:"#ffffff", r:"#ad0013" },
-  hueso:   { b:"#e6ddcc", d:"#c2b7a2", w:"#fdf8ee", o:"#141412", i:"#e08f96", p:"#c96a72", k:"#e0a0a6", e:"#141412", g:"#ffffff", r:"#ad0013" },
-  humo:    { b:"#9a968e", d:"#7a766f", w:"#e2ded6", o:"#141412", i:"#d0868d", p:"#c96a72", k:"#c98a90", e:"#141412", g:"#ffffff", r:"#ad0013" },
-  carmin:  { b:"#8c3038", d:"#6b222a", w:"#e8d5c8", o:"#140e0e", i:"#e0a0a6", p:"#e8d5c8", k:"#b05a60", e:"#c9a15c", g:"#ffffff", r:"#c9a15c" }
+  naranja: { b:"#d98b3f", d:"#b06a26", w:"#f6e3c4", o:"#141412", i:"#e08f96", p:"#c96a72", k:"#e0868e", e:"#141412", g:"#c9a15c", r:"#ad0013", s:"#d8cdb4", a:"#24251f", h:"#1b1c19", n:"#2a2118", c:"#6b4a2a", v:"#6b2028", f:"#e8c86a" },
+  tinta:   { b:"#4a4a46", d:"#333330", w:"#d8d2c6", o:"#0e0e0d", i:"#c97f86", p:"#c96a72", k:"#a86a70", e:"#c9a15c", g:"#c9a15c", r:"#ad0013", s:"#d8cdb4", a:"#24251f", h:"#1b1c19", n:"#2a2118", c:"#6b4a2a", v:"#6b2028", f:"#e8c86a" },
+  hueso:   { b:"#e6ddcc", d:"#c2b7a2", w:"#fdf8ee", o:"#141412", i:"#e08f96", p:"#c96a72", k:"#e0a0a6", e:"#141412", g:"#c9a15c", r:"#ad0013", s:"#d8cdb4", a:"#24251f", h:"#1b1c19", n:"#2a2118", c:"#6b4a2a", v:"#6b2028", f:"#e8c86a" },
+  humo:    { b:"#9a968e", d:"#7a766f", w:"#e2ded6", o:"#141412", i:"#d0868d", p:"#c96a72", k:"#c98a90", e:"#141412", g:"#c9a15c", r:"#ad0013", s:"#d8cdb4", a:"#24251f", h:"#1b1c19", n:"#2a2118", c:"#6b4a2a", v:"#6b2028", f:"#e8c86a" },
+  carmin:  { b:"#8c3038", d:"#6b222a", w:"#e8d5c8", o:"#140e0e", i:"#e0a0a6", p:"#e8d5c8", k:"#b05a60", e:"#c9a15c", g:"#c9a15c", r:"#c9a15c", s:"#d8cdb4", a:"#24251f", h:"#1b1c19", n:"#2a2118", c:"#6b4a2a", v:"#6b2028", f:"#e8c86a" }
 };
 
 /* ── Gato sentado de frente. Cabeza ancha, cachetes y cola curva ── */
@@ -97,6 +97,140 @@ var KATANA = [
   "...................................."
 ];
 
+
+/* ═══════════════════════════════════════════════════════════════
+   Sprites de 32 pixeles. Regla de oro del pixel art: cada gato
+   debe reconocerse por su silueta. Maneki = pata en alto.
+   Samurai = cuernos del kabuto. Lector = pergamino ancho.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Maneki neko: gato de la fortuna, saluda con la pata ── */
+var MANEKI = [
+  "........................oo......",
+  "..oo.........oo........obbo.....",
+  ".obbo.......obbo......obbbbo....",
+  ".obiibo....obiibo.....obbbbo....",
+  ".obiiiboooobiiibo.....obbbbo....",
+  "obbbbbbbbbbbbbbbbo....obbbbo....",
+  "obbbbbbbbbbbbbbbbo....obbbbo....",
+  "obbbeebbbbbbeebbbo....obbbbo....",
+  "obbbeebbbbbbeebbbo..obbbbo......",
+  "obkkbbbbppbbbbkkbo..obbbo.......",
+  "obbbbbwwwwwwbbbbbo.obbbo........",
+  ".obbbbwwwwwwbbbbobbbbo..........",
+  "..obbbbbbbbbbbbobbbo............",
+  "..orrrrrrrrrrrroo...............",
+  "..orrrgggrrrrrro................",
+  "...obbbbbbbbbbo.................",
+  "...obbbbbbbbbbo.................",
+  "...obggggggggbo.................",
+  "...obgnngnnngbo.................",
+  "...obgnngnnngbo.................",
+  "...obggggggggbo.................",
+  "...obbbbbbbbbbo.................",
+  "..obbbbbbbbbbbbo................",
+  "..obbwwwwwwwwbbo................",
+  "..obbwwwwwwwwbbo................",
+  "..obbbwwwwwwbbbo................",
+  "..oobbbbbbbbbboo................",
+  "...oooooooooooo................."
+];
+var MANEKI_DOWN = MANEKI.slice();
+MANEKI_DOWN[0]  = "................................";
+MANEKI_DOWN[1]  = "..oo.........oo.................";
+MANEKI_DOWN[2]  = ".obbo.......obbo................";
+MANEKI_DOWN[3]  = ".obiibo....obiibo...............";
+MANEKI_DOWN[4]  = ".obiiiboooobiiibo...............";
+MANEKI_DOWN[5]  = "obbbbbbbbbbbbbbbbo..............";
+MANEKI_DOWN[6]  = "obbbbbbbbbbbbbbbbo....oo........";
+MANEKI_DOWN[7]  = "obbbeebbbbbbeebbbo...obbo.......";
+MANEKI_DOWN[8]  = "obbbeebbbbbbeebbbo...obbbo......";
+MANEKI_DOWN[9]  = "obkkbbbbppbbbbkkbo...obbbo......";
+MANEKI_DOWN[10] = "obbbbbwwwwwwbbbbbo...obbbo......";
+MANEKI_DOWN[11] = ".obbbbwwwwwwbbbbo...obbbo.......";
+MANEKI_DOWN[12] = "..obbbbbbbbbbbbo...obbo.........";
+
+/* ── Gato samurai: kabuto con cuernos y katana al costado ── */
+var SAMURAI = [
+  "....o..........o................",
+  "....oo........oo................",
+  ".....oo......oo.................",
+  "......oooooooo..................",
+  "...oohhhhhhhhhhoo...............",
+  "..ohhhhhhggghhhhhho.............",
+  "..ohhhhhhhhhhhhhhho.............",
+  "..ohhoobbbbbbbboohho............",
+  "...oobbbbbbbbbbbboo.............",
+  "....obbeebbbbeebbo.............s",
+  "....obkbbbppbbbkbo............s.",
+  "....obbbwwwwwwbbbo...........s..",
+  ".....obbbbbbbbbbo...........s...",
+  "....oaaaaaaaaaaaao.........s....",
+  "....oarrrrrrrrrrao........s.....",
+  "....oaagggggggaaao.......s......",
+  "....oaaaaaaaaaaaao......st......",
+  ".....oaaaaaaaaaao......hh.......",
+  ".....oaaaaaaaaaao.....hh........",
+  ".....oaabbbbbbaao...............",
+  ".....oaa.oooo.aao...............",
+  ".....ooo......ooo..............."
+];
+var SAMURAI_B = SAMURAI.slice();
+SAMURAI_B[19] = ".....oabbbbbbbbao...............";
+SAMURAI_B[20] = "....oaa.oo..oo.aao..............";
+SAMURAI_B[21] = "....ooo........ooo..............";
+
+/* ── Gato lector: sentado sobre cojin con un pergamino ── */
+var LECTOR = [
+  "................................",
+  "..oo.........oo.................",
+  ".obbo.......obbo................",
+  ".obiibo....obiibo...............",
+  ".obiiiboooobiiibo...............",
+  "obbbbbbbbbbbbbbbbo..............",
+  "obbbeebbbbbbeebbbo..............",
+  "obkkbbbbppbbbbkkbo..............",
+  "obbbbbwwwwwwbbbbbo..............",
+  ".obbbbbbbbbbbbbbo...............",
+  "..okkkkkkkkkkkko................",
+  ".ooooooooooooooooooooooooooo....",
+  ".ocsssssssssssssssssssssssco....",
+  ".ocsnnnnsnnnnsnnnnsnnnnsssco....",
+  ".ocsssssssssssssssssssssssco....",
+  ".ocsnnnnnsnnnnsnnnnnsnnnssco....",
+  ".ocsssssssssssssssssssssssco....",
+  ".ooooooooooooooooooooooooooo....",
+  "..obbbbbbbbbbbbbbbbo...........",
+  "..ovvvvvvvvvvvvvvvvvo..........",
+  ".ovvvvvvvvvvvvvvvvvvvo.........",
+  ".ooooooooooooooooooooo.........."
+];
+
+/* ── Gato mercader: sostiene un koban ── */
+var KOBAN = MANEKI_DOWN.slice();
+
+/* ── Gato con farol ── */
+var FAROL = [
+  "................................",
+  "..oo.........oo.................",
+  ".obbo.......obbo................",
+  ".obiibo....obiibo...ooo.........",
+  ".obiiiboooobiiibo..o...o........",
+  "obbbbbbbbbbbbbbbbo.offfo........",
+  "obbbeebbbbbbeebbbo.ofnfo........",
+  "obkkbbbbppbbbbkkbo.ofnfo........",
+  "obbbbbwwwwwwbbbbbo.offfo........",
+  ".obbbbbbbbbbbbbbo..ooooo........",
+  "..orrrrrrrrrrrroboo.o...........",
+  "..obbbbbbbbbbbbobbo.............",
+  "..obbbbbbbbbbbbbo...............",
+  "..obbwwwwwwwwwbbo...............",
+  "..obbwwwwwwwwwbbo...............",
+  "..obbbwwwwwwwbbbo...............",
+  "..oobbbbbbbbbbboo...............",
+  "...ooooooooooooo................"
+];
+
 /* ── Sprite a SVG, uniendo pixeles contiguos ── */
 function sprite(map, coat, px, cls) {
   var w = 0, i, j;
@@ -125,36 +259,24 @@ var STEEL = { s:"#c9c6bc", c:"#f4f1e8", t:"#c9a15c", h:"#3a2620", x:"#8c5a4a", o
 function heroCat() {
   var host = document.querySelector("[data-cat=hero]");
   if (!host) return;
-  var coat = COATS.naranja, px = 6;
+  var coat = COATS.hueso, px = 5;
 
   host.innerHTML =
     '<div class="cat-hero-wrap">' +
-      '<div class="cat-bubble" hidden>ニャー</div>' +
-      '<div class="cat-body">' + sprite(SIT, coat, px) + "</div>" +
+      '<div class="cat-bubble" hidden>いらっしゃい</div>' +
+      '<div class="cat-body">' + sprite(MANEKI, coat, px) + "</div>" +
     "</div>";
 
   var body = host.querySelector(".cat-body"), bubble = host.querySelector(".cat-bubble");
-  var open = sprite(SIT, coat, px), shut = sprite(SIT_BLINK, coat, px), paw = sprite(SIT_PAW, coat, px);
+  var up = sprite(MANEKI, coat, px), down = sprite(MANEKI_DOWN, coat, px);
 
-  (function loop() {
-    setTimeout(function () {
-      if (!off()) {
-        body.innerHTML = shut;
-        setTimeout(function () { if (!off()) body.innerHTML = open; }, 150);
-      }
-      loop();
-    }, 2600 + Math.random() * 4200);
-  })();
-
-  /* Estira la pata cuando el cursor pasa cerca */
-  if (!touch) document.addEventListener("mousemove", function (e) {
+  /* El maneki saluda: la pata sube y baja sin parar */
+  var arriba = true;
+  setInterval(function () {
     if (off()) return;
-    var r = host.getBoundingClientRect();
-    var near = e.clientX > r.left - 130 && e.clientX < r.right + 130 &&
-               e.clientY > r.top - 130 && e.clientY < r.bottom + 130;
-    if (near && body._s !== "paw") { body._s = "paw"; body.innerHTML = paw; }
-    else if (!near && body._s === "paw") { body._s = ""; body.innerHTML = open; }
-  }, { passive: true });
+    arriba = !arriba;
+    body.innerHTML = arriba ? up : down;
+  }, 620);
 
   function react() {
     if (!off()) {
@@ -237,46 +359,49 @@ function cursorCat() {
 
 /* ═══════════ 3. Un gato por proyecto, cada uno con lo suyo ═══════════ */
 function sceneCats() {
-  var hosts = document.querySelectorAll("[data-cat=scene]");
-  var coats = [COATS.naranja, COATS.tinta, COATS.humo, COATS.carmin];
+  var ELENCO = {
+    samurai: { mapas: [SAMURAI, SAMURAI_B], pelaje: "hueso", anda: true },
+    koban:   { mapas: [KOBAN, MANEKI],      pelaje: "naranja", anda: true },
+    farol:   { mapas: [FAROL],              pelaje: "tinta",   anda: true },
+    lector:  { mapas: [LECTOR],             pelaje: "humo",    anda: false }
+  };
 
-  hosts.forEach(function (host, idx) {
-    var coat = coats[idx % coats.length], px = 3;
-    var act = host.getAttribute("data-act") || "walk";
-    host.innerHTML = '<div class="cat-scene">' + sprite(WALK_A, coat, px) + "</div>";
+  document.querySelectorAll("[data-cat=scene]").forEach(function (host) {
+    var papel = ELENCO[host.getAttribute("data-act")] || ELENCO.samurai;
+    var coat = COATS[papel.pelaje], px = 3;
+    var cuadros = papel.mapas.map(function (m) { return sprite(m, coat, px); });
+
+    host.innerHTML = '<div class="cat-scene">' + cuadros[0] + "</div>";
     var el = host.querySelector(".cat-scene");
-    var a = sprite(WALK_A, coat, px), b = sprite(WALK_B, coat, px);
-    var sit = sprite(SIT, coat, px), sleep = sprite(SLEEP, coat, px), crouch = sprite(CROUCH, coat, px);
 
-    if (act === "sleep") { el.innerHTML = sleep; return; }
-    if (act === "sit")   { el.innerHTML = sit; }
+    /* El lector se queda sentado leyendo, no camina */
+    if (!papel.anda) { el.classList.add("quieto"); return; }
 
-    var x = 0, dir = 1, frame = 0, chasing = false;
+    var x = 10, dir = 1, i = 0, persiguiendo = 0;
 
-    /* Persigue el cursor cuando pasa por encima de su franja */
+    /* Si el cursor entra a su franja, va tras él */
     if (!touch) host.addEventListener("mousemove", function (e) {
       if (off()) return;
-      chasing = true;
       var r = host.getBoundingClientRect();
-      var target = e.clientX - r.left - 30;
-      x += (target - x) * 0.18;
-      dir = target > x ? 1 : -1;
-      el.innerHTML = crouch;
-      el.style.transform = "translateX(" + x.toFixed(0) + "px) scaleX(" + dir + ")";
-      clearTimeout(host._c);
-      host._c = setTimeout(function () { chasing = false; }, 900);
+      var meta = e.clientX - r.left - 40;
+      dir = meta > x ? 1 : -1;
+      x += (meta - x) * 0.16;
+      persiguiendo = 30;
     }, { passive: true });
 
     setInterval(function () {
-      if (off() || chasing || act === "sit") return;
-      var w = host.clientWidth || 300;
-      x += dir * 2.4;
-      if (x > w - 80) dir = -1;
-      if (x < 0) dir = 1;
-      frame++;
-      el.innerHTML = frame % 2 ? a : b;
+      if (off()) return;
+      var ancho = (host.clientWidth || 320) - 100;
+      if (ancho < 60) ancho = 60;
+      if (persiguiendo > 0) persiguiendo--;
+      else {
+        x += dir * 2.2;
+        if (x > ancho) { x = ancho; dir = -1; }
+        if (x < 0) { x = 0; dir = 1; }
+      }
+      if (cuadros.length > 1) el.innerHTML = cuadros[(++i) % cuadros.length];
       el.style.transform = "translateX(" + x.toFixed(0) + "px) scaleX(" + dir + ")";
-    }, 130);
+    }, 150);
   });
 }
 

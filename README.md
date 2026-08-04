@@ -12,6 +12,8 @@ cats.css        → posición y movimiento de los gatos
 demos.js        → las 4 demos interactivas
 mockups.js      → las 3 maquetas de producto
 cats.js         → sprites pixel de los gatos y su comportamiento
+scenes.css      → escenarios de fondo
+scenes.js       → sakura, torii, pagoda, monte, bambú y olas
 assets/         → CV en PDF
 .nojekyll       → evita que GitHub Pages procese el sitio con Jekyll
 ```
@@ -54,13 +56,34 @@ dibujo ASCII, nada más. Hay cuatro:
 
 | Gato | Dónde | Qué hace |
 |---|---|---|
-| Naranja | hero | Parpadea solo y estira la pata cuando el cursor se acerca. Al hacer clic salta y maúlla. También responde con teclado. |
-| Hueso | sigue al cursor | Va detrás del puntero con su katana. Al hacer clic desenvaina y deja un corte. Se agazapa cuando te detienes. |
-| Uno por proyecto | franja sobre cada caso | Cada uno tiene su acción: perseguir el cursor, ir y venir, dormir o vigilar. |
-| Tinta | pie de página | Duerme con sus zetas. |
+| Maneki neko | hero | Levanta y baja la pata sin parar, como el gato de la fortuna. Sostiene un koban. Al hacer clic saluda. |
+| Samurái con katana | Gestión de Solicitudes | Patrulla su franja. Si metes el cursor, va tras él. |
+| Mercader con koban | Devengo | Ronda de un lado a otro. |
+| Gato con farol | Paymet | Alumbra mientras camina. |
+| Lector con pergamino | Gestión de Recursos | Sentado, leyendo el inventario. No se mueve. |
+| Guardián | sigue al cursor | Lleva su katana. Al hacer clic desenvaina y deja un corte. |
 
-La katana también es un sprite (`KATANA`): mango trenzado, tsuba dorada y hoja
-con filo claro.
+Los sprites son de **32 píxeles**. La regla que los ordena viene del pixel art
+clásico: cada gato debe reconocerse **solo por su silueta**. Por eso el maneki
+tiene la pata en alto, el samurái los cuernos del kabuto y el lector un
+pergamino ancho.
+
+## Escenarios
+
+Cada sección tiene su ambiente, dibujado con rectángulos igual que los gatos:
+
+| Sección | Escena |
+|---|---|
+| Nombre | Rama de sakura con pétalos cayendo |
+| Gestión de Solicitudes | Torii |
+| Devengo | Pagoda |
+| Paymet | Monte y luna |
+| Gestión de Recursos | Bambú |
+| Stack | Olas seigaiha |
+
+Van a opacidad baja y con una máscara que los desvanece, para ambientar sin
+estorbar la lectura. Si tocas `scenes.js`, ojo con `preserveAspectRatio`: con
+`slice` el dibujo se recorta y solo se ve una franja.
 
 ## Interruptor de gatos
 
