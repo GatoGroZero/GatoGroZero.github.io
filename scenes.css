@@ -24,7 +24,7 @@
   -webkit-mask-image: radial-gradient(120% 100% at 78% 24%, #000 42%, transparent 78%);
   mask-image: radial-gradient(120% 100% at 78% 24%, #000 42%, transparent 78%);
 }
-.sc-sakura { opacity: .9; }
+.sc-hero { opacity: .95; }
 
 /* ── Escenas de proyecto: esquina superior derecha del caso ── */
 .case { position: relative; }
@@ -37,10 +37,10 @@
 }
 
 /* Cada tema con su intensidad. Se busca ambiente, no protagonismo. */
-.sc-nubes      { opacity: .72; }
-.sc-koi        { opacity: .62; }
-.sc-grullas    { opacity: .78; }
-.sc-crisantemo { opacity: .58; }
+.sc-alta   { opacity: .85; }
+.sc-oro    { opacity: .8; }
+.sc-mixta  { opacity: .85; }
+.sc-palida { opacity: .78; }
 
 /* ── Stack: trama asanoha a lo ancho ── */
 #stack > .scene {
@@ -49,7 +49,7 @@
   -webkit-mask-image: radial-gradient(90% 70% at 50% 40%, #000 10%, transparent 72%);
   mask-image: radial-gradient(90% 70% at 50% 40%, #000 10%, transparent 72%);
 }
-.sc-asanoha { opacity: .28; }
+.sc-ancha { opacity: .5; }
 
 /* El contenido siempre por encima */
 .hero-inner, .case-side, .case-main, .section > .wrap { position: relative; z-index: 1; }
@@ -91,7 +91,7 @@
     width: 76%;
     height: clamp(230px, 34vh, 340px);
   }
-  .sc-sakura { opacity: .55; }
+  .sc-hero { opacity: .6; }
   /* En pantallas chicas la escena estorba la lectura del caso */
   .case > .scene {
     width: 62%; height: 150px;
@@ -102,3 +102,6 @@
 @media (max-width: 620px) {
   .case > .scene { display: none; }
 }
+
+/* En las escenas de proyecto los pétalos son un guiño, no una lluvia */
+.petalos-poco i { width: 6px; height: 6px; opacity: 0; }

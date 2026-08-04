@@ -30,9 +30,9 @@ html.no-cats .reveal, html.no-cats [data-enter], html.no-cats .display .ln > spa
 .kat {
   position: absolute;
   /* La punta de la hoja queda justo sobre el puntero */
-  left: -60px; top: -78px;
+  left: -41px; top: -53px;
   filter: drop-shadow(0 3px 6px rgba(0,0,0,.7));
-  transform-origin: 60px 92px;   /* pivota en la empuñadura */
+  transform-origin: 41px 63px;   /* pivota en la empuñadura */
   transition: transform .3s var(--ease);
   image-rendering: auto;
 }

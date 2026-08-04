@@ -19,7 +19,7 @@ function off() {
 
 /* La hoja: filo claro, tsuba dorada y mango trenzado */
 host.innerHTML =
-  '<svg class="kat" viewBox="0 0 120 120" width="120" height="120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+  '<svg class="kat" viewBox="0 0 120 120" width="82" height="82" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
     '<g transform="rotate(-45 60 60)">' +
       /* hoja */
       '<path d="M60 8 L66 16 L66 74 L60 80 L54 74 L54 16 Z" fill="#e8e4d8"/>' +

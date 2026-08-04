@@ -11,11 +11,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Maru+Gothic:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1785882459">
-<link rel="stylesheet" href="scenes.css?v=1785882459">
-<link rel="stylesheet" href="katana.css?v=1785882459">
-<link rel="stylesheet" href="demos.css?v=1785882459">
-<link rel="stylesheet" href="mockups.css?v=1785882459">
+<link rel="stylesheet" href="styles.css?v=1785885522">
+<link rel="stylesheet" href="scenes.css?v=1785885522">
+<link rel="stylesheet" href="katana.css?v=1785885522">
+<link rel="stylesheet" href="demos.css?v=1785885522">
+<link rel="stylesheet" href="mockups.css?v=1785885522">
 <meta name="theme-color" content="#121312">
 </head>
 <body>
@@ -29,6 +29,7 @@
     <a href="#work"><span data-es>Trabajo</span><span data-en>Work</span></a>
     <a href="#stack">Stack</a>
     <a href="#about"><span data-es>Perfil</span><span data-en>About</span></a>
+    <a href="#formacion"><span data-es>Formación</span><span data-en>Education</span></a>
     <a href="#contact"><span data-es>Contacto</span><span data-en>Contact</span></a>
   </nav>
   <div class="topbar-right">
@@ -59,17 +60,21 @@
     </h1>
 
     <p class="lede" data-enter style="--d:4">
-      <span data-es>Desarrollador <em>Full Stack</em>. Construyo sistemas completos, desde el modelo de datos hasta la interfaz que la gente usa todos los días. Java y Spring Boot del lado del servidor, React y Next.js del lado del cliente, Flutter cuando hace falta móvil.</span>
-      <span data-en><em>Full Stack</em> developer. I build complete systems, from the data model to the interface people use every day. Java and Spring Boot on the server, React and Next.js on the client, Flutter when mobile is needed.</span>
+      <span data-es>Desarrollador de <em>software multiplataforma</em>. Construyo el sistema completo: la base de datos, la API que la alimenta y la pantalla que la gente usa. Web con React y Next.js, servidor con Java y Spring Boot, móvil con Flutter y Kotlin.</span>
+      <span data-en><em>Multiplatform software</em> developer. I build the whole system: the database, the API that feeds it and the screen people actually use. Web with React and Next.js, server with Java and Spring Boot, mobile with Flutter and Kotlin.</span>
     </p>
 
     <div class="hero-cta" data-enter style="--d:5">
       <a class="btn btn-primary" href="#work">
-        <span data-es>Ver casos de estudio</span><span data-en>View case studies</span>
+        <span data-es>Ver proyectos</span><span data-en>View projects</span>
       </a>
       <a class="btn btn-ghost" href="assets/CV_Luis_Castelar.pdf" download>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
         <span data-es>Descargar CV</span><span data-en>Download CV</span>
+      </a>
+      <a class="btn btn-ghost" href="#contact">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7l9 6 9-6M3 7v10h18V7H3z"/></svg>
+        <span data-es>Contactarme</span><span data-en>Get in touch</span>
       </a>
     </div>
 
@@ -95,7 +100,7 @@
     <span class="blob blob-3"></span>
   </div>
 
-  <div data-scene="sakura" aria-hidden="true"></div>
+  <div data-scene="hero" aria-hidden="true"></div>
 </section>
 
 <!-- ══════════ NOTE ══════════ -->
@@ -121,7 +126,7 @@
 
     <!-- ─── CASE 1 ─── -->
     <article class="case">
-      <div data-scene="nubes" aria-hidden="true"></div>
+      <div data-scene="ramaAlta" aria-hidden="true"></div>
       <div class="case-side">
         <span class="case-tag case-tag-live"><span data-es>En producción</span><span data-en>In production</span></span>
         <p class="case-org">Universidad Autónoma del Estado de Morelos</p>
@@ -140,6 +145,12 @@
           <span data-es>Una universidad manejaba las solicitudes de servicio de sus estudiantes en papel y hojas de cálculo dispersas. No había trazabilidad: nadie sabía en qué estado estaba una solicitud, quién la había aprobado, ni cómo generar el reporte mensual sin transcribir a mano.</span>
           <span data-en>A university was handling student service requests on paper and scattered spreadsheets. There was no traceability: nobody knew a request's status, who approved it, or how to produce the monthly report without transcribing by hand.</span>
         </p>
+
+        <div class="clave">
+          <div class="clave-i"><span class="clave-k"><span data-es>Reto</span><span data-en>Challenge</span></span><p><span data-es>El trámite vivía en papel y hojas de cálculo sueltas. Nadie sabía en qué estado estaba una solicitud ni quién la había aprobado.</span><span data-en>The process lived on paper and scattered spreadsheets. Nobody knew a request's status or who had approved it.</span></p></div>
+          <div class="clave-i"><span class="clave-k"><span data-es>Solución</span><span data-en>Solution</span></span><p><span data-es>Un flujo con cuatro perfiles donde cada paso queda registrado con su responsable y su fecha, más exportación automática del reporte.</span><span data-en>A four-role workflow where every step is recorded with its owner and date, plus automatic report export.</span></p></div>
+          <div class="clave-i clave-res"><span class="clave-k"><span data-es>Resultado</span><span data-en>Result</span></span><p><span data-es>El reporte mensual pasó de días de transcripción a un clic. El sistema está en producción y da servicio a cuatro áreas de la universidad.</span><span data-en>The monthly report went from days of transcription to one click. The system is in production, serving four university areas.</span></p></div>
+        </div>
 
         <h4><span data-es>Lo que hace</span><span data-en>What it does</span></h4>
         <ul class="bullets">
@@ -176,7 +187,7 @@
 
     <!-- ─── CASE 2 ─── -->
     <article class="case">
-      <div data-scene="koi" aria-hidden="true"></div>
+      <div data-scene="ramaOro" aria-hidden="true"></div>
       <div class="case-side">
         <span class="case-tag case-tag-open"><span data-es>Hackathon</span><span data-en>Hackathon</span></span>
         <p class="case-org">Track Genesis · Hack + Alebrije</p>
@@ -195,6 +206,12 @@
           <span data-es>Un trabajador que ya generó su salario no debería esperar a la quincena para acceder a él, ni recurrir a préstamos con intereses abusivos. El reto era construir la plataforma que permite ese adelanto, con sus reglas de negocio, controles de riesgo y liquidación, en el tiempo de un hackathon.</span>
           <span data-en>A worker who has already earned their wages shouldn't wait for payday to access them, nor turn to predatory loans. The challenge: build the platform enabling that advance, with its business rules, risk controls and settlement, within a hackathon's timeframe.</span>
         </p>
+
+        <div class="clave">
+          <div class="clave-i"><span class="clave-k"><span data-es>Reto</span><span data-en>Challenge</span></span><p><span data-es>Construir una plataforma de adelanto de salario completa, con sus reglas, controles de riesgo y liquidación, en el tiempo de un hackathon.</span><span data-en>Build a complete earned wage platform, with its rules, risk controls and settlement, within a hackathon's timeframe.</span></p></div>
+          <div class="clave-i"><span class="clave-k"><span data-es>Solución</span><span data-en>Solution</span></span><p><span data-es>Aislé el cálculo del devengado en un módulo consumido igual por la web y el móvil, delegué la identidad en Keycloak y contenericé el entorno.</span><span data-en>I isolated the accrual calculation in one module consumed alike by web and mobile, delegated identity to Keycloak and containerized the environment.</span></p></div>
+          <div class="clave-i clave-res"><span class="clave-k"><span data-es>Resultado</span><span data-en>Result</span></span><p><span data-es>Al cierre del hackathon corrían el portal web, la app móvil y los contratos en la red de pruebas de Stellar.</span><span data-en>By the end of the hackathon the web portal, the mobile app and the contracts on Stellar's testnet were all running.</span></p></div>
+        </div>
 
         <h4><span data-es>Lo que construí</span><span data-en>What I built</span></h4>
         <ul class="bullets">
@@ -226,7 +243,7 @@
 
     <!-- ─── CASE 3 ─── -->
     <article class="case">
-      <div data-scene="grullas" aria-hidden="true"></div>
+      <div data-scene="ramaMixta" aria-hidden="true"></div>
       <div class="case-side">
         <span class="case-tag"><span data-es>Multiplataforma</span><span data-en>Multiplatform</span></span>
         <p class="case-org">Paymet Bienestar</p>
@@ -244,6 +261,12 @@
           <span data-es>Mucha gente llega a fin de quincena sin haber apartado un peso, no por falta de voluntad sino porque ahorrar exige una decisión activa cada vez. Paymet le da la vuelta: la empresa ofrece el ahorro como prestación, el trabajador fija una meta y la aportación sale sola de su nómina. El reto técnico venía después, porque el producto tiene tres caras (API, app móvil y panel de recursos humanos) y las reglas del dinero no podían escribirse tres veces.</span>
           <span data-en>Plenty of people reach payday without having set aside a peso, not for lack of will but because saving demands an active decision every time. Paymet flips that: the company offers savings as a benefit, the worker sets a goal, and the contribution comes out of payroll automatically. The technical challenge came next, because the product has three faces (API, mobile app and HR dashboard) and the money rules could not be written three times.</span>
         </p>
+
+        <div class="clave">
+          <div class="clave-i"><span class="clave-k"><span data-es>Reto</span><span data-en>Challenge</span></span><p><span data-es>Tres superficies distintas (API, app móvil y panel de recursos humanos) que debían compartir las mismas reglas de dinero sin duplicarlas.</span><span data-en>Three distinct surfaces (API, mobile app and HR dashboard) that had to share the same money rules without duplicating them.</span></p></div>
+          <div class="clave-i"><span class="clave-k"><span data-es>Solución</span><span data-en>Solution</span></span><p><span data-es>Una API REST en Kotlin como único punto de verdad, y Flutter para cubrir Android e iOS con un solo código.</span><span data-en>A Kotlin REST API as the single source of truth, and Flutter to cover Android and iOS from one codebase.</span></p></div>
+          <div class="clave-i clave-res"><span class="clave-k"><span data-es>Resultado</span><span data-en>Result</span></span><p><span data-es>El esquema de datos y los scripts de infraestructura quedaron versionados junto al código, así que el despliegue es reproducible por cualquiera del equipo.</span><span data-en>The data schema and infrastructure scripts ended up versioned alongside the code, so any team member can reproduce the deployment.</span></p></div>
+        </div>
 
         <ul class="bullets">
           <li><span data-es><b>Backend en Kotlin</b> con Gradle, exponiendo una API REST como único punto de verdad para las tres superficies.</span><span data-en><b>Kotlin backend</b> with Gradle, exposing a REST API as the single point of truth for all three surfaces.</span></li>
@@ -263,7 +286,7 @@
 
     <!-- ─── CASE 4 ─── -->
     <article class="case">
-      <div data-scene="crisantemo" aria-hidden="true"></div>
+      <div data-scene="ramaPalida" aria-hidden="true"></div>
       <div class="case-side">
         <span class="case-tag"><span data-es>Front End</span><span data-en>Front End</span></span>
         <p class="case-org">Centro de Desarrollo de Software UTEZ</p>
@@ -281,6 +304,12 @@
           <span data-es>El centro de desarrollo presta equipo caro a estudiantes y docentes: proyectores, kits de robótica, laptops, cámaras. El control vivía en libretas y hojas de cálculo, así que nadie sabía con certeza quién tenía qué ni desde cuándo, y cada semestre se perdía material. El sistema pone ese inventario en un solo lugar, con préstamos fechados y alertas de vencimiento. Fue además mi primer proyecto formal en equipo.</span>
           <span data-en>The development center lends expensive gear to students and faculty: projectors, robotics kits, laptops, cameras. Tracking lived in notebooks and spreadsheets, so nobody knew for sure who had what or since when, and equipment went missing every semester. The system puts that inventory in one place, with dated loans and overdue alerts. It was also my first formal team project.</span>
         </p>
+
+        <div class="clave">
+          <div class="clave-i"><span class="clave-k"><span data-es>Reto</span><span data-en>Challenge</span></span><p><span data-es>Entré a una base de código con estilos duplicados y componentes que hacían casi lo mismo.</span><span data-en>I joined a codebase with duplicated styles and components doing nearly the same thing.</span></p></div>
+          <div class="clave-i"><span class="clave-k"><span data-es>Solución</span><span data-en>Solution</span></span><p><span data-es>Refactoricé hacia un sistema de componentes reutilizables con estilos estandarizados, con ramas por funcionalidad y revisiones en equipo.</span><span data-en>I refactored into a reusable component system with standardized styles, using feature branches and team code reviews.</span></p></div>
+          <div class="clave-i clave-res"><span class="clave-k"><span data-es>Resultado</span><span data-en>Result</span></span><p><span data-es>Menos código duplicado y una base que el siguiente desarrollador puede mantener sin descifrarla. Fue mi primer proyecto formal en equipo.</span><span data-en>Less duplicated code and a base the next developer can maintain without deciphering it. It was my first formal team project.</span></p></div>
+        </div>
 
         <ul class="bullets">
           <li><span data-es><b>Refactorización a componentes reutilizables</b> con estilos estandarizados, reduciendo el código duplicado y facilitando el mantenimiento para quien viniera después.</span><span data-en><b>Refactor into reusable components</b> with standardized styles, cutting duplicated code and easing maintenance for whoever came next.</span></li>
@@ -331,7 +360,7 @@
 
 <!-- ══════════ STACK ══════════ -->
 <section id="stack" class="section section-alt">
-  <div data-scene="asanoha" aria-hidden="true"></div>
+  <div data-scene="ramaAncha" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">02</span>
@@ -463,10 +492,55 @@
   </div>
 </section>
 
+
+<!-- ══════════ FORMACIÓN ══════════ -->
+<section id="formacion" class="section section-alt">
+  <div data-scene="ramaPalida" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2><span data-es>Formación</span><span data-en>Education</span></h2>
+    </div>
+
+    <div class="formacion">
+      <div class="form-col">
+        <h3><span data-es>Estudios</span><span data-en>Studies</span></h3>
+        <div class="form-item">
+          <b>Universidad Tecnológica de Emiliano Zapata</b>
+          <span data-es>TSU en Desarrollo de Software Multiplataforma</span>
+          <span data-en>Higher University Technician in Multiplatform Software Development</span>
+          <em><span data-es>2024 a la fecha · Morelos, México</span><span data-en>2024 to present · Morelos, Mexico</span></em>
+        </div>
+      </div>
+
+      <div class="form-col">
+        <h3><span data-es>Certificaciones</span><span data-en>Certifications</span></h3>
+        <div class="form-item">
+          <b>Oracle</b>
+          <span data-es>Fundamentos de bases de datos: modelado relacional y SQL</span>
+          <span data-en>Database foundations: relational modeling and SQL</span>
+        </div>
+      </div>
+
+      <div class="form-col">
+        <h3><span data-es>Idiomas</span><span data-en>Languages</span></h3>
+        <div class="form-item">
+          <b><span data-es>Español</span><span data-en>Spanish</span></b>
+          <span data-es>Lengua materna</span><span data-en>Native</span>
+        </div>
+        <div class="form-item">
+          <b><span data-es>Inglés</span><span data-en>English</span></b>
+          <span data-es>Lectura técnica de documentación</span><span data-en>Technical documentation reading</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ CONTACT ══════════ -->
 <section id="contact" class="section section-contact">
   <div class="wrap">
-    <span class="sec-num">04</span>
+    <span class="sec-num">05</span>
     <h2 class="contact-h">
       <span data-es>¿Construimos algo?</span><span data-en>Let's build something</span>
     </h2>
@@ -488,13 +562,12 @@
         <span class="clink-k">GitHub</span>
         <span class="clink-v">@GatoGroZero</span>
       </a>
-      <a href="tel:+527773604976" class="clink">
-        <span class="clink-k"><span data-es>Teléfono</span><span data-en>Phone</span></span>
+      <a href="https://wa.me/527773604976" target="_blank" rel="noopener" class="clink">
+        <span class="clink-k">WhatsApp</span>
         <span class="clink-v">+52 777 360 4976</span>
       </a>
     </div>
-
-    <a class="btn btn-primary btn-lg" href="assets/CV_Luis_Castelar.pdf" download>
+ss="btn btn-primary btn-lg" href="assets/CV_Luis_Castelar.pdf" download>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
       <span data-es>Descargar CV completo</span><span data-en>Download full CV</span>
     </a>
@@ -512,10 +585,10 @@
 
 <div id="katana" aria-hidden="true"></div>
 
-<script src="main.js?v=1785882459"></script>
-<script src="scenes.js?v=1785882459"></script>
-<script src="katana.js?v=1785882459"></script>
-<script src="demos.js?v=1785882459"></script>
-<script src="mockups.js?v=1785882459"></script>
+<script src="main.js?v=1785885522"></script>
+<script src="scenes.js?v=1785885522"></script>
+<script src="katana.js?v=1785885522"></script>
+<script src="demos.js?v=1785885522"></script>
+<script src="mockups.js?v=1785885522"></script>
 </body>
 </html>
