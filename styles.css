@@ -518,7 +518,8 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
 /* ═══════════ RETO · SOLUCIÓN · RESULTADO ═══════════ */
 .clave {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  /* La columna del medio carga el razonamiento, por eso va más ancha */
+  grid-template-columns: 1fr 1.5fr 1.1fr;
   gap: 1px;
   background: var(--line-soft);
   border: 1px solid var(--line-soft);
@@ -549,3 +550,7 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
 .form-item b { font-size: .98rem; color: var(--washi); }
 .form-item span { font-size: .92rem; color: var(--washi-mid); line-height: 1.7; }
 .form-item em { font-style: normal; font-size: .85rem; color: var(--washi-dim); margin-top: 3px; }
+
+@media (max-width: 860px) {
+  .clave { grid-template-columns: 1fr; }
+}
