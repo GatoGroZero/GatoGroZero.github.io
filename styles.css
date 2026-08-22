@@ -494,7 +494,9 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
 }
 @media (max-width: 900px) {
   .case { grid-template-columns: 1fr; gap: 26px; }
-  .case-side { position: static; }
+  /* scenes.css vuelve a poner position:relative aqui, asi que el top del sticky
+     seguia corriendo el bloque 104px encima del texto: se neutraliza con top */
+  .case-side { position: static; top: auto; }
   .case-meta { flex-direction: row; flex-wrap: wrap; gap: 14px 30px; }
   .about-grid { grid-template-columns: 1fr; gap: 42px; }
 }

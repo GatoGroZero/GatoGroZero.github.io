@@ -12,6 +12,8 @@
   min-width: 0;
 }
 .demo-body, .split-l, .split-r, .out, .ctrl, .term, .er-info > div { min-width: 0; }
+/* Sin esto la ruta mas larga fija el ancho del panel y en telefono se corta */
+.rbac > *, .ep, .ep-path { min-width: 0; }
 
 /* ── Chrome / header ── */
 .demo-bar {
