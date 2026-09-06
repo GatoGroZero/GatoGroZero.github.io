@@ -9,8 +9,10 @@
 ## 1. Quién es y qué necesita
 
 Luis Ángel Castelar Hernández, desarrollador Full Stack en Jiutepec, Morelos,
-México. Estudia TSU en Desarrollo de Software Multiplataforma en la UTEZ y
-trabaja en la Universidad Autónoma del Estado de Morelos.
+México. Concluyó el TSU en Desarrollo de Software Multiplataforma en la UTEZ y
+ahora cursa ahí mismo la Ingeniería en Tecnologías de la Información e
+Innovación Digital. Trabajó en la Universidad Autónoma del Estado de Morelos de
+mayo a agosto de 2026.
 
 Su terreno fuerte es **Java 21 con Spring Boot** del lado del servidor y
 **React / Next.js** del lado del cliente, con **MySQL y PostgreSQL** debajo.
@@ -104,7 +106,7 @@ reales y qué es lo que sí se está mostrando.
 
 ### Casos de estudio (4)
 
-**1. Sistema de Gestión de Solicitudes · UAEM · 2026 a la fecha · en producción**
+**1. Sistema de Gestión de Solicitudes · UAEM · mayo a agosto 2026 · en producción**
 Una universidad llevaba las solicitudes de servicio en papel y hojas de cálculo
 sueltas. Nadie sabía en qué estado estaba cada trámite ni quién lo había
 aprobado, y el reporte mensual se transcribía a mano.
@@ -151,8 +153,9 @@ lado del servidor y la documentación, porque un sistema que solo su autor puede
 desplegar no está terminado.
 
 ### Trayectoria
-UAEM 2026 a la fecha, Track Genesis 2026, Centro de Desarrollo UTEZ 2026,
-Servicio Médico UTEZ 2025, TSU en UTEZ desde 2024.
+Ingeniería en TI e Innovación Digital en UTEZ desde 2026, UAEM 2026,
+Track Genesis 2026, Centro de Desarrollo UTEZ 2026, Servicio Médico UTEZ 2025,
+TSU en UTEZ 2024 a 2026.
 Certificación Oracle en fundamentos de bases de datos.
 
 ### Contacto
