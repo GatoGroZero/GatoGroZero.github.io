@@ -17,7 +17,7 @@ mockups.js      → las 3 maquetas de producto
 katana.js       → cursor de katana y su corte
 scenes.css      → escenarios de fondo
 scenes.js       → sakura, nubes, koi, grullas, crisantemos y asanoha
-assets/         → CV en PDF (español e inglés) y capturas reales del juego
+assets/         → CV en PDF (español e inglés), capturas reales del juego, favicon e imagen de vista previa (`og-luis-castelar.jpg`, 1200×630) al compartir el enlace
 .nojekyll       → evita que GitHub Pages procese el sitio con Jekyll
 ```
 
@@ -152,5 +152,6 @@ agrega **siempre las dos versiones** o se verá vacío en un idioma.
 ## Antes de publicar, revisar
 
 - [ ] El correo, teléfono, LinkedIn y GitHub en la sección de contacto son correctos
-- [ ] `assets/CV_Luis_Castelar.pdf` (español) y `assets/CV_Luis_Castelar_EN.pdf` (inglés) son las versiones más recientes del CV
+- [ ] `assets/CV_Luis_Castelar.pdf` (español) y `assets/CV_Luis_Castelar_EN.pdf` (inglés) son las versiones más recientes del CV (al cambiarlos, sube el `?v=` de los enlaces en `index.html` para vencer la caché)
+- [ ] Si cambia el hero, vuelve a generar `assets/og-luis-castelar.jpg`: es una captura del hero a 1200×630
 - [ ] Ningún caso de estudio menciona datos confidenciales de un cliente

@@ -559,3 +559,23 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
 @media (max-width: 860px) {
   .clave { grid-template-columns: 1fr; }
 }
+
+/* Acceso fijo al CV en la barra superior */
+.cv-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 13px;
+  font-family: var(--px); font-size: .82rem;
+  color: #fff;
+  background: var(--crimson);
+  border: 1px solid var(--crimson);
+  white-space: nowrap;
+  transition: background .25s var(--ease), border-color .25s var(--ease);
+}
+.cv-btn::before {
+  content: ""; width: 9px; height: 9px; flex: none;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 3v13m0 0l-5-5m5 5l5-5M4 21h16'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 3v13m0 0l-5-5m5 5l5-5M4 21h16'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.cv-btn:hover { background: var(--crimson-lt); border-color: var(--crimson-lt); }
+@media (max-width: 720px) { .cv-btn { padding: 6px 10px; } }
