@@ -229,6 +229,39 @@ setTimeout(function () { document.body.classList.add("loaded"); }, 1200);
   }
 })();
 
+/* ─────────── Copiar el correo ─────────── */
+(function () {
+  var btn = document.getElementById("copyMail");
+  var msg = document.getElementById("copyMsg");
+  if (!btn || !msg) return;
+  var timer;
+
+  function say(es, en) {
+    msg.textContent = document.documentElement.getAttribute("data-lang") === "en" ? en : es;
+    clearTimeout(timer);
+    timer = setTimeout(function () { msg.textContent = ""; }, 3000);
+  }
+  btn.addEventListener("click", function () {
+    var mail = btn.getAttribute("data-email");
+    function ok() { say("Copiado: " + mail, "Copied: " + mail); }
+    function fail() { say("No se pudo copiar. Escríbeme a " + mail, "Could not copy. Write to " + mail); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(mail).then(ok, fail);
+      return;
+    }
+    var ta = document.createElement("textarea");
+    ta.value = mail;
+    ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:fixed;opacity:0;pointer-events:none";
+    document.body.appendChild(ta);
+    ta.select();
+    var done = false;
+    try { done = document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    if (done) ok(); else fail();
+  });
+})();
+
 /* ─────────── Año ─────────── */
 (function () {
   var yr = document.getElementById("yr");

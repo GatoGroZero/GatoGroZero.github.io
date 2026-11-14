@@ -163,7 +163,7 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
   padding: 140px 32px 90px;
   overflow: hidden;
 }
-.hero-inner { position: relative; z-index: 2; max-width: var(--wrap); margin: 0 auto; width: 100%; }
+.hero-inner { position: relative; z-index: 2; max-width: calc(var(--wrap) - 64px); margin: 0 auto; width: 100%; }
 
 /* Sol naciente y neblina */
 .hero-glow { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
@@ -540,7 +540,7 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
 .clave-i p { font-size: .93rem; line-height: 1.75; color: var(--washi-mid); }
 /* El resultado es lo que de verdad lee un reclutador */
 .clave-res { background: rgba(173,0,19,.09); }
-.clave-res .clave-k { color: var(--crimson-lt); }
+.clave-res .clave-k { color: var(--gold-lt); }
 .clave-res p { color: var(--washi); }
 
 /* ═══════════ FORMACIÓN ═══════════ */
@@ -737,3 +737,55 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
 
 /* Las ramas decorativas sobresalen de su caja: se recortan en horizontal sin crear un contenedor de scroll (el sticky de los casos sigue funcionando) */
 main { overflow-x: clip; }
+
+/* ═══════════ PULIDO: ESCRITORIO Y TELÉFONO ═══════════ */
+
+/* Monitores grandes: la barra alinea logo y botones con la rejilla de la página (el fondo sigue a todo el ancho) */
+@media (min-width: 721px) { .topbar { padding-left: 32px; padding-right: 32px; } }
+@media (min-width: 1281px) {
+  .topbar {
+    padding-left: calc((100% - var(--wrap)) / 2 + 32px);
+    padding-right: calc((100% - var(--wrap)) / 2 + 32px);
+  }
+}
+
+/* Etiquetas de problema / decisión / resultado: legibles y con marcador */
+.clave-i { padding: 20px 22px; }
+.clave-k {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+  font-size: .95rem; color: var(--gold-lt);
+}
+.clave-k::before { content: ""; flex: none; width: 7px; height: 7px; background: var(--gold); }
+.clave-res .clave-k::before { background: var(--crimson-lt); }
+
+/* Contacto: copiar el correo (muchos reclutadores no tienen cliente de correo para mailto) */
+.contact-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
+.copy-btn { display: none; cursor: pointer; }
+.js .copy-btn { display: inline-flex; }
+.copy-msg { min-height: 1.6em; margin-top: 14px; font-family: var(--px); font-size: .95rem; color: var(--gold-lt); text-align: center; }
+
+@media (max-width: 720px) {
+  /* Hero: el botón principal a todo el ancho, los otros dos lado a lado, todos del mismo alto */
+  .hero-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 44px; }
+  .hero-cta .btn-primary { grid-column: 1 / -1; }
+  .hero-cta .btn { justify-content: center; min-height: 52px; padding: 12px; }
+
+  /* Las tres cifras en una sola fila */
+  .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .stat-l { font-size: .8rem; line-height: 1.4; }
+
+  /* Datos del proyecto en filas compactas: el título sube */
+  .case-meta { flex-direction: column; flex-wrap: nowrap; gap: 12px; }
+  .case-meta li { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+
+  .contact-cta .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* Stack en el teléfono: dos columnas de elementos en lugar de una lista larguísima */
+@media (max-width: 620px) {
+  .stack-col ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
+  .stack-col li:last-child,
+  .stack-col li:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .stack-col li:hover { padding-left: 0; }
+}

@@ -161,5 +161,7 @@ agrega **siempre las dos versiones** o se verá vacío en un idioma.
 - **Índice de proyectos** (`#proyectos`): cuatro tarjetas al inicio de la sección con estado, cifra clave, stack y enlace al caso. Es lo primero que se ve; los casos completos quedan debajo.
 - **Cada caso** lleva su `id` (`uaem`, `devengo`, `recursos`, `cybergrid`), la columna lateral fija con rol y alcance, y el razonamiento largo plegado en `<details class="mas">` ("Ver el detalle técnico"). Funciona sin JavaScript.
 - **Navegación entre casos**: cada caso termina con "Todos los proyectos" y "Siguiente".
-- **Teléfono**: menú propio (`#mnav`, se cierra con Escape, al tocar fuera o al elegir) y controles de 44 px.
+- **Teléfono**: menú propio (`#mnav`, se cierra con Escape, al tocar fuera o al elegir), controles de 44 px, botones del hero ordenados, cifras en una fila, datos del caso en filas compactas y el stack a dos columnas.
+- **Monitores grandes**: logo, hero y secciones comparten el mismo borde izquierdo (la barra se alinea con la rejilla; su fondo sigue a todo el ancho).
+- **Contacto**: botón "Copiar correo" (muchos reclutadores no tienen cliente de correo para `mailto:`); solo aparece con JavaScript.
 - Si agregas un proyecto, súmalo en los tres sitios: tarjeta del índice, caso con `id` y fila de la trayectoria.

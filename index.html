@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Maru+Gothic:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261116a">
+<link rel="stylesheet" href="styles.css?v=20261116b">
 <link rel="stylesheet" href="scenes.css?v=20261116a">
 <link rel="stylesheet" href="katana.css?v=20261114">
 <link rel="stylesheet" href="demos.css?v=20261114">
@@ -773,14 +773,21 @@
         <span class="clink-v">+52 777 360 4976</span>
       </a>
     </div>
-    <a class="btn btn-primary btn-lg" data-es href="assets/CV_Luis_Castelar.pdf?v=20261115b" download="CV_Luis_Angel_Castelar_Hernandez.pdf">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-      Descargar CV completo
-    </a>
-    <a class="btn btn-primary btn-lg" data-en href="assets/CV_Luis_Castelar_EN.pdf?v=20261115b" download="CV_Luis_Angel_Castelar_Hernandez_EN.pdf">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-      Download full CV
-    </a>
+    <div class="contact-cta">
+      <a class="btn btn-primary btn-lg" data-es href="assets/CV_Luis_Castelar.pdf?v=20261115b" download="CV_Luis_Angel_Castelar_Hernandez.pdf">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+        Descargar CV completo
+      </a>
+      <a class="btn btn-primary btn-lg" data-en href="assets/CV_Luis_Castelar_EN.pdf?v=20261115b" download="CV_Luis_Angel_Castelar_Hernandez_EN.pdf">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+        Download full CV
+      </a>
+      <button type="button" class="btn btn-ghost btn-lg copy-btn" id="copyMail" data-email="castelar999@gmail.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></svg>
+        <span data-es>Copiar correo</span><span data-en>Copy email</span>
+      </button>
+    </div>
+    <p class="copy-msg" id="copyMsg" role="status" aria-live="polite"></p>
   </div>
 </section>
 
@@ -795,7 +802,7 @@
 
 <div id="katana" aria-hidden="true"></div>
 
-<script src="main.js?v=20261116a"></script>
+<script src="main.js?v=20261116b"></script>
 <script src="scenes.js?v=20261114"></script>
 <script src="katana.js?v=20261114"></script>
 <script src="demos.js?v=20261114"></script>
