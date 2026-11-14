@@ -2,6 +2,9 @@
    Escenarios de tinta, uno por proyecto
    ═══════════════════════════════════════════════ */
 
+/* Si el script de escenas no cargó, el contenedor vacío no debe ocupar un lugar en la cuadrícula del caso */
+[data-scene]:not(.scene) { display: none; }
+
 .scene {
   position: absolute;
   pointer-events: none;
@@ -41,6 +44,7 @@
 .sc-oro    { opacity: .8; }
 .sc-mixta  { opacity: .85; }
 .sc-palida { opacity: .78; }
+.sc-cielo  { opacity: .85; }
 
 /* ── Stack: trama asanoha a lo ancho ── */
 #stack > .scene {

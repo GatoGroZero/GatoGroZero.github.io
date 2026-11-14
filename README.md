@@ -8,13 +8,15 @@ styles.css      → paleta, layout y motion del sitio
 demos.css       → estilos de las demos interactivas
 mockups.css     → maquetas de producto (cada app con SU paleta, no la del sitio)
 main.js         → idioma, scroll-reveal, contadores, progreso, botón magnético
+arena.css       → la demo del juego (servidor autoritativo)
 katana.css      → cursor de katana y botón de efectos
-demos.js        → las 4 demos interactivas
+demos.js        → las 4 demos interactivas de los casos de cliente
+arena.js        → la 5.ª demo: miniatura del juego, con el cliente que predice y el servidor que manda
 mockups.js      → las 3 maquetas de producto
 katana.js       → cursor de katana y su corte
 scenes.css      → escenarios de fondo
 scenes.js       → sakura, nubes, koi, grullas, crisantemos y asanoha
-assets/         → CV en PDF
+assets/         → CV en PDF (español e inglés) y capturas reales del juego
 .nojekyll       → evita que GitHub Pages procese el sitio con Jekyll
 ```
 
@@ -86,7 +88,7 @@ puntos, paréntesis o punto y seguido en su lugar.
 
 ## Las demos
 
-Cuatro demos funcionan de verdad dentro de la página, sin servidor:
+Cinco demos funcionan de verdad dentro de la página, sin servidor:
 
 | Demo | Dónde | Qué demuestra |
 |---|---|---|
@@ -94,6 +96,7 @@ Cuatro demos funcionan de verdad dentro de la página, sin servidor:
 | Modelo entidad-relación | Caso UAEM | Diseño de esquema e índices justificados por consulta |
 | Control de acceso | Caso UAEM | Autorización del lado del servidor, 200 vs 403 |
 | Salario devengado | Caso Devengo | Reglas de negocio financieras en tiempo real |
+| Servidor autoritativo | Caso CyberGrid | El cliente predice y el servidor manda: trampas rechazadas y corregidas |
 
 Son **reconstrucciones con datos ficticios**. El código es original de estas demos,
 no contienen nada de los sistemas de los clientes. Cada demo lo dice en su pie.
@@ -148,5 +151,5 @@ agrega **siempre las dos versiones** o se verá vacío en un idioma.
 ## Antes de publicar, revisar
 
 - [ ] El correo, teléfono, LinkedIn y GitHub en la sección de contacto son correctos
-- [ ] `assets/CV_Luis_Castelar.pdf` es la versión más reciente del CV
+- [ ] `assets/CV_Luis_Castelar.pdf` (español) y `assets/CV_Luis_Castelar_EN.pdf` (inglés) son las versiones más recientes del CV
 - [ ] Ningún caso de estudio menciona datos confidenciales de un cliente

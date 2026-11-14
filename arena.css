@@ -1,0 +1,207 @@
+/* ═══════════════════════════════════════════════
+   Demo del juego: servidor autoritativo
+   Reutiliza el marco de demos.css (.demo, .demo-bar, .num, input[type=range]).
+   Todo lo propio vive bajo .arena para no chocar con las otras demos.
+   ═══════════════════════════════════════════════ */
+
+/* Duraciones fijas (100, 200 ms), ease-out al entrar y solo opacidad o 4 px de desplazamiento */
+[data-demo="arena"] {
+  --m-100: 100ms; --m-200: 200ms; --m-300: 300ms;
+  --e-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes arena-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.arena-intro {
+  font-size: .88rem; line-height: 1.7; color: var(--fg-mid);
+  margin-bottom: 16px; max-width: 76ch;
+}
+
+/* ── Los dos paneles: lo que cree el cliente y lo que sabe el servidor ── */
+.arena-panes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.arena-pane {
+  min-width: 0;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--sumi-3); overflow: hidden;
+  transition: border-color var(--m-200) var(--e-out);
+}
+.arena-pane-srv { border-color: var(--accent-dim); }
+.arena-pane.is-cheating { border-color: rgba(217, 99, 111, .6); }
+.arena-pane.is-corrected { border-color: #f0a0a8; transition-duration: var(--m-100); }
+
+.arena-pane-h {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  padding: 9px 12px; border-bottom: 1px solid var(--line-soft);
+}
+.arena-pane-h b {
+  font-family: var(--px); font-weight: 400; font-size: 1.05rem; color: var(--washi);
+}
+.arena-pane-srv .arena-pane-h b { color: var(--accent); }
+.arena-pane-h small { font-size: .74rem; color: var(--fg-dim); text-align: right; }
+
+.arena-stage { position: relative; outline: none; }
+.arena-stage canvas {
+  display: block; width: 100%; height: auto;
+  image-rendering: pixelated;
+}
+.arena-stage[tabindex]:focus-visible { box-shadow: inset 0 0 0 2px var(--gold-lt); }
+
+.arena-hint {
+  position: absolute; left: 8px; bottom: 8px; max-width: calc(100% - 16px);
+  padding: 4px 8px; border-radius: 5px;
+  background: rgba(18, 19, 18, .86); border: 1px solid var(--line);
+  font-size: .72rem; line-height: 1.4; color: var(--washi-mid);
+  pointer-events: none; transition: opacity var(--m-200) var(--e-out);
+}
+.arena-stage:focus .arena-hint, .arena-stage.is-play .arena-hint { opacity: 0; }
+
+.arena-over {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 16px; background: rgba(18, 19, 18, .88);
+  font-family: var(--px); font-size: 1.05rem; line-height: 1.5; color: var(--washi);
+}
+.arena-over[hidden] { display: none; }
+
+/* ── Controles ── */
+.arena-controls {
+  display: grid; grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px 28px; margin-top: 18px; align-items: start;
+}
+.arena-lab {
+  display: block; margin-bottom: 8px;
+  font-family: var(--label); font-size: .76rem; color: var(--fg-dim);
+}
+
+.arena-pad {
+  display: grid; grid-template-columns: repeat(3, 42px); grid-template-rows: repeat(2, 42px);
+  gap: 4px; touch-action: none; user-select: none; -webkit-user-select: none;
+}
+.arena-key {
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 7px;
+  background: var(--sumi-3); color: var(--washi-mid);
+  cursor: pointer; padding: 0; touch-action: none;
+  transition: background-color var(--m-100) var(--e-out), border-color var(--m-100) var(--e-out), color var(--m-100) var(--e-out);
+}
+.arena-key svg { pointer-events: none; }
+.arena-key:hover { border-color: var(--gold); color: var(--gold-lt); }
+.arena-key.is-down { background: var(--gold); border-color: var(--gold-lt); color: var(--sumi); }
+.arena-key:focus-visible, .arena-hack:focus-visible, .arena-btn:focus-visible {
+  outline: 2px solid var(--gold-lt); outline-offset: 2px;
+}
+.arena-key[data-dir="up"]    { grid-column: 2; grid-row: 1; }
+.arena-key[data-dir="left"]  { grid-column: 1; grid-row: 2; }
+.arena-key[data-dir="down"]  { grid-column: 2; grid-row: 2; }
+.arena-key[data-dir="right"] { grid-column: 3; grid-row: 2; }
+
+.arena-right { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.arena-lat { max-width: 360px; }
+
+.arena-hacks { display: flex; flex-wrap: wrap; gap: 8px; }
+.arena-hack {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 40px; padding: 8px 14px; border-radius: 7px;
+  border: 1px solid rgba(217, 99, 111, .45);
+  background: rgba(217, 99, 111, .08); color: #e6a3ab;
+  font-family: inherit; font-size: .82rem; font-weight: 500; cursor: pointer;
+  transition: background-color var(--m-200) var(--e-out), border-color var(--m-200) var(--e-out), color var(--m-200) var(--e-out);
+}
+.arena-hack:hover { background: rgba(217, 99, 111, .18); }
+.arena-hack::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid currentColor; flex: none;
+}
+.arena-hack[aria-pressed="true"] {
+  background: rgba(217, 99, 111, .26); border-color: #d9636f; color: #f3c7cc;
+}
+.arena-hack[aria-pressed="true"]::before { background: currentColor; }
+.arena-hack-once::before { border-radius: 2px; }
+
+.arena-btn {
+  min-height: 40px; padding: 8px 14px; border-radius: 7px;
+  border: 1px solid var(--accent-dim); background: rgba(166, 125, 67, .14);
+  color: var(--gold-lt); font-family: inherit; font-size: .82rem; font-weight: 500;
+  cursor: pointer; transition: background-color var(--m-200) var(--e-out);
+}
+.arena-btn:hover { background: rgba(166, 125, 67, .26); }
+
+/* ── Consola y números ── */
+.arena-low {
+  display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 16px; margin-top: 18px; align-items: stretch;
+}
+.arena-console {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-width: 0; min-height: 13.4em; overflow: hidden;
+  background: var(--sumi); border: 1px solid var(--line-soft); border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--mono); font-size: .72rem; line-height: 1.7; color: var(--fg-mid);
+}
+.arena-console-t {
+  font-family: var(--label); font-size: .72rem; color: var(--fg-dim); margin-bottom: auto; padding-bottom: 6px;
+}
+.arena-ln {
+  display: grid; grid-template-columns: 3.4em 5.6em minmax(0, 1fr); gap: 8px;
+  overflow-wrap: anywhere;
+}
+.arena-ln i { font-style: normal; color: #7d7568; }
+.arena-ln b { font-weight: 500; color: var(--fg-dim); }
+.arena-ln-rej b, .arena-ln-rej span { color: #e18a93; }
+.arena-ln-cor b { color: var(--gold-lt); }
+.arena-ln-tu  b { color: var(--washi); }
+.arena-ln-ola b { color: #8fb0c2; }
+.arena-ln.is-new { animation: arena-in var(--m-200) var(--e-out) both; }
+
+.arena-nums { align-self: stretch; }
+.arena-nums .num small { line-height: 1.4; }
+.arena-nums .num small span { font: inherit; letter-spacing: normal; text-transform: none; color: inherit; }
+.num.ok b   { color: #7fae8a; }
+.num.warn b { color: #e0b36a; }
+.num.bad b  { color: #e18a93; }
+
+.arena-verdict {
+  margin-top: 18px; padding: 12px 14px; border-radius: 8px;
+  background: rgba(166, 125, 67, .09); border: 1px solid var(--accent-dim);
+  font-size: .88rem; line-height: 1.65; color: var(--washi-mid);
+  transition: background-color var(--m-200) var(--e-out), border-color var(--m-200) var(--e-out), color var(--m-200) var(--e-out);
+}
+.arena-verdict.is-swap { animation: arena-in var(--m-200) var(--e-out) both; }
+.arena-verdict.is-rej {
+  background: rgba(217, 99, 111, .09); border-color: rgba(217, 99, 111, .32); color: #e6b0b6;
+}
+
+/* ── Botones de enlace del caso ── */
+.case-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 10px; }
+.case-cta-note { font-size: .8rem; line-height: 1.6; color: var(--washi-dim); margin-bottom: 30px; max-width: 64ch; }
+
+/* ── Capturas reales del juego ── */
+.case-shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0 0 36px; }
+.shot { min-width: 0; margin: 0; }
+.shot img {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+  border: 3px solid var(--ink); box-shadow: var(--shadow); background: var(--sumi-2);
+}
+.shot figcaption { font-size: .78rem; line-height: 1.6; color: var(--washi-dim); margin-top: 8px; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .arena-low { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .case-shots { grid-template-columns: minmax(0, 1fr); }
+  .arena-panes { grid-template-columns: minmax(0, 1fr); }
+  .arena-controls { grid-template-columns: minmax(0, 1fr); }
+  .arena-pad { justify-self: start; }
+}
+
+/* Movimiento reducido: sin desplazamientos; solo cambios instantáneos o un fundido de 100 ms.
+   Cada cambio de estado ya tiene su texto (consola, veredicto y contadores). */
+@media (prefers-reduced-motion: reduce) {
+  .arena-ln.is-new, .arena-verdict.is-swap { animation: none; }
+  .arena-pane, .arena-key, .arena-hack, .arena-btn, .arena-verdict { transition: none; }
+  .arena-hint { transition: opacity var(--m-100) ease; }
+}

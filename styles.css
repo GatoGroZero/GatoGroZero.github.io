@@ -251,6 +251,9 @@ html[data-lang="en"] .lang-opt[data-val="en"] { color: var(--gold-lt); }
 .note svg { color: var(--gold); flex: none; margin-top: 5px; }
 .note p { font-size: .96rem; line-height: 1.85; color: var(--washi-mid); }
 .note strong { color: var(--gold-lt); }
+.note a { color: var(--gold-lt); text-decoration: underline; text-underline-offset: 3px; }
+.note a:hover { color: var(--washi); }
+.note a:focus-visible { outline: 2px solid var(--gold-lt); outline-offset: 3px; }
 
 /* ═══════════ SECCIONES ═══════════ */
 .section { padding: 104px 0; position: relative; }

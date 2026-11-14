@@ -161,6 +161,17 @@ var ESCENAS = {
       ]
     });
   },
+  ramaCielo: function () {
+    return sakura({
+      cls: "sc-cielo", paleta: "mixta", semilla: 7310, tam: 12, separacion: 38,
+      ramas: [
+        { d: "M412 14 C 362 40 322 12 266 36 C 210 60 172 28 114 54", w: 5.6 },
+        { d: "M322 20 C 330 52 320 74 298 88", w: 3.4 },
+        { d: "M214 52 C 208 80 190 96 164 104", w: 3 },
+        { d: "M388 22 C 394 46 384 66 362 80", w: 2.6 }
+      ]
+    });
+  },
   ramaAncha: function () {
     return sakura({
       cls: "sc-ancha", paleta: "oro", semilla: 6612, tam: 10, separacion: 48,
