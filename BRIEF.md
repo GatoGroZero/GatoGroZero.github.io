@@ -11,7 +11,7 @@
 Luis Ángel Castelar Hernández, desarrollador Full Stack en Jiutepec, Morelos,
 México. Concluyó el TSU en Desarrollo de Software Multiplataforma en la UTEZ y
 ahora cursa ahí mismo la Ingeniería en Tecnologías de la Información e
-Innovación Digital. Trabajó en la Universidad Autónoma del Estado de Morelos de
+Innovación Digital. Hizo su estadía en una universidad pública mexicana de
 mayo a agosto de 2026.
 
 Su terreno fuerte es **Java 21 con Spring Boot** del lado del servidor y
@@ -106,7 +106,7 @@ reales y qué es lo que sí se está mostrando.
 
 ### Casos de estudio (4)
 
-**1. Sistema de Gestión de Solicitudes · UAEM · mayo a agosto 2026 · en producción**
+**1. Sistema de Gestión de Solicitudes · Universidad pública mexicana · mayo a agosto 2026 · estadía finalizada**
 Una universidad llevaba las solicitudes de servicio en papel y hojas de cálculo
 sueltas. Nadie sabía en qué estado estaba cada trámite ni quién lo había
 aprobado, y el reporte mensual se transcribía a mano.
@@ -129,7 +129,7 @@ voluntad sino porque ahorrar exige decidirlo cada vez. Paymet lo vuelve
 prestación: la empresa lo ofrece, el trabajador fija una meta y la aportación
 sale sola de la nómina. Tiene tres caras (API, app móvil y panel de recursos
 humanos) y las reglas del dinero no podían escribirse tres veces.
-Stack: Kotlin, Gradle, Flutter, Dart, REST, SQL.
+Stack: Kotlin, Gradle, Flutter, Dart, REST.
 
 **4. Sistema de gestión de recursos · Centro de Desarrollo UTEZ · 2026**
 El centro presta equipo caro a estudiantes y docentes. El control vivía en
@@ -153,7 +153,7 @@ lado del servidor y la documentación, porque un sistema que solo su autor puede
 desplegar no está terminado.
 
 ### Trayectoria
-Ingeniería en TI e Innovación Digital en UTEZ desde 2026, UAEM 2026,
+Ingeniería en TI e Innovación Digital en UTEZ desde 2026, estadía en universidad pública 2026,
 Track Genesis 2026, Centro de Desarrollo UTEZ 2026, Servicio Médico UTEZ 2025,
 TSU en UTEZ 2024 a 2026.
 Certificación Oracle en fundamentos de bases de datos.
