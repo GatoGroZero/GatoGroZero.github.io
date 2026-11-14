@@ -7,7 +7,7 @@ index.html      → todo el contenido (ES y EN conviven; el CSS oculta el idioma
 styles.css      → paleta, layout y motion del sitio
 demos.css       → estilos de las demos interactivas
 mockups.css     → maquetas de producto (cada app con SU paleta, no la del sitio)
-main.js         → idioma, scroll-reveal, contadores, progreso, botón magnético
+main.js         → idioma, scroll-reveal, contadores, progreso, sección activa en la barra y menú del teléfono
 arena.css       → la demo del juego (servidor autoritativo)
 katana.css      → cursor de katana y botón de efectos
 demos.js        → las 4 demos interactivas de los casos de cliente
@@ -155,3 +155,11 @@ agrega **siempre las dos versiones** o se verá vacío en un idioma.
 - [ ] `assets/CV_Luis_Castelar.pdf` (español) y `assets/CV_Luis_Castelar_EN.pdf` (inglés) son las versiones más recientes del CV (al cambiarlos, sube el `?v=` de los enlaces en `index.html` para vencer la caché)
 - [ ] Si cambia el hero, vuelve a generar `assets/og-luis-castelar.jpg`: es una captura del hero a 1200×630
 - [ ] Ningún caso de estudio menciona datos confidenciales de un cliente
+
+## Cómo está organizada la lectura (pensada para quien contrata)
+
+- **Índice de proyectos** (`#proyectos`): cuatro tarjetas al inicio de la sección con estado, cifra clave, stack y enlace al caso. Es lo primero que se ve; los casos completos quedan debajo.
+- **Cada caso** lleva su `id` (`uaem`, `devengo`, `recursos`, `cybergrid`), la columna lateral fija con rol y alcance, y el razonamiento largo plegado en `<details class="mas">` ("Ver el detalle técnico"). Funciona sin JavaScript.
+- **Navegación entre casos**: cada caso termina con "Todos los proyectos" y "Siguiente".
+- **Teléfono**: menú propio (`#mnav`, se cierra con Escape, al tocar fuera o al elegir) y controles de 44 px.
+- Si agregas un proyecto, súmalo en los tres sitios: tarjeta del índice, caso con `id` y fila de la trayectoria.

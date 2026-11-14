@@ -85,7 +85,7 @@ setTimeout(function () { document.body.classList.add("loaded"); }, 1200);
 /* ─────────── Revelado al hacer scroll, escalonado ─────────── */
 (function () {
   var SEL = ".case, .sp-card, .stack-col, .about-text, .about-side, .note," +
-            " .sec-head, .contact-links, .mk-stage, .side-projects, .sec-lede";
+            " .sec-head, .contact-links, .mk-stage, .side-projects, .sec-lede, .idx";
 
   if (reduced) { window.__observeReveals = function () {}; return; }
 
@@ -172,6 +172,62 @@ setTimeout(function () { document.body.classList.add("loaded"); }, 1200);
 /* Nota: el botón magnético se quitó al pasar al estilo pixel. Escribía
    transform en línea y anulaba el efecto de "botón que se hunde" del CSS,
    que encaja mejor con la estética de sombra dura. */
+
+/* ─────────── Navegación: sección activa y menú del teléfono ─────────── */
+(function () {
+  var html = document.documentElement;
+  html.classList.add("js");
+
+  var btn = document.getElementById("menuBtn");
+  var panel = document.getElementById("mnav");
+  var links = document.querySelectorAll(".topnav a, .mnav a");
+
+  function setMenu(open) {
+    if (!btn || !panel) return;
+    panel.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", String(open));
+  }
+  if (btn && panel) {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setMenu(!panel.classList.contains("open"));
+    });
+    panel.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setMenu(false);
+    });
+    document.addEventListener("click", function (e) {
+      if (panel.classList.contains("open") && !panel.contains(e.target)) setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && panel.classList.contains("open")) { setMenu(false); btn.focus(); }
+    });
+    // Si se agranda la ventana con el menú abierto, no se queda colgado
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 720) setMenu(false);
+    });
+  }
+
+  // La sección que cruza el centro de la pantalla es la activa
+  function mark(id) {
+    links.forEach(function (a) {
+      if (id && a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+  }
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) mark(en.target.dataset.nav || "");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    var hero = document.querySelector(".hero");
+    if (hero) { hero.dataset.nav = ""; io.observe(hero); }
+    ["work", "stack", "about", "formacion", "contact"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) { el.dataset.nav = id; io.observe(el); }
+    });
+  }
+})();
 
 /* ─────────── Año ─────────── */
 (function () {

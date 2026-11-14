@@ -30,8 +30,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Maru+Gothic:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261115b">
-<link rel="stylesheet" href="scenes.css?v=20261114">
+<link rel="stylesheet" href="styles.css?v=20261116a">
+<link rel="stylesheet" href="scenes.css?v=20261116a">
 <link rel="stylesheet" href="katana.css?v=20261114">
 <link rel="stylesheet" href="demos.css?v=20261114">
 <link rel="stylesheet" href="mockups.css?v=20261114">
@@ -46,7 +46,7 @@
 <header class="topbar">
   <a href="#top" class="mark">LC<span class="dot">.</span></a>
   <nav class="topnav">
-    <a href="#work"><span data-es>Trabajo</span><span data-en>Work</span></a>
+    <a href="#work"><span data-es>Proyectos</span><span data-en>Projects</span></a>
     <a href="#stack">Stack</a>
     <a href="#about"><span data-es>Perfil</span><span data-en>About</span></a>
     <a href="#formacion"><span data-es>Formación</span><span data-en>Education</span></a>
@@ -62,8 +62,20 @@
     <button id="langToggle" class="lang" aria-label="Change language">
       <span class="lang-opt" data-val="es">ES</span><span class="lang-sep">/</span><span class="lang-opt" data-val="en">EN</span>
     </button>
+    <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mnav">
+      <i aria-hidden="true"></i>
+      <span data-es>Menú</span><span data-en>Menu</span>
+    </button>
   </div>
 </header>
+
+<nav class="mnav" id="mnav" aria-label="Menu">
+  <a href="#work"><span data-es>Proyectos</span><span data-en>Projects</span></a>
+  <a href="#stack">Stack</a>
+  <a href="#about"><span data-es>Perfil</span><span data-en>About</span></a>
+  <a href="#formacion"><span data-es>Formación</span><span data-en>Education</span></a>
+  <a href="#contact"><span data-es>Contacto</span><span data-en>Contact</span></a>
+</nav>
 
 <main id="top">
 
@@ -135,8 +147,8 @@
     <div class="note">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
       <p>
-        <span data-es><strong>Nada de lo que ves aquí es una pantalla real, salvo el juego.</strong> Estos sistemas pertenecen a las instituciones y equipos para los que los hice, así que su código, sus pantallas y sus datos no son míos para mostrarlos. Lo que ves son <strong>prototipos</strong> que dibujé desde cero para explicar el tipo de problema que resuelvo, con nombres y cifras inventados. <a href="#cybergrid">CyberGrid</a> sí es mío: está en línea y puedes jugarlo y leer su código.</span>
-        <span data-en><strong>Nothing here is a real screen, except the game.</strong> These systems belong to the institutions and teams I built them for, so their code, screens and data are not mine to show. What you see are <strong>prototypes</strong> I drew from scratch to explain the kind of problem I solve, with invented names and figures. <a href="#cybergrid">CyberGrid</a> is mine: it is online, and you can play it and read its code.</span>
+        <span data-es><strong>Cómo leer estos proyectos.</strong> Los tres primeros pertenecen a las instituciones y equipos para los que los hice, así que no puedo mostrar su código ni sus pantallas reales. En su lugar dibujé <strong>prototipos</strong> con datos inventados que explican cómo resolví cada problema. <a href="#cybergrid">CyberGrid</a> es la excepción: es mío, está en línea y puedes jugarlo y leer su código.</span>
+        <span data-en><strong>How to read these projects.</strong> The first three belong to the institutions and teams I built them for, so I can't show their code or real screens. Instead I drew <strong>prototypes</strong> with invented data that explain how I solved each problem. <a href="#cybergrid">CyberGrid</a> is the exception: it's mine, it's online, and you can play it and read its code.</span>
       </p>
     </div>
   </div>
@@ -147,11 +159,63 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">01</span>
-      <h2><span data-es>Casos de estudio</span><span data-en>Case studies</span></h2>
+      <h2><span data-es>Proyectos</span><span data-en>Projects</span></h2>
     </div>
+    <p class="sec-lede"><span data-es>Cuatro proyectos, de la base de datos a la pantalla. Elige uno para ver el problema, mis decisiones y una demo que puedes usar.</span><span data-en>Four projects, from the database to the screen. Pick one to see the problem, my decisions and a demo you can use.</span></p>
+
+    <ol class="idx" id="proyectos">
+      <li class="idx-card">
+        <p class="idx-state"><span class="idx-tag idx-tag-live"><span data-es>En producción</span><span data-en>In production</span></span><span class="idx-when"><span data-es>Universidad pública · 2026</span><span data-en>Public university · 2026</span></span></p>
+        <h3><a class="idx-link" href="#uaem"><span data-es>Sistema de Gestión de Solicitudes</span><span data-en>Request Management System</span></a></h3>
+        <p class="idx-line"><span data-es>Un trámite que vivía en papel y hojas de cálculo, ahora en una aplicación web con trazabilidad completa.</span><span data-en>A process that lived on paper and spreadsheets, now a web app with full traceability.</span></p>
+        <ul class="idx-facts">
+          <li><b><span data-es>7 estados · 4 roles</span><span data-en>7 states · 4 roles</span></b></li>
+          <li><span data-es>Reporte mensual: de días a un clic</span><span data-en>Monthly report: from days to one click</span></li>
+        </ul>
+        <div class="idx-stack"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>React</span></div>
+        <p class="idx-foot"><span class="idx-demos"><span data-es>3 demos interactivas</span><span data-en>3 interactive demos</span></span><span class="idx-go" aria-hidden="true"><span data-es>Ver caso</span><span data-en>View case</span> ↓</span></p>
+      </li>
+      <li class="idx-card">
+        <p class="idx-state"><span class="idx-tag idx-tag-open">Hackathon</span><span class="idx-when"><span data-es>Marzo 2026 · equipo de 4</span><span data-en>March 2026 · team of 4</span></span></p>
+        <h3><a class="idx-link" href="#devengo">Devengo</a></h3>
+        <p class="idx-line"><span data-es>Adelanto de salario para web y móvil, con una sola regla de retiro que el servidor recalcula al aprobar.</span><span data-en>Earned wage access for web and mobile, with a single withdrawal rule the server recalculates on approval.</span></p>
+        <ul class="idx-facts">
+          <li><b><span data-es>4 roles con Keycloak</span><span data-en>4 roles with Keycloak</span></b></li>
+          <li><span data-es>Web, móvil y contratos en Rust</span><span data-en>Web, mobile and Rust contracts</span></li>
+        </ul>
+        <div class="idx-stack"><span>Next.js</span><span>React Native</span><span>PostgreSQL</span><span>Rust</span></div>
+        <p class="idx-foot"><span class="idx-demos"><span data-es>1 demo interactiva</span><span data-en>1 interactive demo</span></span><span class="idx-go" aria-hidden="true"><span data-es>Ver caso</span><span data-en>View case</span> ↓</span></p>
+      </li>
+      <li class="idx-card">
+        <p class="idx-state"><span class="idx-tag"><span data-es>Institucional</span><span data-en>Institutional</span></span><span class="idx-when"><span data-es>Centro de Desarrollo UTEZ · 2026</span><span data-en>UTEZ Development Center · 2026</span></span></p>
+        <h3><a class="idx-link" href="#recursos"><span data-es>Sistema de Gestión de Recursos</span><span data-en>Resource Management System</span></a></h3>
+        <p class="idx-line"><span data-es>El préstamo de equipo como un ciclo cerrado: siempre se sabe qué recurso está prestado y con quién.</span><span data-en>Equipment loans as a closed cycle: it is always clear which resource is out and with whom.</span></p>
+        <ul class="idx-facts">
+          <li><b><span data-es>5 estados · 3 roles</span><span data-en>5 states · 3 roles</span></b></li>
+          <li><span data-es>Autorización en cada operación del servidor</span><span data-en>Authorization on every server operation</span></li>
+        </ul>
+        <div class="idx-stack"><span>Java</span><span>Spring Boot</span><span>JWT</span><span>React</span></div>
+        <p class="idx-foot"><span class="idx-demos"><span data-es>Prototipo de interfaz</span><span data-en>Interface prototype</span></span><span class="idx-go" aria-hidden="true"><span data-es>Ver caso</span><span data-en>View case</span> ↓</span></p>
+      </li>
+      <li class="idx-card idx-card-play">
+        <p class="idx-state"><span class="idx-tag idx-tag-live"><span data-es>En línea</span><span data-en>Online</span></span><span class="idx-when"><span data-es>Proyecto propio · Oct 2026</span><span data-en>Personal project · Oct 2026</span></span></p>
+        <h3><a class="idx-link" href="#cybergrid">CyberGrid Gato Royale</a></h3>
+        <p class="idx-line"><span data-es>Un juego multijugador donde el servidor decide todo: 4 modos, hasta 12 jugadores y 487 pruebas automáticas.</span><span data-en>A multiplayer game where the server decides everything: 4 modes, up to 12 players and 487 automated tests.</span></p>
+        <ul class="idx-facts">
+          <li><b><span data-es>Servidor autoritativo a 30 Hz</span><span data-en>Authoritative server at 30 Hz</span></b></li>
+          <li><span data-es>Demo: intenta hacer trampa</span><span data-en>Demo: try to cheat</span></li>
+        </ul>
+        <div class="idx-stack"><span>Node.js</span><span>TypeScript</span><span>Socket.IO</span><span>Canvas 2D</span></div>
+        <a class="btn btn-primary idx-play" href="https://cybergrid-breach-sync.onrender.com" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span data-es>Jugar ahora</span><span data-en>Play now</span>
+        </a>
+        <p class="idx-foot"><span class="idx-demos"><span data-es>1 demo interactiva</span><span data-en>1 interactive demo</span></span><span class="idx-go" aria-hidden="true"><span data-es>Ver caso</span><span data-en>View case</span> ↓</span></p>
+      </li>
+    </ol>
 
     <!-- ─── CASE 1 ─── -->
-    <article class="case">
+    <article class="case" id="uaem">
       <div data-scene="ramaAlta" aria-hidden="true"></div>
       <div class="case-side">
         <span class="case-tag case-tag-live"><span data-es>En producción</span><span data-en>In production</span></span>
@@ -178,6 +242,9 @@
           <div class="clave-i clave-res"><span class="clave-k"><span data-es>Resultado</span><span data-en>Result</span></span><p><span data-es>El trámite dejó el papel y hoy vive en una aplicación web: los cuatro perfiles entran con su propia cuenta y trabajan sobre la misma solicitud, no sobre copias. Eso es lo que cerró el problema, porque ya no hay carpeta que perseguir ni controles paralelos que conciliar: el estado del trámite es uno solo y está siempre en el mismo lugar. Cualquiera puede reconstruir quién hizo qué y cuándo consultando el historial, y el reporte mensual que antes costaba días de transcripción ahora sale con un clic. Está en producción.</span><span data-en>The process left paper behind and now lives in a web application: the four profiles sign in with their own account and work on the same request, never on copies. That is what closed the problem, because there is no folder to chase and no parallel records to reconcile: the status of a request is single and always in the same place. Anyone can reconstruct who did what and when from the history, and the monthly report that used to cost days of transcription now comes out with one click. It is in production.</span></p></div>
         </div>
 
+        <details class="mas">
+          <summary><span class="mas-t"><span data-es>Ver el detalle técnico</span><span data-en>See the technical detail</span></span><span class="mas-n"><span data-es>10 puntos</span><span data-en>10 points</span></span></summary>
+          <div class="mas-body">
         <h4><span data-es>Lo que hace</span><span data-en>What it does</span></h4>
         <ul class="bullets">
           <li><span data-es><b>Ordena el trámite.</b> Cuatro perfiles participan en el proceso y cada solicitud avanza por pasos claros. En todo momento se sabe dónde está y quién sigue.</span><span data-en><b>It organizes the process.</b> Four profiles take part, and every request moves through clear steps. At any moment you know where it is and whose turn it is.</span></li>
@@ -195,6 +262,8 @@
           <li><span data-es><b>Los índices están pensados, no adivinados.</b> La pantalla más usada filtra por estado y ordena por fecha, así que el índice es compuesto y en ese orden. Las llaves foráneas ya venían indexadas por el motor: ese trabajo no había que repetirlo.</span><span data-en><b>Indexes are deliberate, not guessed.</b> The most-used screen filters by state and sorts by date, so the index is composite and in that order. Foreign keys were already indexed by the engine: that work did not need repeating.</span></li>
           <li><span data-es><b>Se entrega documentado.</b> Manual técnico, manual de usuario y guía de instalación, porque un sistema que solo yo puedo levantar no está terminado.</span><span data-en><b>It ships documented.</b> Technical manual, user manual and install guide, because a system only I can deploy is not finished.</span></li>
         </ul>
+          </div>
+        </details>
 
         <div class="chips">
           <span>Java</span><span>Spring Boot</span><span>Spring Security</span><span>JPA / Hibernate</span><span>MySQL</span><span>React</span>
@@ -208,11 +277,15 @@
 
         <h4><span data-es>Cómo se decide quién puede qué</span><span data-en>How access is decided</span></h4>
         <div data-demo="rbac"></div>
+        <nav class="case-next" aria-label="Navegación entre proyectos">
+          <a href="#proyectos"><span aria-hidden="true">↑&nbsp;</span><span data-es>Todos los proyectos</span><span data-en>All projects</span></a>
+          <a href="#devengo"><span data-es>Siguiente: Devengo</span><span data-en>Next: Devengo</span><span aria-hidden="true">&nbsp;↓</span></a>
+        </nav>
       </div>
     </article>
 
     <!-- ─── CASE 2 ─── -->
-    <article class="case">
+    <article class="case" id="devengo">
       <div data-scene="ramaOro" aria-hidden="true"></div>
       <div class="case-side">
         <span class="case-tag case-tag-open"><span data-es>Hackathon</span><span data-en>Hackathon</span></span>
@@ -239,6 +312,9 @@
           <div class="clave-i clave-res"><span class="clave-k"><span data-es>Resultado</span><span data-en>Result</span></span><p><span data-es>Al cierre del hackathon corrían el portal web, la app móvil y los contratos en la red de pruebas de Stellar, los tres leyendo la misma fuente para las cifras. El trabajador pedía su adelanto, Recursos Humanos lo aprobaba o lo rechazaba dejando el motivo por escrito, y el movimiento quedaba asentado en la bóveda con su comisión y su monto neto. Cerrar la quincena recalcula el ciclo y deja sin efecto lo que quedó pendiente, para que ninguna solicitud sobreviva al periodo que la originó. Es un prototipo de fin de semana y lo trato como tal: probó que la idea se sostiene de extremo a extremo, no que esté lista para mover dinero de verdad.</span><span data-en>By the end of the hackathon the web portal, the mobile app and the contracts on Stellar's testnet were all running, all three reading the same source for the figures. The worker requested an advance, HR approved or rejected it leaving the reason on record, and the movement was posted to the vault with its fee and net amount. Closing the pay period recomputes the cycle and voids whatever was still pending, so no request outlives the period that created it. It is a weekend prototype and I treat it as one: it proved the idea holds end to end, not that it is ready to move real money.</span></p></div>
         </div>
 
+        <details class="mas">
+          <summary><span class="mas-t"><span data-es>Ver el detalle técnico</span><span data-en>See the technical detail</span></span><span class="mas-n"><span data-es>8 puntos</span><span data-en>8 points</span></span></summary>
+          <div class="mas-body">
         <h4><span data-es>Lo que construí</span><span data-en>What I built</span></h4>
         <ul class="bullets">
           <li><span data-es><b>Motor de salario devengado.</b> Calcula en tiempo real cuánto ha ganado un empleado según el ciclo de nómina vigente, y cuánto de eso puede retirar según su antigüedad y las políticas de la empresa.</span><span data-en><b>Earned wage engine.</b> Computes in real time how much an employee has earned in the current payroll cycle, and how much of it they may withdraw based on tenure and company policy.</span></li>
@@ -254,6 +330,8 @@
           <li><span data-es><b>Docker para todo el equipo.</b> Contenericé el entorno para que los cuatro integrantes corrieran exactamente el mismo stack; en un hackathon, «en mi máquina sí funciona» cuesta horas que no tienes.</span><span data-en><b>Docker for the whole team.</b> I containerized the environment so all four members ran the exact same stack; in a hackathon, "works on my machine" costs hours you don't have.</span></li>
           <li><span data-es><b>Un stack actual, con criterio.</b> Next.js 16 y React 19 con el React Compiler activo, TypeScript estricto y Tailwind 4.</span><span data-en><b>A current stack, chosen on purpose.</b> Next.js 16 and React 19 with the React Compiler enabled, strict TypeScript and Tailwind 4.</span></li>
         </ul>
+          </div>
+        </details>
 
         <div class="chips">
           <span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind 4</span><span>Node.js</span><span>Rust</span><span>Soroban / Stellar</span><span>Expo</span><span>React Native</span><span>PostgreSQL</span><span>Keycloak</span><span>Docker</span>
@@ -264,11 +342,15 @@
 
         <h4><span data-es>Pruébalo: mueve los controles y observa las reglas</span><span data-en>Try it: move the controls and watch the rules</span></h4>
         <div data-demo="engine"></div>
+        <nav class="case-next" aria-label="Navegación entre proyectos">
+          <a href="#proyectos"><span aria-hidden="true">↑&nbsp;</span><span data-es>Todos los proyectos</span><span data-en>All projects</span></a>
+          <a href="#recursos"><span data-es>Siguiente: Sistema de Gestión de Recursos</span><span data-en>Next: Resource Management System</span><span aria-hidden="true">&nbsp;↓</span></a>
+        </nav>
       </div>
     </article>
 
     <!-- ─── CASE 4 ─── -->
-    <article class="case">
+    <article class="case" id="recursos">
       <div data-scene="ramaPalida" aria-hidden="true"></div>
       <div class="case-side">
         <span class="case-tag"><span data-es>Full Stack</span><span data-en>Full Stack</span></span>
@@ -310,6 +392,10 @@
 
         <h4><span data-es>Prototipo de interfaz</span><span data-en>Interface prototype</span></h4>
         <div data-mockup="rms"></div>
+        <nav class="case-next" aria-label="Navegación entre proyectos">
+          <a href="#proyectos"><span aria-hidden="true">↑&nbsp;</span><span data-es>Todos los proyectos</span><span data-en>All projects</span></a>
+          <a href="#cybergrid"><span data-es>Siguiente: CyberGrid Gato Royale</span><span data-en>Next: CyberGrid Gato Royale</span><span aria-hidden="true">&nbsp;↓</span></a>
+        </nav>
       </div>
     </article>
 
@@ -407,6 +493,9 @@
           <div class="clave-i clave-res"><span class="clave-k"><span data-es>Resultado</span><span data-en>Result</span></span><p><span data-es>Está en línea y se juega desde una computadora o un teléfono. Una partida de 12 gatos le cuesta al servidor unos 0.1 milisegundos por paso, de 33 disponibles, y el dibujo se mantiene en 60 cuadros por segundo. Cada cambio pasa por tipos, lint, auditoría de dependencias, 487 pruebas unitarias y pruebas de navegador con Playwright, y Render solo despliega si todo sale en verde. No tiene miles de jugadores, pero sí las defensas que tendría un juego que los esperara.</span><span data-en>It is online and plays on a computer or a phone. A 12-cat match costs the server about 0.1 milliseconds per step, out of 33 available, and drawing holds at 60 frames per second. Every change goes through types, lint, a dependency audit, 487 unit tests and Playwright browser tests, and Render only deploys when everything comes out green. It does not have thousands of players, but it does have the defenses a game expecting them would have.</span></p></div>
         </div>
 
+        <details class="mas">
+          <summary><span class="mas-t"><span data-es>Ver el detalle técnico</span><span data-en>See the technical detail</span></span><span class="mas-n"><span data-es>8 puntos</span><span data-en>8 points</span></span></summary>
+          <div class="mas-body">
         <h4><span data-es>Lo que construí</span><span data-en>What I built</span></h4>
         <ul class="bullets">
           <li><span data-es><b>Un menú de juego completo.</b> Salas públicas y privadas con código, bots para completar las partidas, y un pintor para personalizar al gato con pelaje, traje y pintura, con diez trajes de Halloween.</span><span data-en><b>A complete game menu.</b> Public rooms and private ones with a code, bots to fill matches, and a painter to customize the cat with fur, outfit and paint, including ten Halloween costumes.</span></li>
@@ -422,6 +511,8 @@
           <li><span data-es><b>El tiempo manda sobre los cuadros.</b> La simulación avanza a paso fijo con un acumulador, así el gato camina la misma distancia a 60 que a 144 Hz. Con el navegador cuatro veces más lento, la distancia recorrida salió con una razón de 1.03.</span><span data-en><b>Time rules over frames.</b> The simulation advances in fixed steps with an accumulator, so the cat walks the same distance at 60 or 144 Hz. With the browser four times slower, the distance covered came out at a ratio of 1.03.</span></li>
           <li><span data-es><b>Correo sin SMTP.</b> Render bloquea esos puertos, así que los códigos salen por la API HTTPS de un proveedor de correo.</span><span data-en><b>Email without SMTP.</b> Render blocks those ports, so codes go out through an email provider's HTTPS API.</span></li>
         </ul>
+          </div>
+        </details>
 
         <div class="chips">
           <span>Node.js</span><span>TypeScript</span><span>Socket.IO</span><span>Canvas 2D</span><span>Vite</span><span>Zod</span><span>SQLite</span><span>Redis</span><span>Web Audio</span><span>Vitest</span><span>Playwright</span><span>GitHub Actions</span><span>Render</span>
@@ -429,6 +520,10 @@
 
         <h4><span data-es>Pruébalo: intenta hacer trampa</span><span data-en>Try it: attempt to cheat</span></h4>
         <div data-demo="arena"></div>
+        <nav class="case-next" aria-label="Navegación entre proyectos">
+          <a href="#proyectos"><span aria-hidden="true">↑&nbsp;</span><span data-es>Todos los proyectos</span><span data-en>All projects</span></a>
+          <a href="#stack"><span data-es>Siguiente: Mi stack</span><span data-en>Next: My stack</span><span aria-hidden="true">&nbsp;↓</span></a>
+        </nav>
       </div>
     </article>
 
@@ -568,17 +663,17 @@
           </li>
           <li>
             <span class="tl-when"><span data-es>May – Ago 2026</span><span data-en>May – Aug 2026</span></span>
-            <span class="tl-what"><span data-es>Full Stack</span><span data-en>Full Stack</span></span>
-            <span class="tl-where">Universidad Autónoma del Estado de Morelos</span>
+            <span class="tl-what"><span data-es>Full Stack · Sistema de Gestión de Solicitudes</span><span data-en>Full Stack · Request Management System</span></span>
+            <span class="tl-where"><span data-es>Universidad Autónoma del Estado de Morelos · en producción</span><span data-en>Universidad Autónoma del Estado de Morelos · in production</span></span>
           </li>
           <li>
             <span class="tl-when">Mar 2026</span>
-            <span class="tl-what"><span data-es>Full Stack · Hackathon</span><span data-en>Full Stack · Hackathon</span></span>
+            <span class="tl-what"><span data-es>Full Stack · Devengo (hackathon)</span><span data-en>Full Stack · Devengo (hackathon)</span></span>
             <span class="tl-where">Track Genesis · Hack + Alebrije, CDMX</span>
           </li>
           <li>
             <span class="tl-when"><span data-es>Ene – Abr 2026</span><span data-en>Jan – Apr 2026</span></span>
-            <span class="tl-what">Full Stack</span>
+            <span class="tl-what"><span data-es>Full Stack · Sistema de Gestión de Recursos</span><span data-en>Full Stack · Resource Management System</span></span>
             <span class="tl-where">Centro de Desarrollo de Software UTEZ</span>
           </li>
           <li>
@@ -587,17 +682,11 @@
             <span class="tl-where"><span data-es>Servicio Médico UTEZ</span><span data-en>UTEZ Medical Service</span></span>
           </li>
           <li>
-            <span class="tl-when">2024 – 2026</span>
+            <span class="tl-when"><span data-es>Sep 2024 – Ago 2026</span><span data-en>Sep 2024 – Aug 2026</span></span>
             <span class="tl-what">TSU <span data-es>en Desarrollo de Software Multiplataforma</span><span data-en>in Multiplatform Software Development</span></span>
             <span class="tl-where">Universidad Tecnológica de Emiliano Zapata</span>
           </li>
         </ol>
-
-        <h4 class="mt"><span data-es>Certificación</span><span data-en>Certification</span></h4>
-        <p class="cert">Oracle · <span data-es>Fundamentos de Bases de Datos</span><span data-en>Database Foundations</span></p>
-
-        <h4 class="mt"><span data-es>Idiomas</span><span data-en>Languages</span></h4>
-        <p class="cert"><span data-es>Español nativo · Inglés técnico</span><span data-en>Native Spanish · Technical English</span></p>
       </div>
     </div>
   </div>
@@ -620,13 +709,13 @@
           <b>Universidad Tecnológica de Emiliano Zapata</b>
           <span data-es>Ingeniería en Tecnologías de la Información e Innovación Digital</span>
           <span data-en>Information Technologies and Digital Innovation Engineering</span>
-          <em><span data-es>2026 a la fecha · Morelos, México</span><span data-en>2026 to present · Morelos, Mexico</span></em>
+          <em><span data-es>Sep 2026 a la fecha · Morelos, México</span><span data-en>Sep 2026 to present · Morelos, Mexico</span></em>
         </div>
         <div class="form-item">
           <b>Universidad Tecnológica de Emiliano Zapata</b>
           <span data-es>TSU en Desarrollo de Software Multiplataforma</span>
           <span data-en>Higher University Technician in Multiplatform Software Development</span>
-          <em><span data-es>2024 – 2026 · Morelos, México</span><span data-en>2024 – 2026 · Morelos, Mexico</span></em>
+          <em><span data-es>Sep 2024 – Ago 2026 · Morelos, México</span><span data-en>Sep 2024 – Aug 2026 · Morelos, Mexico</span></em>
         </div>
       </div>
 
@@ -706,7 +795,7 @@
 
 <div id="katana" aria-hidden="true"></div>
 
-<script src="main.js?v=20261114"></script>
+<script src="main.js?v=20261116a"></script>
 <script src="scenes.js?v=20261114"></script>
 <script src="katana.js?v=20261114"></script>
 <script src="demos.js?v=20261114"></script>

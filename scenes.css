@@ -46,6 +46,17 @@
 .sc-palida { opacity: .78; }
 .sc-cielo  { opacity: .85; }
 
+/* ── Formación: rama en la esquina, lejos del título ── */
+#formacion > .scene {
+  inset: 24px 24px auto auto;
+  width: min(42%, 400px);
+  height: 190px;
+  -webkit-mask-image: radial-gradient(120% 110% at 88% 8%, #000 18%, rgba(0,0,0,.5) 55%, transparent 84%);
+  mask-image: radial-gradient(120% 110% at 88% 8%, #000 18%, rgba(0,0,0,.5) 55%, transparent 84%);
+}
+@media (max-width: 900px) { #formacion > .scene { opacity: .5; width: 56%; height: 150px; } }
+@media (max-width: 620px) { #formacion > .scene { display: none; } }
+
 /* ── Stack: trama asanoha a lo ancho ── */
 #stack > .scene {
   inset: 0;
@@ -57,6 +68,8 @@
 
 /* El contenido siempre por encima */
 .hero-inner, .case-side, .case-main, .section > .wrap { position: relative; z-index: 1; }
+/* Esta regla anulaba el sticky de la columna lateral de cada caso: en pantallas anchas vuelve a acompañar la lectura */
+@media (min-width: 1101px) { .case-side { position: sticky; top: 104px; } }
 
 /* ── Pétalos cayendo sobre el nombre ── */
 .petalos { position: absolute; inset: 0; overflow: hidden; }
