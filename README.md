@@ -93,9 +93,9 @@ Cinco demos funcionan de verdad dentro de la página, sin servidor:
 
 | Demo | Dónde | Qué demuestra |
 |---|---|---|
-| Flujo de solicitudes | Caso UAEM | Máquina de estados, permisos por rol, auditoría, generación de documento |
-| Modelo entidad-relación | Caso UAEM | Diseño de esquema e índices justificados por consulta |
-| Control de acceso | Caso UAEM | Autorización del lado del servidor, 200 vs 403 |
+| Flujo de solicitudes | Caso 1 (solicitudes) | Máquina de estados, permisos por rol, auditoría, generación de documento |
+| Modelo entidad-relación | Caso 1 (solicitudes) | Diseño de esquema e índices justificados por consulta |
+| Control de acceso | Caso 1 (solicitudes) | Autorización del lado del servidor, 200 vs 403 |
 | Salario devengado | Caso Devengo | Reglas de negocio financieras en tiempo real |
 | Servidor autoritativo | Caso CyberGrid | El cliente predice y el servidor manda: trampas rechazadas y corregidas |
 
@@ -159,7 +159,7 @@ agrega **siempre las dos versiones** o se verá vacío en un idioma.
 ## Cómo está organizada la lectura (pensada para quien contrata)
 
 - **Índice de proyectos** (`#proyectos`): cuatro tarjetas al inicio de la sección con estado, cifra clave, stack y enlace al caso. Es lo primero que se ve; los casos completos quedan debajo.
-- **Cada caso** lleva su `id` (`uaem`, `devengo`, `recursos`, `cybergrid`), la columna lateral fija con rol y alcance, y el razonamiento largo plegado en `<details class="mas">` ("Ver el detalle técnico"). Funciona sin JavaScript.
+- **Cada caso** lleva su `id` (`solicitudes`, `devengo`, `recursos`, `cybergrid`), la columna lateral fija con rol y alcance, y el razonamiento largo plegado en `<details class="mas">` ("Ver el detalle técnico"). Funciona sin JavaScript.
 - **Navegación entre casos**: cada caso termina con "Todos los proyectos" y "Siguiente".
 - **Teléfono**: menú propio (`#mnav`, se cierra con Escape, al tocar fuera o al elegir), controles de 44 px, botones del hero ordenados, cifras en una fila, datos del caso en filas compactas y el stack a dos columnas.
 - **Monitores grandes**: logo, hero y secciones comparten el mismo borde izquierdo (la barra se alinea con la rejilla; su fondo sigue a todo el ancho).
