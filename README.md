@@ -12,6 +12,7 @@ arena.css       → la demo del juego (servidor autoritativo)
 katana.css      → cursor de katana y botón de efectos
 demos.js        → las 4 demos interactivas de los casos de cliente
 arena.js        → la 5.ª demo: miniatura del juego, con el cliente que predice y el servidor que manda
+modos.js        → selector de los cuatro modos del juego (pestañas accesibles; sin JavaScript se ven apilados)
 mockups.js      → las 3 maquetas de producto
 katana.js       → cursor de katana y su corte
 scenes.css      → escenarios de fondo

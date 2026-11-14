@@ -178,6 +178,34 @@
 .case-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 10px; }
 .case-cta-note { font-size: .8rem; line-height: 1.6; color: var(--washi-dim); margin-bottom: 30px; max-width: 64ch; }
 
+/* ── Selector de modos del juego ── */
+.modos { --m-100: 100ms; --m-150: 150ms; --m-200: 200ms; --e-out: cubic-bezier(0.16, 1, 0.3, 1); margin-bottom: 36px; }
+.modos-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.modos-tabs [role="tab"] {
+  min-height: 42px; padding: 9px 16px; border-radius: 7px;
+  border: 1px solid var(--line-soft); background: transparent; color: var(--fg-dim);
+  font-family: var(--sans); font-size: .9rem; font-weight: 700; cursor: pointer;
+  transition: color var(--m-150) var(--e-out), border-color var(--m-150) var(--e-out), background-color var(--m-150) var(--e-out);
+}
+.modos-tabs [role="tab"]:hover { color: var(--washi); border-color: var(--line); }
+.modos-tabs [role="tab"][aria-selected="true"] {
+  color: var(--gold-lt); border-color: var(--gold); background: rgba(166, 125, 67, .12);
+}
+.modos-tabs [role="tab"]:focus-visible { outline: 2px solid var(--gold-lt); outline-offset: 2px; }
+
+.modo {
+  border: 1px solid var(--line); border-radius: 8px; background: var(--card);
+  padding: 18px 20px; margin-bottom: 12px;
+}
+.modos.es-js .modo { margin-bottom: 0; }
+.modos.es-js .modo:not([hidden]) { animation: arena-in var(--m-200) var(--e-out) both; }
+.modos.es-js .modo[hidden] { display: none; }
+.modo-meta { font-family: var(--mono); font-size: .76rem; letter-spacing: .02em; color: var(--gold-lt); margin-bottom: 14px; }
+.modo-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 28px; }
+.modo-cols > div { min-width: 0; }
+.modo-cols p { font-size: .94rem; line-height: 1.75; color: var(--washi-mid); max-width: 62ch; }
+.modo .clave-k { display: block; margin-bottom: 6px; }
+
 /* ── Capturas reales del juego ── */
 .case-shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0 0 36px; }
 .shot { min-width: 0; margin: 0; }
@@ -192,6 +220,7 @@
   .arena-low { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 720px) {
+  .modo-cols { grid-template-columns: minmax(0, 1fr); }
   .case-shots { grid-template-columns: minmax(0, 1fr); }
   .arena-panes { grid-template-columns: minmax(0, 1fr); }
   .arena-controls { grid-template-columns: minmax(0, 1fr); }
@@ -201,6 +230,8 @@
 /* Movimiento reducido: sin desplazamientos; solo cambios instantáneos o un fundido de 100 ms.
    Cada cambio de estado ya tiene su texto (consola, veredicto y contadores). */
 @media (prefers-reduced-motion: reduce) {
+  .modos.es-js .modo:not([hidden]) { animation: none; }
+  .modos-tabs [role="tab"] { transition: none; }
   .arena-ln.is-new, .arena-verdict.is-swap { animation: none; }
   .arena-pane, .arena-key, .arena-hack, .arena-btn, .arena-verdict { transition: none; }
   .arena-hint { transition: opacity var(--m-100) ease; }

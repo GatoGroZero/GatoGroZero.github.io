@@ -370,8 +370,8 @@ function montar() {
       '<span class="demo-live">' + bi("interactivo", "interactive") + "</span></div>" +
     '<div class="demo-body">' +
       '<p class="arena-intro">' + bi(
-        "A la izquierda está tu cliente, que predice sin esperar al servidor. A la derecha, lo que el servidor sabe de verdad y lo que ven los demás jugadores. Mueve al gato, quédate dentro del círculo (el agua de afuera quita vida) y luego intenta mentirle al servidor.",
-        "On the left is your client, which predicts without waiting for the server. On the right, what the server really knows and what the other players see. Move the cat, stay inside the circle (the water outside takes health), then try to lie to the server.") + "</p>" +
+        "Es el Battle Royale en miniatura. A la izquierda está tu cliente, que predice sin esperar al servidor. A la derecha, lo que el servidor sabe de verdad y lo que ven los demás jugadores. Mueve al gato, quédate dentro del círculo (el agua de afuera quita vida) y luego intenta mentirle al servidor.",
+        "This is the Battle Royale in miniature. On the left is your client, which predicts without waiting for the server. On the right, what the server really knows and what the other players see. Move the cat, stay inside the circle (the water outside takes health), then try to lie to the server.") + "</p>" +
       '<div class="arena-panes">' +
         '<section class="arena-pane" data-pane="c"><div class="arena-pane-h"><b>' + bi("Tu cliente", "Your client") + "</b><small>" + bi("lo que tú ves", "what you see") + "</small></div>" +
           '<div class="arena-stage" tabindex="0" role="group" data-l-es="Campo de juego de tu cliente. Mueve al gato con WASD o las flechas." data-l-en="Your client\'s play field. Move the cat with WASD or the arrow keys.">' +
