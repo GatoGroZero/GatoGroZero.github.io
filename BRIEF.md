@@ -56,7 +56,7 @@ Esto viene de iteraciones que ya se probaron y no funcionaron:
   produce media internet ahora.
 - Nada de tipografías pixel para leer. Se probó Pixelify Sans y confundía la
   C con la O. Si se usa una pixel, que sea solo en piezas cortas.
-- Nada de rayas largas en el texto (—). Es una petición explícita de Luis.
+- Nada de rayas largas (el guion largo) en el texto. Es una petición explícita de Luis.
   Usar coma, dos puntos, paréntesis o punto y seguido.
 - Nada de gatos caminando por franjas entre secciones. Se probó y satura.
 
